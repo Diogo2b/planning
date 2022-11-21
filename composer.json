@@ -1,0 +1,22 @@
+{
+    "name": "planning_back/planning",
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/",
+            "App\\": "app/",
+            "Database\\": "database/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Diogo et Alexis",
+            "email": "dioguinho2b@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^5.4"
+    },
+    "require": {
+        "rakit/validation": "^1.4"
+    }
+}

@@ -13,7 +13,7 @@ class Formation extends Model
         $validator = new Validator();
         $validation = $validator->validate($data, [
             'name'                  => 'required',
-            'season'                => 'required',
+            'season'                => 'required|max:11',
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

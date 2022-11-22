@@ -9,9 +9,9 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $roles = (new Role($this->getDB()))->all();
-
-        return $this->view('roles.index', compact('roles'));
+        return $this->view('roles.index', [
+            'roles' => (new Role($this->getDB()))->all()
+        ]);
     }
 
     public function create()
@@ -22,7 +22,7 @@ class RoleController extends Controller
     public function createPost()
     {
         $data = $_POST;
-        $errors = Role::validate($_POST);
+        $errors = Role::validate($data);
 
         if ($errors) {
             return $this->view('roles.create', [
@@ -32,7 +32,7 @@ class RoleController extends Controller
         }
 
         $role = new Role($this->getDB());
-        $result = $role->create($_POST);
+        $result = $role->create($data);
         if ($result) {
             return header('Location: /roles');
         }
@@ -48,8 +48,8 @@ class RoleController extends Controller
 
     public function updatePost(int $id)
     {
-
-        $errors = Role::validate($_POST);
+        $data = $_POST;
+        $errors = Role::validate($data);
 
         if ($errors) {
             return $this->view('roles.update', [
@@ -59,7 +59,7 @@ class RoleController extends Controller
         }
 
         $role = new Role($this->getDB());
-        $result = $role->update($id, $_POST);
+        $result = $role->update($id, $data);
 
         if ($result) {
             return header('Location: /roles');

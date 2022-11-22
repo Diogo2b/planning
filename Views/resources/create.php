@@ -1,4 +1,13 @@
 <h1>Créer une nouvelle ressource</h1>
+<?php
+
+$fields = ['name'];
+foreach ($fields as $field) {
+    if (isset($previousData) && $previousData[$field]) {
+        $$field = $previousData[$field];
+    }
+}
+?>
 
 <form action="/resources/create" method="POST">
     <div class="form-group">

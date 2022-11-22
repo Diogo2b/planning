@@ -1,26 +1,14 @@
-<h1><?= $module->name ?? 'Créer un nouveau module' ?></h1>
 <?php
-if ($params && $params['data']["name"]) {
-    $lastname = $params['data']["name"];
-}
 
-if ($params && $params['data']["total_hours"]) {
-    $lastname = $params['data']["total_hours"];
+$fields = ['name', 'total_hours'];
+foreach ($fields as $field) {
+    if (isset($previousData) && $previousData[$field]) {
+        $$field = $previousData[$field];
+    }
 }
 ?>
 
-
-<?php if (isset($_SESSION['errors'])) : ?>
-    <?php foreach ($_SESSION['errors'] as $error) : ?>
-        <div class="alert alert-danger">
-            <li><?= $error ?></li>
-        </div>
-    <?php endforeach ?>
-<?php endif ?>
-
-<?php $_SESSION['errors'] = [] ?>
-
-
+<h1>Créer un nouveau module</h1>
 
 <form action="/modules/create" method="POST">
     <div class="form-group">

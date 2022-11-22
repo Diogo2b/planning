@@ -2,8 +2,8 @@
 
 $fields = ['name', 'season'];
 foreach ($fields as $field) {
-    if ($params && $data[$field]) {
-        $$field = $data[$field];
+    if (isset($previousData) && $previousData[$field]) {
+        $$field = $previousData[$field];
     }
 }
 ?>

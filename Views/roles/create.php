@@ -1,8 +1,8 @@
 <?php
 $fields = ['name'];
 foreach ($fields as $field) {
-    if ($params && $params['data'][$field]) {
-        $$field = $params['data'][$field];
+    if (isset($previousData) && $previousData[$field]) {
+        $$field = $previousData[$field];
     }
 }
 ?>

@@ -11,7 +11,9 @@ class FormationController extends Controller
     {
         $formations = (new Formation($this->getDB()))->all();
 
-        return $this->view('formations.index', compact('formations'));
+        return $this->view('formations.index', [
+            'formations' => $formations
+        ]);
     }
 
     public function create()
@@ -21,11 +23,13 @@ class FormationController extends Controller
 
     public function createPost()
     {
+        $data = $_POST;
         $errors = Formation::validate($_POST);
-
         if ($errors) {
-            $_SESSION['errors'][] = $errors;
-            return header('Location: /formations/create');
+            return $this->view('formations.create', [
+                'previousData' => $data,
+                'errors' => $errors,
+            ]);
         }
 
         $formation = new Formation($this->getDB());
@@ -38,16 +42,21 @@ class FormationController extends Controller
     public function update(int $id)
     {
         $formation = (new Formation($this->getDB()))->findById($id);
-        return $this->view('formations.update', compact('formation'));
+        return $this->view('formations.update', [
+            'formation' => $formation,
+        ]);
     }
 
     public function updatePost(int $id)
     {
+
         $errors = Formation::validate($_POST);
 
         if ($errors) {
-            $_SESSION['errors'][] = $errors;
-            return header('Location: /formations/update/' . $id);
+            return $this->view('formations.update', [
+                'errors' => $errors,
+                'formation' => (new Formation($this->getDB()))->findById($id)
+            ]);
         }
 
         $formation = new Formation($this->getDB());

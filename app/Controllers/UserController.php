@@ -29,7 +29,7 @@ class UserController extends Controller
 
         if ($errors) {
             return $this->view('users.create', [
-                'data' => $data,
+                'previousData' => $data,
                 'errors' => $errors,
             ]);
         }
@@ -51,11 +51,14 @@ class UserController extends Controller
 
     public function updatePost(int $id)
     {
+
         $errors = User::validate($_POST);
 
         if ($errors) {
-            $_SESSION['errors'] = $errors;
-            return header('Location: /users/update/' . $id);
+            return $this->view('users.update', [
+                'errors' => $errors,
+                'user' => (new User($this->getDB()))->findById($id)
+            ]);
         }
 
         $user = new User($this->getDB());

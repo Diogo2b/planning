@@ -28,10 +28,10 @@ class ModuleController extends Controller
     public function createPost()
     {
         $data = $_POST;
-        $errors = Module::validate($_POST);
+        $errors = Module::validate($data);
         if ($errors) {
             return $this->view('modules.create', [
-                'data' => $data,
+                'previousData' => $data,
                 'errors' => $errors,
             ]);
         }
@@ -53,11 +53,14 @@ class ModuleController extends Controller
 
     public function updatePost(int $id)
     {
+
         $errors = Module::validate($_POST);
 
         if ($errors) {
-            $_SESSION['errors'] = $errors;
-            return header('Location: /modules/update/' . $id);
+            return $this->view('modules.update', [
+                'errors' => $errors,
+                'module' => (new Module($this->getDB()))->findById($id)
+            ]);
         }
 
         $module = new Module($this->getDB());

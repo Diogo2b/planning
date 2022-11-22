@@ -13,7 +13,7 @@ class Module extends Model
         $validator = new Validator();
         $validation = $validator->validate($data, [
             'name'                  => 'required',
-            'total_hours'           => 'required|integer|between:1,1000',
+            'total_hours'           => 'required|integer|between:1,2000',
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

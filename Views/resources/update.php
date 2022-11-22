@@ -1,9 +1,5 @@
 <h1><?= $resource->name ?></h1>
 
-
-
-
-
 <form action="<?= "/resources/update/{$resource->id}" ?>" method="POST">
     <div class="form-group">
         <label for="name">Nom de ressource</label>
@@ -17,5 +13,5 @@
         </div>
     <?php } ?>
 
-    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+    <button type="submit" class="btn btn-info">Enregistrer les modifications</button>
 </form>

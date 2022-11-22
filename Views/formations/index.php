@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($params['formations'] as $formation) : ?>
+            <?php foreach ($formations as $formation) : ?>
                 <tr>
                     <th scope="row"><?= $formation->id ?></th>
                     <td><?= $formation->name ?></td>

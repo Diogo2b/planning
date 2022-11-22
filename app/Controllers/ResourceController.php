@@ -29,7 +29,7 @@ class ResourceController extends Controller
 
         if ($errors) {
             return $this->view('resources.create', [
-                'data' => $data,
+                'previousData' => $data,
                 'errors' => $errors,
             ]);
         }
@@ -51,11 +51,14 @@ class ResourceController extends Controller
 
     public function updatePost(int $id)
     {
+
         $errors = Resource::validate($_POST);
 
         if ($errors) {
-            $_SESSION['errors'] = $errors;
-            return header('Location: /resources/update/' . $id);
+            return $this->view('resources.update', [
+                'errors' => $errors,
+                'resource' => (new Resource($this->getDB()))->findById($id)
+            ]);
         }
 
         $resource = new Resource($this->getDB());

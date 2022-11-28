@@ -12,6 +12,7 @@ define('DB_HOST', 'planning.test');
 define('DB_USER', 'root');
 define('DB_PWD', '');
 
+
 $router = new Router($_GET['url']);
 $router->get('/', 'App\Controllers\ModuleController@welcome');
 // modules

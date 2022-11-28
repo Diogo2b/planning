@@ -24,7 +24,8 @@ class ResourceController extends Controller
     public function createPost()
     {
         $data = $_POST;
-        $errors = Resource::validate($_POST);
+        $resource = new Resource($this->getDB());
+        $errors = $resource->validate($data);
 
 
         if ($errors) {
@@ -51,8 +52,10 @@ class ResourceController extends Controller
 
     public function updatePost(int $id)
     {
+        $data = $_POST;
+        $resource = new Resource($this->getDB());
 
-        $errors = Resource::validate($_POST);
+        $errors = $resource->validate($data);
 
         if ($errors) {
             return $this->view('resources.update', [

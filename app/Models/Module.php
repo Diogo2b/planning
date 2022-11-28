@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-use Rakit\Validation\Validator;
+use App\Validation\ValidatorFactory;
 
 class Module extends Model
 {
     protected $table = 'modules';
 
-    static function validate(array $data): array
+    public function validate(array $data): array
     {
-        $validator = new Validator();
+        $validator =  ValidatorFactory::createValidator($this->db->getPDO());
+
         $validation = $validator->validate($data, [
-            'name'                  => 'required',
+            'name'                   => 'required',
             'total_hours'           => 'required|integer|between:1,2000',
         ]);
         $errors = $validation->errors();

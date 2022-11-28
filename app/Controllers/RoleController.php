@@ -22,7 +22,8 @@ class RoleController extends Controller
     public function createPost()
     {
         $data = $_POST;
-        $errors = Role::validate($data);
+        $role = new Role($this->getDB());
+        $errors = $role->validate($data);
 
         if ($errors) {
             return $this->view('roles.create', [
@@ -49,7 +50,8 @@ class RoleController extends Controller
     public function updatePost(int $id)
     {
         $data = $_POST;
-        $errors = Role::validate($data);
+        $user = new Role($this->getDB());
+        $errors = $user->validate($data);
 
         if ($errors) {
             return $this->view('roles.update', [

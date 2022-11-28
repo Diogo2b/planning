@@ -24,7 +24,8 @@ class FormationController extends Controller
     public function createPost()
     {
         $data = $_POST;
-        $errors = Formation::validate($_POST);
+        $formation = new Formation($this->getDB());
+        $errors = $formation->validate($data);
         if ($errors) {
             return $this->view('formations.create', [
                 'previousData' => $data,
@@ -50,7 +51,9 @@ class FormationController extends Controller
     public function updatePost(int $id)
     {
 
-        $errors = Formation::validate($_POST);
+        $data = $_POST;
+        $formation = new Formation($this->getDB());
+        $errors = $formation->validate($data);
 
         if ($errors) {
             return $this->view('formations.update', [

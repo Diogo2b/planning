@@ -28,6 +28,7 @@ abstract class Controller
         require VIEWS . 'layout.php';
     }
 
+
     protected function getDB()
     {
         return $this->db;

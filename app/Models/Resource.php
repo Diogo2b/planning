@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-use Rakit\Validation\Validator;
+use App\Validation\ValidatorFactory;
 
 class Resource extends Model
 {
     protected $table = 'resources';
 
-    static function validate(array $data): array
+    public function validate(array $data): array
     {
-        $validator = new Validator();
-        $validation = $validator->validate($data, [
-            'name'                  => 'required',
+        $validator =  ValidatorFactory::createValidator($this->db->getPDO());
 
+        $validation = $validator->validate($data, [
+            'name'                   => 'required|unique:resources,name',
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

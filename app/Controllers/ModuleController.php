@@ -28,7 +28,8 @@ class ModuleController extends Controller
     public function createPost()
     {
         $data = $_POST;
-        $errors = Module::validate($data);
+        $module = new Module($this->getDB());
+        $errors = $module->validate($data);
         if ($errors) {
             return $this->view('modules.create', [
                 'previousData' => $data,
@@ -54,7 +55,9 @@ class ModuleController extends Controller
     public function updatePost(int $id)
     {
 
-        $errors = Module::validate($_POST);
+        $data = $_POST;
+        $module = new Module($this->getDB());
+        $errors = $module->validate($data);
 
         if ($errors) {
             return $this->view('modules.update', [

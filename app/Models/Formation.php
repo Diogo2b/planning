@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-use Rakit\Validation\Validator;
+use App\Validation\ValidatorFactory;
 
 class Formation extends Model
 {
     protected $table = 'formations';
 
-    static function validate(array $data): array
+    public function validate(array $data): array
     {
-        $validator = new Validator();
+        $validator =  ValidatorFactory::createValidator($this->db->getPDO());
+
         $validation = $validator->validate($data, [
-            'name'                  => 'required',
+            'name'                   => 'required',
             'season'                => 'required|max:11',
         ]);
         $errors = $validation->errors();

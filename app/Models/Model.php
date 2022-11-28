@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use PDO;
 use Database\DBConnection;
+use PDO;
 
 abstract class Model
 {
@@ -26,24 +26,29 @@ abstract class Model
         return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
     }
 
-    public function create(array $data, ?array $relations = null)
+    public function create(array $data)
     {
-        $firstParenthesis = "";
-        $secondParenthesis = "";
+        $firstParenthesis = [];
+        $secondParenthesis = [];
         $i = 1;
 
         foreach ($data as $key => $value) {
-            $comma = $i === count($data) ? "" : ", ";
-            $firstParenthesis .= "{$key}{$comma}";
-            $secondParenthesis .= ":{$key}{$comma}";
+            if ($value !== '') {
+                $firstParenthesis[] = "{$key}";
+                $secondParenthesis[] = ":{$key}";
+            } else {
+                unset($data[$key]);
+            }
             $i++;
         }
+        $firstParenthesis = join(", ", $firstParenthesis);
+        $secondParenthesis = join(", ", $secondParenthesis);
 
         return $this->query("INSERT INTO {$this->table} ($firstParenthesis)
         VALUES($secondParenthesis)", $data);
     }
 
-    public function update(int $id, array $data, ?array $relations = null)
+    public function update(int $id, array $data)
     {
         $sqlRequestPart = "";
         $i = 1;
@@ -53,6 +58,7 @@ abstract class Model
             $sqlRequestPart .= "{$key} = :{$key}{$comma}";
             $i++;
         }
+
 
         $data['id'] = $id;
 
@@ -82,6 +88,7 @@ abstract class Model
         $fetch = is_null($single) ? 'fetchAll' : 'fetch';
 
         $stmt = $this->db->getPDO()->$method($sql);
+
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
 
         if ($method === 'query') {

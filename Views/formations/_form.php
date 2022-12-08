@@ -1,5 +1,5 @@
 <?php
-$fields = ['name', 'season'];
+$fields = ['name', 'season', 'site'];
 foreach ($fields as $field) {
     if (isset($previousData) && $previousData[$field]) {
         $$field = $previousData[$field];
@@ -28,6 +28,31 @@ foreach ($fields as $field) {
         ?>
             <div class="alert alert-danger">
                 <li><?php echo $errors['season'] ?></li>
+            </div>
+        <?php } ?>
+    </div>
+    <div class="form-group">
+        <label for="site_id">Site</label>
+        <select class="form-control" id="site_id" name="site_id">
+            <option value="" selected hidden>-- Veuillez choisir un site --</option>
+            <?php foreach ($sites as $site) : ?>
+                <?php
+                $isSelected = '';
+                if ((isset($user) && $user->site_id === $site->id) || (isset($site_id) && (int)$site_id === $site->id)) {
+                    $isSelected = 'selected';
+                }
+                ?>
+                <option value="<?= $site->id ?>" <?= $isSelected ?>>
+                    <?= $site->name ?>
+                </option>
+            <?php endforeach ?>
+        </select>
+
+        <?php
+        if (isset($errors) && array_key_exists('site_id', $errors)) {
+        ?>
+            <div class="alert alert-danger">
+                <li><?php echo $errors['site_id'] ?></li>
             </div>
         <?php } ?>
     </div>

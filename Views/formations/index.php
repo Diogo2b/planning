@@ -7,6 +7,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Saison</th>
+                <th scope="col">Site</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,11 @@
                     <th scope="row"><?= $formation->id ?></th>
                     <td><?= $formation->name ?></td>
                     <td><?= $formation->season ?></td>
+                    <?php foreach ($sites as $site) : ?>
+                        <?php if ($formation->site_id === $site->id) { ?>
+                            <td><?= $site->name ?></td>
+                        <?php  } ?>
+                    <?php endforeach ?>
                     <td>
                         <a href="/formations/update/<?= $formation->id ?>" class="btn btn-warning">Modifier</a>
                         <form action="/formations/delete/<?= $formation->id ?>" method="POST" class="d-inline">

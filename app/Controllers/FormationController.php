@@ -4,21 +4,26 @@ namespace App\Controllers;
 
 use App\Controllers\Controller;
 use App\Models\Formation;
+use App\Models\Site;
 
 class FormationController extends Controller
 {
     public function index()
     {
         $formations = (new Formation($this->getDB()))->all();
+        $sites = (new Site($this->getDB()))->all();
 
         return $this->view('formations.index', [
-            'formations' => $formations
+            'formations' => $formations,
+            'sites' => $sites,
         ]);
     }
 
     public function create()
     {
-        return $this->view('formations.create');
+        return $this->view('formations.create', [
+            'sites' => (new Site($this->getDB()))->all(),
+        ]);
     }
 
     public function createPost()
@@ -30,6 +35,7 @@ class FormationController extends Controller
             return $this->view('formations.create', [
                 'previousData' => $data,
                 'errors' => $errors,
+                'sites' => (new Site($this->getDB()))->all()
             ]);
         }
 
@@ -45,6 +51,7 @@ class FormationController extends Controller
         $formation = (new Formation($this->getDB()))->findById($id);
         return $this->view('formations.update', [
             'formation' => $formation,
+            'sites' => (new Site($this->getDB()))->all(),
         ]);
     }
 
@@ -53,12 +60,14 @@ class FormationController extends Controller
 
         $data = $_POST;
         $formation = new Formation($this->getDB());
-        $errors = $formation->validate($data);
+        $errors = $formation->validate(['id' => $id, ...$data]);
 
         if ($errors) {
             return $this->view('formations.update', [
                 'errors' => $errors,
-                'formation' => (new Formation($this->getDB()))->findById($id)
+                'formation' => (new Formation($this->getDB()))->findById($id),
+                'site' => (new Site($this->getDB()))->findById($id),
+
             ]);
         }
 

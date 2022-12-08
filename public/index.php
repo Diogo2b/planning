@@ -56,6 +56,14 @@ $router->post('/roles/update/:id', 'App\Controllers\RoleController@updatePost');
 $router->post('/roles/delete/:id', 'App\Controllers\RoleController@delete');
 
 
+// sites
+$router->get('/sites', 'App\Controllers\SiteController@index');
+$router->get('/sites/create', 'App\Controllers\SiteController@create');
+$router->post('/sites/create', 'App\Controllers\SiteController@createPost');
+$router->get('/sites/update/:id', 'App\Controllers\SiteController@update');
+$router->post('/sites/update/:id', 'App\Controllers\SiteController@updatePost');
+$router->post('/sites/delete/:id', 'App\Controllers\SiteController@delete');
+
 try {
     $router->run();
 } catch (NotFoundException $e) {

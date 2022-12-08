@@ -4,9 +4,9 @@ namespace App\Models;
 
 use App\Validation\ValidatorFactory;
 
-class Formation extends Model
+class Site extends Model
 {
-    protected $table = 'formations';
+    protected $table = 'sites';
 
     public function validate(array $data): array
     {
@@ -14,8 +14,7 @@ class Formation extends Model
 
         $validation = $validator->validate($data, [
             'name'                   => 'required',
-            'season'                => 'required|max:11',
-            'site'                => 'exists:roles,id'
+
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

@@ -72,6 +72,14 @@ $router->get('/salles/update/:id', 'App\Controllers\SalleController@update');
 $router->post('/salles/update/:id', 'App\Controllers\SalleController@updatePost');
 $router->post('/salles/delete/:id', 'App\Controllers\SalleController@delete');
 
+// sessions
+$router->get('/sessions', 'App\Controllers\SessionController@index');
+$router->get('/sessions/create', 'App\Controllers\SessionController@create');
+$router->post('/sessions/create', 'App\Controllers\SessionController@createPost');
+$router->get('/sessions/update/:id', 'App\Controllers\SessionController@update');
+$router->post('/sessions/update/:id', 'App\Controllers\SessionController@updatePost');
+$router->post('/sessions/delete/:id', 'App\Controllers\SessionController@delete');
+
 try {
     $router->run();
 } catch (NotFoundException $e) {

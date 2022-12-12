@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessions</title>
+</head>
+
+<body>
+
+    <h1>Administration des Sessions</h1>
+    <a href="sessions/create" class="btn btn-success my-3">Créer une nouvelle session</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Debut de session</th>
+                <th scope="col">Fin de session</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($sessions as $session) : ?>
+                <tr>
+                    <th scope="row"><?= $session->id ?></th>
+                    <td><?= $session->start ?></td>
+                    <td><?= $session->end ?></td>
+                    <td>
+                        <a href="/sessions/update/<?= $session->id ?>" class="btn btn-warning">Modifier</a>
+                        <form action="/sessions/delete/<?= $session->id ?>" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</body>
+
+</html>

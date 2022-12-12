@@ -64,6 +64,14 @@ $router->get('/sites/update/:id', 'App\Controllers\SiteController@update');
 $router->post('/sites/update/:id', 'App\Controllers\SiteController@updatePost');
 $router->post('/sites/delete/:id', 'App\Controllers\SiteController@delete');
 
+// salles
+$router->get('/salles', 'App\Controllers\SalleController@index');
+$router->get('/salles/create', 'App\Controllers\SalleController@create');
+$router->post('/salles/create', 'App\Controllers\SalleController@createPost');
+$router->get('/salles/update/:id', 'App\Controllers\SalleController@update');
+$router->post('/salles/update/:id', 'App\Controllers\SalleController@updatePost');
+$router->post('/salles/delete/:id', 'App\Controllers\SalleController@delete');
+
 try {
     $router->run();
 } catch (NotFoundException $e) {

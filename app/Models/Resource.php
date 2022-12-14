@@ -14,6 +14,7 @@ class Resource extends Model
 
         $validation = $validator->validate($data, [
             'name'                   => 'required|unique:resources,name',
+            'session_id'                => 'exists:sessions,id'
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

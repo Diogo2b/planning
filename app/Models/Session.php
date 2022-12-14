@@ -14,8 +14,8 @@ class Session extends Model
 
         $validation = $validator->validate($data, [
 
-            'start'                  => 'required|integer|between:2021,2100',
-            'end'                    => 'required|integer|between:2022,2100',
+            'start'                  => 'required|integer|between:7,13',
+            'end'                    => 'required|integer|between:12,17',
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

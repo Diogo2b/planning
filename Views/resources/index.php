@@ -7,6 +7,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom</th>
+                <th scope="col">Session</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -15,7 +16,12 @@
                 <tr>
                     <th scope="row"><?= $resource->id ?></th>
                     <td><?= $resource->name ?></td>
-
+                    <?php foreach ($sessions as $session) : ?>
+                        <?php if ($resource->session_id === $session->id) { ?>
+                            <td><?= $session->start ?>h-<?= $session->end ?>h</td>
+                        <?php  } ?>
+                    <?php endforeach ?>
+                    <td>
                     <td>
                         <a href="/resources/update/<?= $resource->id ?>" class="btn btn-warning">Modifier</a>
                         <form action="/resources/delete/<?= $resource->id ?>" method="POST" class="d-inline">

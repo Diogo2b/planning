@@ -1,5 +1,5 @@
 <?php
-$fields = ['lastname', 'firstname', 'password', 'email', 'phone_number', 'adress', 'city', 'role_id', 'formation_id'];
+$fields = ['lastname', 'firstname', 'password', 'email', 'phone_number', 'adress', 'city', 'role_id', 'module_id'];
 
 foreach ($fields as $field) {
     if (isset($previousData) && isset($previousData[$field])) {
@@ -119,19 +119,19 @@ foreach ($fields as $field) {
     </div>
 
     <div class="form-group">
-        <label for="formation_id">Formation</label>
-        <select class="form-control" id="formation_id" name="formation_id">
-            <option value="" selected>-- Veuillez choisir une formation --</option>
-            <?php foreach ($formations as $formation) : ?>
+        <label for="module_id">Module</label>
+        <select class="form-control" id="module_id" name="module_id">
+            <option value="" selected>-- Veuillez choisir un module --</option>
+            <?php foreach ($modules as $module) : ?>
                 <?php
                 $isSelected = '';
-                if ((isset($user) && $user->formation_id === $formation->id) || (isset($formation_id) && (int)$formation_id === $formation->id)) {
+                if ((isset($user) && $user->module_id === $module->id) || (isset($module_id) && (int)$module_id === $module->id)) {
                     $isSelected = 'selected';
                 }
                 ?>
 
-                <option value="<?= $formation->id ?>" <?= $isSelected ?>>
-                    <?= $formation->name ?>
+                <option value="<?= $module->id ?>" <?= $isSelected ?>>
+                    <?= $module->name ?>
                 </option>
             <?php endforeach ?>
         </select>

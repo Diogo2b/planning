@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Formation;
+use App\Models\Module;
 use App\Models\Role;
 use App\Models\User;
 use App\Controllers\Controller;
@@ -15,12 +15,12 @@ class UserController extends Controller
     {
         $users = (new User($this->getDB()))->all();
         $roles = (new Role($this->getDB()))->all();
-        $formations = (new Formation($this->getDB()))->all();
+        $modules = (new Module($this->getDB()))->all();
 
         return $this->view('users.index', [
             'users' => $users,
             'roles' => $roles,
-            'formations' => $formations,
+            'modules' => $modules,
 
         ]);
     }
@@ -31,7 +31,7 @@ class UserController extends Controller
         return $this->view('users.create', [
 
             'roles' => (new Role($this->getDB()))->all(),
-            'formations' => (new Formation($this->getDB()))->all()
+            'modules' => (new Module($this->getDB()))->all()
 
         ]);
     }
@@ -48,7 +48,7 @@ class UserController extends Controller
                 'previousData' => $data,
                 'errors' => $errors,
                 'roles' => (new Role($this->getDB()))->all(),
-                'formations' => (new Formation($this->getDB()))->all()
+                'modules' => (new Module($this->getDB()))->all()
             ]);
         }
 
@@ -67,7 +67,7 @@ class UserController extends Controller
         return $this->view('users.update', [
             'user' => $user,
             'roles' => (new Role($this->getDB()))->all(),
-            'formations' => (new Formation($this->getDB()))->all()
+            'modules' => (new Module($this->getDB()))->all()
         ]);
     }
 
@@ -82,7 +82,7 @@ class UserController extends Controller
                 'errors' => $errors,
                 'user' => $user->findById($id),
                 'roles' => (new Role($this->getDB()))->all(),
-                'formations' => (new Formation($this->getDB()))->all()
+                'modules' => (new Module($this->getDB()))->all()
             ]);
         }
         $result = $user->update($id, $data);

@@ -13,7 +13,7 @@
             <th scope="col">Adresse Postale</th>
             <th scope="col">Ville</th>
             <th scope="col">Role</th>
-            <th scope="col">Formations</th>
+            <th scope="col">Module</th>
             <th scope="col">Actions</th>
 
         </tr>
@@ -35,9 +35,9 @@
                         <td><?= $role->name ?></td>
                     <?php  } ?>
                 <?php endforeach ?>
-                <?php foreach ($formations as $formation) : ?>
-                    <?php if ($user->formation_id === $formation->id) { ?>
-                        <td><?= $formation->name ?></td>
+                <?php foreach ($modules as $module) : ?>
+                    <?php if ($user->module_id === $module->id) { ?>
+                        <td><?= $module->name ?></td>
                     <?php  } ?>
                 <?php endforeach ?>
                 <td>

@@ -1,5 +1,5 @@
 <?php
-$fields = ['name', 'total_hours'];
+$fields = ['name', 'total_hours', 'session_id'];
 foreach ($fields as $field) {
     if (isset($previousData) && $previousData[$field]) {
         $$field = $previousData[$field];
@@ -28,6 +28,31 @@ foreach ($fields as $field) {
         ?>
             <div class="alert alert-danger">
                 <li><?php echo $errors['total_hours'] ?></li>
+            </div>
+        <?php } ?>
+    </div>
+    <div class="form-group">
+        <label for="session_id">Session</label>
+        <select class="form-control" id="session_id" name="session_id">
+            <option value="" selected hidden>-- Veuillez choisir une session --</option>
+            <?php foreach ($sessions as $session) : ?>
+                <?php
+                $isSelected = '';
+                if ((isset($module) && $module->session_id === $session->id) || (isset($session_id) && (int)$session_id === $session->id)) {
+                    $isSelected = 'selected';
+                }
+                ?>
+                <option value="<?= $session->id ?>" <?= $isSelected ?>>
+                    <?= $session->start ?>/<?= $session->end ?>
+                </option>
+            <?php endforeach ?>
+        </select>
+
+        <?php
+        if (isset($errors) && array_key_exists('session_id', $errors)) {
+        ?>
+            <div class="alert alert-danger">
+                <li><?php echo $errors['session_id'] ?></li>
             </div>
         <?php } ?>
     </div>

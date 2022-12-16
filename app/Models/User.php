@@ -27,7 +27,7 @@ class User extends Model
             'adress'                  => 'required',
             'city'                    => 'required',
             'role_id'                 => "required|integer|exists:roles,id",
-            'module_id'            => "nullable|integer|exists:modules,id",
+
         ]);
 
         $errors = $validation->errors();

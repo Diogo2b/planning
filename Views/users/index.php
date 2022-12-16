@@ -13,7 +13,7 @@
             <th scope="col">Adresse Postale</th>
             <th scope="col">Ville</th>
             <th scope="col">Role</th>
-            <th scope="col">Module</th>
+
             <th scope="col">Actions</th>
 
         </tr>
@@ -35,11 +35,7 @@
                         <td><?= $role->name ?></td>
                     <?php  } ?>
                 <?php endforeach ?>
-                <?php foreach ($modules as $module) : ?>
-                    <?php if ($user->module_id === $module->id) { ?>
-                        <td><?= $module->name ?></td>
-                    <?php  } ?>
-                <?php endforeach ?>
+
                 <td>
                     <a href="/users/update/<?= $user->id ?>" class="btn btn-warning">Modifier</a>
                     <form action="/users/delete/<?= $user->id ?>" method="POST" class="d-inline">

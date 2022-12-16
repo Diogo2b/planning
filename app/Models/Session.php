@@ -14,8 +14,13 @@ class Session extends Model
 
         $validation = $validator->validate($data, [
 
-            'start'                  => 'required|integer|between:7,13',
-            'end'                    => 'required|integer|between:12,17',
+            'start'                  => 'required',
+            'end'                    => 'required',
+            'salle_id'                => 'exists:salles,id',
+            'user_id'                => 'exists:users,id',
+            'formation_id'                => 'exists:formations,id',
+            'module_id'                => 'exists:modules,id',
+
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

@@ -15,7 +15,7 @@ class Formation extends Model
         $validation = $validator->validate($data, [
             'name'                   => 'required',
             'season'                => 'required|max:11',
-            'site'                => 'exists:site,id'
+            'site'                => 'exists:sites,id'
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

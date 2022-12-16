@@ -4,6 +4,10 @@ namespace App\Controllers;
 
 use App\Controllers\Controller;
 use App\Models\Session;
+use App\Models\Module;
+use App\Models\Formation;
+use App\Models\Salle;
+use App\Models\User;
 
 class SessionController extends Controller
 {
@@ -14,15 +18,29 @@ class SessionController extends Controller
     public function index()
     {
         $sessions = (new Session($this->getDB()))->all();
+        $modules = (new Module($this->getDB()))->all();
+        $formations = (new Formation($this->getDB()))->all();
+        $salles = (new Salle($this->getDB()))->all();
+        $users = (new User($this->getDB()))->all();
 
         return $this->view('sessions.index', [
-            'sessions' => $sessions
+            'sessions' => $sessions,
+            'formations' => $formations,
+            'modules' => $modules,
+            'users' => $users,
+            'salles' => $salles,
         ]);
     }
 
     public function create()
     {
-        return $this->view('sessions.create');
+        return $this->view('sessions.create', [
+
+            'formations' => (new Formation($this->getDB()))->all(),
+            'modules' => (new Module($this->getDB()))->all(),
+            'users' => (new User($this->getDB()))->all(),
+            'salles' => (new Salle($this->getDB()))->all(),
+        ]);
     }
 
     public function createPost()
@@ -34,6 +52,10 @@ class SessionController extends Controller
             return $this->view('sessions.create', [
                 'previousData' => $data,
                 'errors' => $errors,
+                'formations' => (new Formation($this->getDB()))->all(),
+                'modules' => (new Module($this->getDB()))->all(),
+                'users' => (new User($this->getDB()))->all(),
+                'salles' => (new Salle($this->getDB()))->all(),
             ]);
         }
 
@@ -49,6 +71,10 @@ class SessionController extends Controller
         $session = (new Session($this->getDB()))->findById($id);
         return $this->view('sessions.update', [
             'session' => $session,
+            'formations' => (new Formation($this->getDB()))->all(),
+            'modules' => (new Module($this->getDB()))->all(),
+            'users' => (new User($this->getDB()))->all(),
+            'salles' => (new Salle($this->getDB()))->all(),
         ]);
     }
 
@@ -62,7 +88,11 @@ class SessionController extends Controller
         if ($errors) {
             return $this->view('sessions.update', [
                 'errors' => $errors,
-                'session' => (new Session($this->getDB()))->findById($id)
+                'session' => (new Session($this->getDB()))->findById($id),
+                'formations' => (new Formation($this->getDB()))->all(),
+                'modules' => (new Module($this->getDB()))->all(),
+                'users' => (new User($this->getDB()))->all(),
+                'salles' => (new Salle($this->getDB()))->all(),
             ]);
         }
 

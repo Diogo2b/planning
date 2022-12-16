@@ -19,6 +19,10 @@
                 <th scope="col">#</th>
                 <th scope="col">Debut de session</th>
                 <th scope="col">Fin de session</th>
+                <th scope="col">Salle</th>
+                <th scope="col">Formation</th>
+                <th scope="col">Module</th>
+                <th scope="col">Intervenant</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -28,6 +32,26 @@
                     <th scope="row"><?= $session->id ?></th>
                     <td><?= $session->start ?></td>
                     <td><?= $session->end ?></td>
+                    <?php foreach ($salles as $salle) : ?>
+                        <?php if ($session->salle_id === $salle->id) { ?>
+                            <td><?= $salle->name ?></td>
+                        <?php  } ?>
+                    <?php endforeach ?>
+                    <?php foreach ($formations as $formation) : ?>
+                        <?php if ($session->formation_id === $formation->id) { ?>
+                            <td><?= $formation->name ?> Saison:<?= $formation->season ?></td>
+                        <?php  } ?>
+                    <?php endforeach ?>
+                    <?php foreach ($modules as $module) : ?>
+                        <?php if ($session->module_id === $module->id) { ?>
+                            <td><?= $module->name ?></td>
+                        <?php  } ?>
+                    <?php endforeach ?>
+                    <?php foreach ($users as $user) : ?>
+                        <?php if ($session->user_id === $user->id) { ?>
+                            <td><?= $user->firstname ?> <?= $user->lastname ?></td>
+                        <?php  } ?>
+                    <?php endforeach ?>
                     <td>
                         <a href="/sessions/update/<?= $session->id ?>" class="btn btn-warning">Modifier</a>
                         <form action="/sessions/delete/<?= $session->id ?>" method="POST" class="d-inline">

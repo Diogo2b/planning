@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Module;
+
 use App\Models\Role;
 use App\Models\User;
 use App\Controllers\Controller;
@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $users = (new User($this->getDB()))->all();
         $roles = (new Role($this->getDB()))->all();
-        $modules = (new Module($this->getDB()))->all();
+
 
         return $this->view('users.index', [
             'users' => $users,

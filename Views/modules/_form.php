@@ -1,5 +1,5 @@
 <?php
-$fields = ['name', 'total_hours', 'session_id'];
+$fields = ['name', 'total_hours', 'user_id'];
 foreach ($fields as $field) {
     if (isset($previousData) && $previousData[$field]) {
         $$field = $previousData[$field];
@@ -21,7 +21,7 @@ foreach ($fields as $field) {
     </div>
 
     <div class="form-group">
-        <label for="total_">Nombre d'heures total du module</label>
+        <label for="total_hours">Nombre d'heures total du module</label>
         <input type="text" class="form-control" name="total_hours" id="total_hours" value="<?= $module->total_hours ?? $total_hours ?? '' ?>">
         <?php
         if (isset($errors) && array_key_exists('total_hours', $errors)) {
@@ -32,27 +32,27 @@ foreach ($fields as $field) {
         <?php } ?>
     </div>
     <div class="form-group">
-        <label for="session_id">Session</label>
-        <select class="form-control" id="session_id" name="session_id">
-            <option value="" selected hidden>-- Veuillez choisir une session --</option>
-            <?php foreach ($sessions as $session) : ?>
+        <label for="user_id">Intervenant</label>
+        <select class="form-control" id="user_id" name="user_id">
+            <option value="" selected hidden>-- Veuillez choisir un Intervenant --</option>
+            <?php foreach ($users as $user) : ?>
                 <?php
                 $isSelected = '';
-                if ((isset($module) && $module->session_id === $session->id) || (isset($session_id) && (int)$session_id === $session->id)) {
+                if ((isset($module) && $module->user_id === $user->id) || (isset($user_id) && (int)$user_id === $user->id)) {
                     $isSelected = 'selected';
                 }
                 ?>
-                <option value="<?= $session->id ?>" <?= $isSelected ?>>
-                    <?= $session->start ?>/<?= $session->end ?>
+                <option value="<?= $user->id ?>" <?= $isSelected ?>>
+                    <?= $user->lastname ?> <?= $user->firstname ?>
                 </option>
             <?php endforeach ?>
         </select>
 
         <?php
-        if (isset($errors) && array_key_exists('session_id', $errors)) {
+        if (isset($errors) && array_key_exists('user_id', $errors)) {
         ?>
             <div class="alert alert-danger">
-                <li><?php echo $errors['session_id'] ?></li>
+                <li><?php echo $errors['user_id'] ?></li>
             </div>
         <?php } ?>
     </div>

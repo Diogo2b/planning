@@ -15,7 +15,8 @@ class Module extends Model
         $validation = $validator->validate($data, [
             'name'                   => 'required',
             'total_hours'           => 'required|integer|between:1,2000',
-            'session_id'                => 'exists:sessions,id'
+
+            'user_id'                => 'exists:users,id'
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

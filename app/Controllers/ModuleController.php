@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\Controller;
 use App\Models\Module;
-use App\Models\Session;
+
+use App\Models\User;
 
 class ModuleController extends Controller
 {
@@ -15,18 +16,20 @@ class ModuleController extends Controller
     public function index()
     {
         $modules = (new Module($this->getDB()))->all();
-        $sessions = (new Session($this->getDB()))->all();
+
+        $users = (new User($this->getDB()))->all();
 
         return $this->view('modules.index', [
             'modules' => $modules,
-            'sessions' => $sessions,
+
+            'users' => $users,
         ]);
     }
 
     public function create()
     {
         return $this->view('modules.create', [
-            'sessions' => (new Session($this->getDB()))->all(),
+            'users' => (new User($this->getDB()))->all(),
         ]);
     }
 
@@ -39,7 +42,7 @@ class ModuleController extends Controller
             return $this->view('modules.create', [
                 'previousData' => $data,
                 'errors' => $errors,
-                'sessions' => (new Session($this->getDB()))->all()
+                'user' => (new User($this->getDB()))->all()
             ]);
         }
 
@@ -55,7 +58,7 @@ class ModuleController extends Controller
         $module = (new Module($this->getDB()))->findById($id);
         return $this->view('modules.update', [
             'module' => $module,
-            'sessions' => (new Session($this->getDB()))->all(),
+            'users' => (new User($this->getDB()))->all(),
         ]);
     }
 
@@ -70,7 +73,7 @@ class ModuleController extends Controller
             return $this->view('modules.update', [
                 'errors' => $errors,
                 'module' => (new Module($this->getDB()))->findById($id),
-                'session' => (new Session($this->getDB()))->findById($id),
+                'user' => (new User($this->getDB()))->findById($id),
             ]);
         }
 

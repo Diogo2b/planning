@@ -118,23 +118,6 @@ foreach ($fields as $field) {
         <?php } ?>
     </div>
 
-    <div class="form-group">
-        <label for="module_id">Module</label>
-        <select class="form-control" id="module_id" name="module_id">
-            <option value="" selected>-- Veuillez choisir un module --</option>
-            <?php foreach ($modules as $module) : ?>
-                <?php
-                $isSelected = '';
-                if ((isset($user) && $user->module_id === $module->id) || (isset($module_id) && (int)$module_id === $module->id)) {
-                    $isSelected = 'selected';
-                }
-                ?>
 
-                <option value="<?= $module->id ?>" <?= $isSelected ?>>
-                    <?= $module->name ?>
-                </option>
-            <?php endforeach ?>
-        </select>
-    </div>
     <button type="submit" class="btn btn-primary"><?= isset($user) ? 'Enregistrer les modifications' : "Créer l'utilisateur" ?></button>
 </form>

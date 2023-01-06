@@ -10,6 +10,7 @@ class SalleController extends Controller
 {
     public function index()
     {
+        $this->isAdmin();
         $salles = (new Salle($this->getDB()))->all();
         $sites = (new Site($this->getDB()))->all();
 
@@ -21,6 +22,7 @@ class SalleController extends Controller
 
     public function create()
     {
+        $this->isAdmin();
         return $this->view('salles.create', [
             'sites' => (new Site($this->getDB()))->all(),
         ]);
@@ -28,6 +30,7 @@ class SalleController extends Controller
 
     public function createPost()
     {
+        $this->isAdmin();
         $data = $_POST;
         $salle = new Salle($this->getDB());
         $errors = $salle->validate($data);
@@ -48,6 +51,7 @@ class SalleController extends Controller
 
     public function update(int $id)
     {
+        $this->isAdmin();
         $salle = (new Salle($this->getDB()))->findById($id);
         return $this->view('salles.update', [
             'salle' => $salle,
@@ -57,6 +61,7 @@ class SalleController extends Controller
 
     public function updatePost(int $id)
     {
+        $this->isAdmin();
 
         $data = $_POST;
         $salle = new Salle($this->getDB());
@@ -82,6 +87,7 @@ class SalleController extends Controller
 
     public function delete(int $id)
     {
+        $this->isAdmin();
         $salle = new Salle($this->getDB());
         $result = $salle->delete($id);
 

@@ -11,10 +11,12 @@ class ModuleController extends Controller
 {
     public function welcome()
     {
+        $this->isAdmin();
         return $this->view('modules.welcome');
     }
     public function index()
     {
+        $this->isAdmin();
         $modules = (new Module($this->getDB()))->all();
 
         $users = (new User($this->getDB()))->all();
@@ -28,6 +30,7 @@ class ModuleController extends Controller
 
     public function create()
     {
+        $this->isAdmin();
         return $this->view('modules.create', [
             'users' => (new User($this->getDB()))->all(),
         ]);
@@ -35,6 +38,7 @@ class ModuleController extends Controller
 
     public function createPost()
     {
+        $this->isAdmin();
         $data = $_POST;
         $module = new Module($this->getDB());
         $errors = $module->validate($data);
@@ -55,6 +59,7 @@ class ModuleController extends Controller
 
     public function update(int $id)
     {
+        $this->isAdmin();
         $module = (new Module($this->getDB()))->findById($id);
         return $this->view('modules.update', [
             'module' => $module,
@@ -64,6 +69,7 @@ class ModuleController extends Controller
 
     public function updatePost(int $id)
     {
+        $this->isAdmin();
 
         $data = $_POST;
         $module = new Module($this->getDB());
@@ -88,6 +94,7 @@ class ModuleController extends Controller
 
     public function delete(int $id)
     {
+        $this->isAdmin();
         $module = new Module($this->getDB());
         $result = $module->delete($id);
 

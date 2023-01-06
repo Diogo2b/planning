@@ -8,6 +8,12 @@ class User extends Model
 {
     protected $table = 'users';
 
+    public function getByFirstname(string $firstname): User|bool
+    {
+        return $this->query("SELECT * FROM {$this->table} WHERE firstname = ?", [$firstname], true);
+    }
+
+
     public function validate(array $data): array
     {
         $validator =  ValidatorFactory::createValidator($this->db->getPDO());
@@ -29,6 +35,7 @@ class User extends Model
             'role_id'                 => "required|integer|exists:roles,id",
 
         ]);
+
 
         $errors = $validation->errors();
         return $errors->firstOfAll();

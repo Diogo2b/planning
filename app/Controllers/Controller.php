@@ -33,4 +33,12 @@ abstract class Controller
     {
         return $this->db;
     }
+    protected function isAdmin()
+    {
+        if (isset($_SESSION['auth']) && is_int($_SESSION['auth'])) {
+            return true;
+        } else {
+            return header('Location: /login');
+        }
+    }
 }

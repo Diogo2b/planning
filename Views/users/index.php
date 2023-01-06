@@ -1,5 +1,8 @@
 <h1>Administration des Utilisateurs</h1>
 <a href="users/create" class="btn btn-success my-3">Créer un nouveau utilisateur</a>
+<?php if (isset($_GET['success'])) : ?>
+    <div class="alert alert-success">Vous êtes connecté!</div>
+<?php endif ?>
 
 <table class="table">
     <thead>

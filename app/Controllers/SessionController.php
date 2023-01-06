@@ -13,10 +13,12 @@ class SessionController extends Controller
 {
     public function welcome()
     {
+        $this->isAdmin();
         return $this->view('sessions.welcome');
     }
     public function index()
     {
+        $this->isAdmin();
         $sessions = (new Session($this->getDB()))->all();
         $modules = (new Module($this->getDB()))->all();
         $formations = (new Formation($this->getDB()))->all();
@@ -34,6 +36,7 @@ class SessionController extends Controller
 
     public function create()
     {
+        $this->isAdmin();
         return $this->view('sessions.create', [
 
             'formations' => (new Formation($this->getDB()))->all(),
@@ -45,6 +48,7 @@ class SessionController extends Controller
 
     public function createPost()
     {
+        $this->isAdmin();
         $data = $_POST;
         $session = new Session($this->getDB());
         $errors = $session->validate($data);
@@ -68,6 +72,7 @@ class SessionController extends Controller
 
     public function update(int $id)
     {
+        $this->isAdmin();
         $session = (new Session($this->getDB()))->findById($id);
         return $this->view('sessions.update', [
             'session' => $session,
@@ -80,6 +85,7 @@ class SessionController extends Controller
 
     public function updatePost(int $id)
     {
+        $this->isAdmin();
 
         $data = $_POST;
         $session = new Session($this->getDB());
@@ -107,6 +113,7 @@ class SessionController extends Controller
 
     public function delete(int $id)
     {
+        $this->isAdmin();
         $session = new Session($this->getDB());
         $result = $session->delete($id);
 

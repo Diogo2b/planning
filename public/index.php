@@ -15,6 +15,11 @@ define('DB_PWD', '');
 
 $router = new Router($_GET['url']);
 $router->get('/', 'App\Controllers\ModuleController@welcome');
+//login et logout
+$router->get('/login', 'App\Controllers\UserController@login');
+$router->post('/login', 'App\Controllers\UserController@loginPost');
+$router->get('/logout', 'App\Controllers\UserController@logout');
+
 // modules
 $router->get('/modules', 'App\Controllers\ModuleController@index');
 $router->get('/modules/create', 'App\Controllers\ModuleController@create');
@@ -63,6 +68,8 @@ $router->post('/sites/create', 'App\Controllers\SiteController@createPost');
 $router->get('/sites/update/:id', 'App\Controllers\SiteController@update');
 $router->post('/sites/update/:id', 'App\Controllers\SiteController@updatePost');
 $router->post('/sites/delete/:id', 'App\Controllers\SiteController@delete');
+$router->post('/login', 'App\Controllers\SiteController@loginPost');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 // salles
 $router->get('/salles', 'App\Controllers\SalleController@index');

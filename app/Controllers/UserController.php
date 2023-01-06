@@ -8,11 +8,49 @@ use App\Models\User;
 use App\Controllers\Controller;
 
 
+
 class UserController extends Controller
 {
+    public function login()
+    {
+        return $this->view('auth.login');
+    }
+
+    public function loginPost()
+    {
+
+
+        $user = (new User($this->getDB()))->getByFirstname($_POST['firstname']);
+
+        if ($user === false) {
+            dump("Cet utilisateur n'existe pas");
+            return $this->view('auth.login');
+        }
+
+        if (password_verify($_POST['password'], $user->password) === false) {
+            dump("mot de passe incorrect");
+            return $this->view('auth.login');
+        }
+
+        $_SESSION['auth'] = (int) $user->id;
+        return header('Location: /users');
+    }
+
+
+
+
+    public function logout()
+    {
+        session_destroy();
+
+        return header('Location: /');
+    }
+
 
     public function index()
     {
+        $this->isAdmin();
+
         $users = (new User($this->getDB()))->all();
         $roles = (new Role($this->getDB()))->all();
 
@@ -20,13 +58,12 @@ class UserController extends Controller
         return $this->view('users.index', [
             'users' => $users,
             'roles' => $roles,
-
-
         ]);
     }
 
     public function create()
     {
+        $this->isAdmin();
 
         return $this->view('users.create', [
 
@@ -62,6 +99,7 @@ class UserController extends Controller
 
     public function update(int $id)
     {
+        $this->isAdmin();
         $user = (new User($this->getDB()))->findById($id);
 
         return $this->view('users.update', [
@@ -73,6 +111,7 @@ class UserController extends Controller
 
     public function updatePost(int $id)
     {
+        $this->isAdmin();
         $data = $_POST;
 
         $user = new User($this->getDB());
@@ -94,6 +133,7 @@ class UserController extends Controller
 
     public function delete(int $id)
     {
+        $this->isAdmin();
         $user = new User($this->getDB());
         $result = $user->delete($id);
 

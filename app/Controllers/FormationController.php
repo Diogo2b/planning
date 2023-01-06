@@ -10,6 +10,7 @@ class FormationController extends Controller
 {
     public function index()
     {
+        $this->isAdmin();
         $formations = (new Formation($this->getDB()))->all();
         $sites = (new Site($this->getDB()))->all();
 
@@ -21,6 +22,7 @@ class FormationController extends Controller
 
     public function create()
     {
+        $this->isAdmin();
         return $this->view('formations.create', [
             'sites' => (new Site($this->getDB()))->all(),
         ]);
@@ -28,6 +30,7 @@ class FormationController extends Controller
 
     public function createPost()
     {
+        $this->isAdmin();
         $data = $_POST;
         $formation = new Formation($this->getDB());
         $errors = $formation->validate($data);
@@ -48,6 +51,7 @@ class FormationController extends Controller
 
     public function update(int $id)
     {
+        $this->isAdmin();
         $formation = (new Formation($this->getDB()))->findById($id);
         return $this->view('formations.update', [
             'formation' => $formation,
@@ -57,6 +61,7 @@ class FormationController extends Controller
 
     public function updatePost(int $id)
     {
+        $this->isAdmin();
 
         $data = $_POST;
         $formation = new Formation($this->getDB());
@@ -82,6 +87,7 @@ class FormationController extends Controller
 
     public function delete(int $id)
     {
+        $this->isAdmin();
         $formation = new Formation($this->getDB());
         $result = $formation->delete($id);
 

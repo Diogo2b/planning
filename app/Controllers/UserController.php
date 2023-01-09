@@ -18,24 +18,28 @@ class UserController extends Controller
 
     public function loginPost()
     {
-
-
-        $user = (new User($this->getDB()))->getByFirstname($_POST['firstname']);
-
+        // $data = $_POST;
+        $user = (new User($this->getDB()))->getByEmail($_POST['email']);
+        // $errors = $user->validate($data);
         if ($user === false) {
-            dump("Cet utilisateur n'existe pas");
+            // echo ("Cet utilisateur n'existe pas");
+            echo '<div class="alert alert-danger"> Utilisateur introubable </div>';
+            // if ($errors) {
+            //     return $this->view('auth.login', [
+            //         'errors' => $errors,
+            //     ]);
+            // }
             return $this->view('auth.login');
         }
 
         if (password_verify($_POST['password'], $user->password) === false) {
-            dump("mot de passe incorrect");
+            echo '<div class="alert alert-danger"> Mot de passe incorrect </div>';
             return $this->view('auth.login');
         }
 
         $_SESSION['auth'] = (int) $user->id;
         return header('Location: /users');
     }
-
 
 
 
@@ -75,6 +79,7 @@ class UserController extends Controller
 
     public function createPost()
     {
+        $this->isAdmin();
         $data = $_POST;
 
         $user = new User($this->getDB());

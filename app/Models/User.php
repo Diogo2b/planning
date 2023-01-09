@@ -8,9 +8,9 @@ class User extends Model
 {
     protected $table = 'users';
 
-    public function getByFirstname(string $firstname): User|bool
+    public function getByEmail(string $email): User|bool
     {
-        return $this->query("SELECT * FROM {$this->table} WHERE firstname = ?", [$firstname], true);
+        return $this->query("SELECT * FROM {$this->table} WHERE email = ?", [$email], true);
     }
 
 

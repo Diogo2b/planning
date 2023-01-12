@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\Controller;
 use App\Models\Resource;
-use App\Models\Session;
+
 
 class ResourceController extends Controller
 {
@@ -12,19 +12,17 @@ class ResourceController extends Controller
     {
         $this->isAdmin();
         $resources = (new Resource($this->getDB()))->all();
-        $sessions = (new Session($this->getDB()))->all();
+
         return $this->view('resources.index', [
             'resources' => $resources,
-            'sessions' => $sessions,
+
         ]);
     }
 
     public function create()
     {
         $this->isAdmin();
-        return $this->view('resources.create', [
-            'sessions' => (new Session($this->getDB()))->all(),
-        ]);
+        return $this->view('resources.create', []);
     }
 
     public function createPost()
@@ -39,7 +37,7 @@ class ResourceController extends Controller
             return $this->view('resources.create', [
                 'previousData' => $data,
                 'errors' => $errors,
-                'sessions' => (new Session($this->getDB()))->all()
+
             ]);
         }
 
@@ -56,7 +54,7 @@ class ResourceController extends Controller
         $resource = (new Resource($this->getDB()))->findById($id);
         return $this->view('resources.update', [
             'resource' => $resource,
-            'sessions' => (new Session($this->getDB()))->all(),
+
         ]);
     }
 
@@ -72,7 +70,7 @@ class ResourceController extends Controller
             return $this->view('resources.update', [
                 'errors' => $errors,
                 'resource' => (new Resource($this->getDB()))->findById($id),
-                'session' => (new Session($this->getDB()))->findById($id),
+
 
             ]);
         }

@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\Controller;
 use App\Models\Module;
 
-use App\Models\User;
+use App\Models\Formation;
 
 class ModuleController extends Controller
 {
@@ -19,12 +19,12 @@ class ModuleController extends Controller
         $this->isAdmin();
         $modules = (new Module($this->getDB()))->all();
 
-        $users = (new User($this->getDB()))->all();
+        $formations = (new Formation($this->getDB()))->all();
 
         return $this->view('modules.index', [
             'modules' => $modules,
 
-            'users' => $users,
+            'formations' => $formations,
         ]);
     }
 
@@ -32,7 +32,7 @@ class ModuleController extends Controller
     {
         $this->isAdmin();
         return $this->view('modules.create', [
-            'users' => (new User($this->getDB()))->all(),
+            'formations' => (new Formation($this->getDB()))->all(),
         ]);
     }
 
@@ -46,7 +46,7 @@ class ModuleController extends Controller
             return $this->view('modules.create', [
                 'previousData' => $data,
                 'errors' => $errors,
-                'user' => (new User($this->getDB()))->all()
+                'formation' => (new Formation($this->getDB()))->all()
             ]);
         }
 
@@ -63,7 +63,7 @@ class ModuleController extends Controller
         $module = (new Module($this->getDB()))->findById($id);
         return $this->view('modules.update', [
             'module' => $module,
-            'users' => (new User($this->getDB()))->all(),
+            'formations' => (new Formation($this->getDB()))->all(),
         ]);
     }
 
@@ -79,7 +79,7 @@ class ModuleController extends Controller
             return $this->view('modules.update', [
                 'errors' => $errors,
                 'module' => (new Module($this->getDB()))->findById($id),
-                'user' => (new User($this->getDB()))->findById($id),
+                'formation' => (new Formation($this->getDB()))->findById($id),
             ]);
         }
 

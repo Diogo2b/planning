@@ -22,7 +22,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Nombre d'heures</th>
-                <th scope="col">Intervenant</th>
+                <th scope="col">Formation</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -32,9 +32,9 @@
                     <th scope="row"><?= $module->id ?></th>
                     <td><?= $module->name ?></td>
                     <td><?= $module->total_hours ?></td>
-                    <?php foreach ($users as $user) : ?>
-                        <?php if ($module->user_id === $user->id) { ?>
-                            <td><?= $user->lastname ?> <?= $user->firstname ?></td>
+                    <?php foreach ($formations as $formation) : ?>
+                        <?php if ($module->formation_id === $formation->id) { ?>
+                            <td><?= $formation->name ?></td>
                         <?php  } ?>
                     <?php endforeach ?>
                     <td>

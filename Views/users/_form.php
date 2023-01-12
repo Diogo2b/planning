@@ -36,7 +36,7 @@ foreach ($fields as $field) {
     </div>
     <div class="form-group">
         <label for="password">Mot de passe</label>
-        <input type="text" class="form-control" name="password" id="password" value="<?= $user->password ?? $password ?? '' ?>">
+        <input type="password" class="form-control" name="password" id="password" value="<?= $user->password ?? $password ?? '' ?>">
         <?php
         if (isset($errors) && array_key_exists('password', $errors)) {
         ?>

@@ -32,7 +32,7 @@ class UserController extends Controller
             return $this->view('auth.login');
         }
 
-        if (password_verify($_POST['password'], $user->password) === false) {
+        if (password_verify($_POST['password'], $user->$password) === false) {
             echo '<div class="alert alert-danger"> Mot de passe incorrect </div>';
             return $this->view('auth.login');
         }
@@ -83,6 +83,8 @@ class UserController extends Controller
         $data = $_POST;
 
         $user = new User($this->getDB());
+        $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+        $data['password'] = $hashed_password;
         $errors = $user->validate($data);
 
         if ($errors) {
@@ -94,18 +96,29 @@ class UserController extends Controller
             ]);
         }
 
+
+
+
+
+
         $user = new User($this->getDB());
+
+
         $result = $user->create($data);
+
 
         if ($result) {
             return header('Location: /users');
         }
     }
 
+
+
     public function update(int $id)
     {
         $this->isAdmin();
         $user = (new User($this->getDB()))->findById($id);
+
 
         return $this->view('users.update', [
             'user' => $user,
@@ -120,6 +133,8 @@ class UserController extends Controller
         $data = $_POST;
 
         $user = new User($this->getDB());
+        $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+        $data['password'] = $hashed_password;
         $errors = $user->validate(['id' => $id, ...$data]);
         if ($errors) {
             return $this->view('users.update', [

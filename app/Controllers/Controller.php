@@ -41,4 +41,13 @@ abstract class Controller
             return header('Location: /login');
         }
     }
+    public static function hashPassword(string $password)
+    {
+
+        $options = [
+            'cost' => 12,
+        ];
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT, $options);
+        return $hashed_password;
+    }
 }

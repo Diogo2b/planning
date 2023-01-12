@@ -14,6 +14,8 @@ class User extends Model
     }
 
 
+
+
     public function validate(array $data): array
     {
         $validator =  ValidatorFactory::createValidator($this->db->getPDO());
@@ -35,6 +37,8 @@ class User extends Model
             'role_id'                 => "required|integer|exists:roles,id",
 
         ]);
+
+
 
 
         $errors = $validation->errors();

@@ -20,6 +20,7 @@ class UserController extends Controller
     {
         // $data = $_POST;
         $user = (new User($this->getDB()))->getByEmail($_POST['email']);
+        // dd($_POST);
         // $errors = $user->validate($data);
         if ($user === false) {
             // echo ("Cet utilisateur n'existe pas");
@@ -32,7 +33,7 @@ class UserController extends Controller
             return $this->view('auth.login');
         }
 
-        if (password_verify($_POST['password'], $user->$password) === false) {
+        if (password_verify($_POST['password'], $user->password) === false) {
             echo '<div class="alert alert-danger"> Mot de passe incorrect </div>';
             return $this->view('auth.login');
         }

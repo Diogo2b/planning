@@ -87,6 +87,15 @@ $router->get('/sessions/update/:id', 'App\Controllers\SessionController@update')
 $router->post('/sessions/update/:id', 'App\Controllers\SessionController@updatePost');
 $router->post('/sessions/delete/:id', 'App\Controllers\SessionController@delete');
 
+// planning
+$router->get('/calendriers', 'App\Controllers\CalendrierController@index');
+$router->post('/event', 'App\Controllers\EventController@index');
+$router->post('/calendriers', 'App\Controllers\EventController@loadEventCalendar');
+$router->get('/calendriers', 'App\Controllers\EventController@loadEventCalendar');
+$router->post('/modal', 'App\Controllers\ModalController@index');
+$router->post('/sessions/create', 'App\Controllers\SessionController@createPost');
+$router->post('modal_CreatePost', 'App\Controllers\ModalController@createPost');
+
 try {
     $router->run();
 } catch (NotFoundException $e) {

@@ -27,6 +27,16 @@ abstract class Controller
         $content = ob_get_clean();
         require VIEWS . 'layout.php';
     }
+    public function view2(string $path, array $params = [])
+    {
+        extract($params);
+        ob_start();
+        $path = str_replace('.', DIRECTORY_SEPARATOR, $path);
+        require VIEWS . $path . '.php';
+        $content_event = ob_get_clean();
+        require VIEWS . 'layout_event.php';
+    }
+
 
 
     protected function getDB()

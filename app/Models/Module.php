@@ -7,6 +7,11 @@ use App\Validation\ValidatorFactory;
 class Module extends Model
 {
     protected $table = 'modules';
+    public function contrainte_heure(): array
+    {
+
+        return $this->query("SELECT * FROM {$this->table}  WHERE total_hours>0 AND formation_id = '" . $_POST['event'] . "'  ");
+    }
 
     public function validate(array $data): array
     {

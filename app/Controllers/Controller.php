@@ -45,12 +45,25 @@ abstract class Controller
     }
     protected function isAdmin()
     {
-        if (isset($_SESSION['auth']) && is_int($_SESSION['auth'])) {
+        if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) {
+
             return true;
         } else {
+
+
             return header('Location: /login');
         }
     }
+
+    // protected function isAdmin()
+    // {
+    //     if (isset($_SESSION['auth']) && is_int($_SESSION['auth'])) {
+    //         return true;
+    //     } else {
+    //         return header('Location: /login');
+    //     }
+    // }
+
     public static function hashPassword(string $password)
     {
 

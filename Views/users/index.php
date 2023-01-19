@@ -10,7 +10,7 @@
             <th scope="col">#</th>
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
-            <th scope="col">Mot de passe</th>
+
             <th scope="col">Adresse mail</th>
             <th scope="col">Télephone</th>
             <th scope="col">Adresse Postale</th>
@@ -28,7 +28,7 @@
                 <th scope="row"><?= $user->id ?></th>
                 <td><?= $user->firstname ?></td>
                 <td><?= $user->lastname ?></td>
-                <td><?= $user->password ?></td>
+
                 <td><?= $user->email ?></td>
                 <td><?= $user->phone_number ?></td>
                 <td><?= $user->adress ?></td>

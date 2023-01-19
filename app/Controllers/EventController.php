@@ -18,12 +18,14 @@ class EventController extends Controller
     public function contrainte_heure(): array
     {
 
+
         return $this->query("SELECT * FROM {$this->table}  WHERE total_hours>0 AND formation_id = '" . $_POST['event'] . "'  ");
     }
 
 
     public function index()
     {
+
         $events = (new Session($this->getDB()))->all();
         $sessions = (new Session($this->getDB()))->all();
         $modules = (new Module($this->getDB()))->contrainte_heure();
@@ -39,6 +41,7 @@ class EventController extends Controller
     }
     public function loadEventCalendar()
     {
+
 
         $events = (new Event($this->getDB()))->index_session();
 

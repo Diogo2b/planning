@@ -61,9 +61,11 @@
                         <a class="nav-link" href="/sessions">Sessions</a>
                     </li>
                 <?php endif ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="/calendriers">Planning</a>
-                </li>
+                <?php if (isset($_SESSION['auth'])) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/calendriers">Planning</a>
+                    </li>
+                <?php endif ?>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <?php if (isset($_SESSION['auth'])) : ?>

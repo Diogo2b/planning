@@ -21,42 +21,35 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <?php if (isset($_SESSION['auth'])) : ?>
+                <?php if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/formations">Formations</a>
                     </li>
-                <?php endif ?>
-                <?php if (isset($_SESSION['auth'])) : ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/modules">Modules</a>
                     </li>
-                <?php endif ?>
-                <?php if (isset($_SESSION['auth'])) : ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/resources">Ressources</a>
                     </li>
-                <?php endif ?>
-                <?php if (isset($_SESSION['auth'])) : ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/users">Utilisateurs</a>
                     </li>
-                <?php endif ?>
-                <?php if (isset($_SESSION['auth'])) : ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/roles">Rôles</a>
                     </li>
-                <?php endif ?>
-                <?php if (isset($_SESSION['auth'])) : ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/sites">Sites</a>
                     </li>
-                <?php endif ?>
-                <?php if (isset($_SESSION['auth'])) : ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/salles">Salles</a>
                     </li>
-                <?php endif ?>
-                <?php if (isset($_SESSION['auth'])) : ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/sessions">Sessions</a>
                     </li>

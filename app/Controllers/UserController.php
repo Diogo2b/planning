@@ -40,7 +40,7 @@ class UserController extends Controller
 
         $_SESSION['auth'] = (int) $user->id;
         $_SESSION['role_id'] = (int) $user->role_id;
-        return header('Location: /users');
+        return header('Location: /calendriers');
     }
 
 

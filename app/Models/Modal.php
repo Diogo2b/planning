@@ -88,16 +88,35 @@ class Modal extends Model
 
     public function create_post() {
 
-        
+            // $stmt= $this->query("INSERT INTO sessions (start, end, salle_id, formation_id, module_id, user_id) 
+            // VALUES (:start, :end, :salle, :classe, :id_module, :profs)");
+            // $stmt->bindParam(':start', $_POST['start']);
+            // $stmt->bindParam(':end', $_POST['end']);
+            // $stmt->bindParam(':salle', $_POST['salle']);
+            // $stmt->bindParam(':classe', $_POST['classe']);
+            // $stmt->bindParam(':id_module', $_POST['id_module']);
+            // $stmt->bindParam(':profs', $_POST['profs']);
+            // $stmt->execute();
+            
+       
+    $tagg = 0;    
 
-       $event_created = $this->query("UPDATE  sessions (start, end, salle_id, formation_id, module_id, user_id) 
+       $event_created = $this->query("INSERT INTO  sessions (start, end, salle_id, formation_id, module_id, user_id) 
 VALUES ('".$_POST['start']."' , '".$_POST['end']."' , '".$_POST['salle']."' ,'".$_POST['classe']."' , '".$_POST['id_module']."' , '".$_POST['profs']."' )");
 
+if ($tagg == 0){
+    error_log('1');
+    $last_event_supp = $this->query(" DELETE FROM sessions ORDER BY id DESC LIMIT 1");
+    $tagg = 1;
+}
+if($tagg==1){
+    error_log('2');
+        $soustraction_heure = $this->query("UPDATE modules
+        SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, '".$_POST['start']."', '".$_POST['end']."')/2)
+        WHERE id='".$_POST['id_module']."'"); 
+}
     
-// $soustraction_heure = $this->query("UPDATE modules
-// SET total_hours = total_hours - TIMESTAMPDIFF(HOUR, '".$_POST['start']."', '".$_POST['end']."')
-// WHERE id='".$_POST['id_module']."'");
-// // $last_event_supp = $this->query(" DELETE FROM sessions ORDER BY id DESC LIMIT 1");
+
 // $ajout_heure = $this->query("UPDATE modules SET total_hours = total_hours + 4 WHERE id = '".$_POST['id_module']."'");
 
 

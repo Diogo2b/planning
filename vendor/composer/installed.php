@@ -3,7 +3,7 @@
         'name' => 'planning_back/planning',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f4fb2d892e0511aabc2fd6055aa25f7737b95de2',
+        'reference' => '63b5d7db4db12d03775ddd3ae4ed311d77b01356',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'planning_back/planning' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f4fb2d892e0511aabc2fd6055aa25f7737b95de2',
+            'reference' => '63b5d7db4db12d03775ddd3ae4ed311d77b01356',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

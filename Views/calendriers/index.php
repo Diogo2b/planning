@@ -53,7 +53,7 @@
       function load() {
         loadModuleDraggable()
         loadEventCalendar()
-      } // }
+      } 
       function loadModuleDraggable() {
         var loadEventCalendars = $('#select_form').val()
         $.ajax({
@@ -110,11 +110,12 @@
               timeZone: 'locale',
               eventOverlap: false,
               eventReceive: function(info) {
+                
 
                 ende = info.event.start
                 ende.setHours(info.event.start.getHours() + 4)
                 info.event.setEnd(ende)
-                console.log(info.event.endStr)
+                console.log('aaa')
                 let end_receive = info.event.endStr
                 let start_receive = info.event.startStr
 
@@ -132,6 +133,7 @@
                   success: function(response) {
                     $('.modal-content').html(response);
                     $('#MaModal').modal('show');
+                    
 
                     // console.log(start_receive)
 
@@ -289,8 +291,7 @@
           start: start_receive
         },
         success: function(response) {
-          $('.modal-content').html(response);
-          $('#MaModal').modal('show');
+          // 
 
           // console.log(start_receive)
 
@@ -302,6 +303,79 @@
 
 
     }
+    function delete_session(){
+              let start_receive_delete=$("#start_selector_delete").val();
+              let end_receive_delete=$("#end_selector_delete").val();
+              const module = $("#fc-event-main");
+              let id_module_receive=module.data('id');
+              let event_id_delete=$("#id_selector_delete").val()
+              $.ajax({
+                            url: '/modal_DeletePost',
+                            dataType: 'JSON',
+                            type: 'POST',
+                            data: {
+                             
+                              id_module:id_module_receive,
+                              end:end_receive_delete,
+                              start:start_receive_delete,
+                              id: event_id_delete
+                            },
+                            success: function (response) {
+                              alert(response)
+                              location.reload()
+
+                              // console.log(start_receive)
+                              
+                            },
+                            error: function() 
+                            {
+                                alert("Errore dans de modification !");
+                            }
+                        })
+
+
+
+
+}
+function update_session(){
+                let selector_profs_update=$("#select_prof_update").val();
+                let selector_salle_update=$("#select_salle_update").val();
+                let selector_class_update=$("#select_form").val();
+                let start_receive_update=$("#start_selector_update").val();
+                let end_receive_update=$("#end_selector_update").val();
+                const module = $("#fc-event-main");
+                let id_module_receive=module.data('id');
+                let event_id_update=$("#id_selector_update").val()
+                
+                
+                $.ajax({
+                            url: '/modal_UpdatePost',
+                            dataType: 'JSON',
+                            type: 'POST',
+                            data: {
+                              profs:selector_profs_update,
+                              salle:selector_salle_update,
+                              classe:selector_class_update,
+                              id_module:id_module_receive,
+                              end:end_receive_update,
+                              start:start_receive_update,
+                              id: event_id_update
+                            },
+                            success: function (response) {
+                              alert(response)
+
+                              // console.log(start_receive)
+                              
+                            },
+                            error: function() 
+                            {
+                                alert("Errore dans de modification !");
+                            }
+                        })
+
+  
+}
+
   </script>
 </head>
 

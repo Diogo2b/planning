@@ -24,7 +24,7 @@ class UserController extends Controller
         // $errors = $user->validate($data);
         if ($user === false) {
             // echo ("Cet utilisateur n'existe pas");
-            echo '<div class="alert alert-danger"> Utilisateur introubable </div>';
+            echo '<div class="alert alert-danger"> Utilisateur introuvable </div>';
             // if ($errors) {
             //     return $this->view('auth.login', [
             //         'errors' => $errors,
@@ -36,11 +36,14 @@ class UserController extends Controller
         if (password_verify($_POST['password'], $user->password) === false) {
             echo '<div class="alert alert-danger"> Mot de passe incorrect </div>';
             return $this->view('auth.login');
-        }
+        } else {
 
-        $_SESSION['auth'] = (int) $user->id;
-        $_SESSION['role_id'] = (int) $user->role_id;
-        return header('Location: /calendriers');
+            $_SESSION['auth'] = (int) $user->id;
+            $_SESSION['role_id'] = (int) $user->role_id;
+            echo '<div class="alert alert-success"> Vous êtes connecté! </div>';
+            // return header('Location: /calendriers');
+            return $this->view('calendriers.index');
+        }
     }
 
 

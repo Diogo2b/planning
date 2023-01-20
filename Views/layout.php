@@ -11,9 +11,7 @@
 </head>
 
 <body>
-    <?php if (isset($_GET['success'])) : ?>
-        <div class="alert alert-success">Vous êtes connecté!</div>
-    <?php endif ?>
+
     <nav class="navbar navbar-expand-lg h5  ">
         <a class="navbar-brand" href="/">Afflokat Planning</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+
 use App\Models\Calendrier;
 use App\Controllers\Controller;
 use App\Models\Session;
@@ -28,6 +29,7 @@ class EventController extends Controller
 
         $events = (new Session($this->getDB()))->all();
         $sessions = (new Session($this->getDB()))->all();
+        $modules = (new Module($this->getDB()))->all();
         $modules = (new Module($this->getDB()))->contrainte_heure();
         $formations = (new Formation($this->getDB()))->all();
         $salles = (new Salle($this->getDB()))->all();

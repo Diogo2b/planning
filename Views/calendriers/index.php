@@ -223,6 +223,7 @@
 
   <div class="input-group mb-3 col-4">
     <select class="form-select" onchange="load()" id="select_form">
+
       <?php if ($formations->id === $module->formation_id) { ?>
         <?php
         $i = 0;
@@ -230,6 +231,7 @@
           <option id="formation<?= $i ?>" value="<?= $formation->id ?>"><?= $formation->name ?></option>
         <?php endforeach ?>
       <?php } ?>
+
     </select>
   </div>
 

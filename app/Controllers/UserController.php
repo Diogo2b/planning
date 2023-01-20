@@ -59,7 +59,7 @@ class UserController extends Controller
     public function index()
     {
         $this->isAdmin();
-
+        $this->checkSessionTimeout();
         $users = (new User($this->getDB()))->all();
         $roles = (new Role($this->getDB()))->all();
 
@@ -73,7 +73,7 @@ class UserController extends Controller
     public function create()
     {
         $this->isAdmin();
-
+        $this->checkSessionTimeout();
         return $this->view('users.create', [
 
             'roles' => (new Role($this->getDB()))->all(),
@@ -85,8 +85,8 @@ class UserController extends Controller
     public function createPost()
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $data = $_POST;
-
         $user = new User($this->getDB());
         $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $data['password'] = $hashed_password;
@@ -122,6 +122,7 @@ class UserController extends Controller
     public function update(int $id)
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $user = (new User($this->getDB()))->findById($id);
 
 
@@ -135,6 +136,7 @@ class UserController extends Controller
     public function updatePost(int $id)
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $data = $_POST;
 
         $user = new User($this->getDB());
@@ -159,6 +161,7 @@ class UserController extends Controller
     public function delete(int $id)
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $user = new User($this->getDB());
         $result = $user->delete($id);
 

@@ -14,7 +14,7 @@ class SiteController extends Controller
     public function index()
     {
         $this->isAdmin();
-
+        $this->checkSessionTimeout();
         $sites = (new Site($this->getDB()))->all();
 
         return $this->view('sites.index', [
@@ -25,13 +25,14 @@ class SiteController extends Controller
     public function create()
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         return $this->view('sites.create');
     }
 
     public function createPost()
     {
         $this->isAdmin();
-
+        $this->checkSessionTimeout();
         $data = $_POST;
         $site = new Site($this->getDB());
         $errors = $site->validate($data);
@@ -52,7 +53,7 @@ class SiteController extends Controller
     public function update(int $id)
     {
         $this->isAdmin();
-
+        $this->checkSessionTimeout();
         $site = (new Site($this->getDB()))->findById($id);
         return $this->view('sites.update', [
             'site' => $site,
@@ -63,7 +64,7 @@ class SiteController extends Controller
     {
         $this->isAdmin();
 
-
+        $this->checkSessionTimeout();
         $data = $_POST;
         $site = new Site($this->getDB());
         $errors = $site->validate($data);
@@ -87,7 +88,7 @@ class SiteController extends Controller
     public function delete(int $id)
     {
         $this->isAdmin();
-
+        $this->checkSessionTimeout();
         $site = new Site($this->getDB());
         $result = $site->delete($id);
 

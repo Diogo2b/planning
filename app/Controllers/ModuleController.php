@@ -12,11 +12,13 @@ class ModuleController extends Controller
     public function welcome()
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         return $this->view('modules.welcome');
     }
     public function index()
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $modules = (new Module($this->getDB()))->all();
 
         $formations = (new Formation($this->getDB()))->all();
@@ -31,6 +33,7 @@ class ModuleController extends Controller
     public function create()
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         return $this->view('modules.create', [
             'formations' => (new Formation($this->getDB()))->all(),
         ]);
@@ -39,6 +42,7 @@ class ModuleController extends Controller
     public function createPost()
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $data = $_POST;
         $module = new Module($this->getDB());
         $errors = $module->validate($data);
@@ -60,6 +64,7 @@ class ModuleController extends Controller
     public function update(int $id)
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $module = (new Module($this->getDB()))->findById($id);
         return $this->view('modules.update', [
             'module' => $module,
@@ -70,7 +75,7 @@ class ModuleController extends Controller
     public function updatePost(int $id)
     {
         $this->isAdmin();
-
+        $this->checkSessionTimeout();
         $data = $_POST;
         $module = new Module($this->getDB());
         $errors = $module->validate(['id' => $id, ...$data]);
@@ -100,6 +105,7 @@ class ModuleController extends Controller
     public function delete(int $id)
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $module = new Module($this->getDB());
         $result = $module->delete($id);
 

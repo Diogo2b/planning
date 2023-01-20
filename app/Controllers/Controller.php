@@ -8,15 +8,31 @@ abstract class Controller
 {
 
     protected $db;
+    protected $expire_time = 1800; // 30 minutes en secondes
+
 
     public function __construct(DBConnection $db)
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        $_SESSION['last_activity'] = time();
 
         $this->db = $db;
     }
+    protected function checkSessionTimeout()
+    {
+        if (isset($_SESSION['last_activity'])) {
+            $inactivity = time() - $_SESSION['last_activity'];
+            if ($inactivity > $this->expire_time) {
+                session_unset();
+                session_destroy();
+                header("Location: login.php");
+            }
+        }
+    }
+
+
 
     protected function view(string $path, array $params = [])
     {

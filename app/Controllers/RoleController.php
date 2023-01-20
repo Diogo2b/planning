@@ -10,6 +10,7 @@ class RoleController extends Controller
     public function index()
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         return $this->view('roles.index', [
             'roles' => (new Role($this->getDB()))->all()
         ]);
@@ -24,6 +25,7 @@ class RoleController extends Controller
     public function createPost()
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $data = $_POST;
         $role = new Role($this->getDB());
         $errors = $role->validate($data);
@@ -45,6 +47,7 @@ class RoleController extends Controller
     public function update(int $id)
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $role = (new Role($this->getDB()))->findById($id);
         return $this->view('roles.update', [
             'role' => $role,
@@ -54,6 +57,7 @@ class RoleController extends Controller
     public function updatePost(int $id)
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $data = $_POST;
         $user = new Role($this->getDB());
         $errors = $user->validate($data);
@@ -76,6 +80,7 @@ class RoleController extends Controller
     public function delete(int $id)
     {
         $this->isAdmin();
+        $this->checkSessionTimeout();
         $role = new Role($this->getDB());
         $result = $role->delete($id);
 

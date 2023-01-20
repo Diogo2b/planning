@@ -23,4 +23,13 @@ class Event extends Model
 
    }
 
+
+   public function delete_event(): array{
+
+    $msg = "coucou";
+
+    echo json_encode($msg);
+
+   }
+
 }

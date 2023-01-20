@@ -92,10 +92,13 @@ $router->get('/calendriers', 'App\Controllers\CalendrierController@index');
 $router->post('/event', 'App\Controllers\EventController@index');
 $router->post('/calendriers', 'App\Controllers\EventController@loadEventCalendar');
 $router->get('/calendriers', 'App\Controllers\EventController@loadEventCalendar');
-$router->post('/modal', 'App\Controllers\ModalController@index');
-$router->post('/sessions/create', 'App\Controllers\SessionController@createPost');
+$router->post('/modal', 'App\Controllers\ModalController@create');
 $router->post('modal_CreatePost', 'App\Controllers\ModalController@createPost');
-
+$router->post('event_update', 'App\Controllers\ModalController@update');
+$router->post('modal_UpdatePost', 'App\Controllers\ModalController@updatePost');
+$router->post('event_delete', 'App\Controllers\ModalController@delete');
+$router->post('modal_DeletePost', 'App\Controllers\ModalController@DeletePost');
+$router->post('event_occurence', 'App\Controllers\EventController@DeleteOccurence');
 try {
     $router->run();
 } catch (NotFoundException $e) {

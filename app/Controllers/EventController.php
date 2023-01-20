@@ -49,4 +49,12 @@ class EventController extends Controller
 
         echo json_encode($events);
     }
+
+    public function DeleteOccurence(){
+
+        $events = (new Event($this->getDB()))->delete_occurence();
+
+
+
+    }
 }

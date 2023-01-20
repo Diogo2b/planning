@@ -73,7 +73,7 @@ class ModalController extends Controller
     public function updatePost()
     {
         $modals = (new Modal($this->getDB()))->update_post();
-        $msg = "Votre cour a bien été ajouter";
+        $msg = "Votre cour a bien été ajouté";
         echo json_encode($msg);
 
 }
@@ -103,7 +103,7 @@ public function delete()
 public function DeletePost()
 {
     $modals = (new Modal($this->getDB()))->delete_post();
-    $msg = "Votre cour a bien été supprimer";
+    $msg = "Votre cour a bien été supprimé";
     echo json_encode($msg);
 
 }

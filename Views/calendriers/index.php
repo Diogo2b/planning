@@ -266,6 +266,8 @@
 
 
     function create_session() {
+
+      console.log('oooo')
       let selector_profs = $("#select_prof").val();
       let selector_salle = $("#select_salle").val();
       let selector_class = $("#select_form").val();

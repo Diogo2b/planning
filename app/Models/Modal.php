@@ -87,10 +87,12 @@ class Modal extends Model
     }
 
     public function create_post() {
-        error_log("aaa");
 
-       $event_created = $this->query("INSERT INTO sessions (start, end, salle_id, formation_id, module_id, user_id) 
-VALUES ('".$_POST['start']."' , '".$_POST['end']."' , '".$_POST['salle']."' ,'".$_POST['classe']."' , '".$_POST['id_module']."' , '".$_POST['profs']."' )");
+        
+
+//        $event_created = $this->query("UPDATE  sessions (start, end, salle_id, formation_id, module_id, user_id) 
+// VALUES ('".$_POST['start']."' , '".$_POST['end']."' , '".$_POST['salle']."' ,'".$_POST['classe']."' , '".$_POST['id_module']."' , '".$_POST['profs']."' )");
+
     
 // $soustraction_heure = $this->query("UPDATE modules
 // SET total_hours = total_hours - TIMESTAMPDIFF(HOUR, '".$_POST['start']."', '".$_POST['end']."')

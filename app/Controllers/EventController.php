@@ -29,7 +29,6 @@ class EventController extends Controller
 
         $events = (new Session($this->getDB()))->all();
         $sessions = (new Session($this->getDB()))->all();
-        $modules = (new Module($this->getDB()))->all();
         $modules = (new Module($this->getDB()))->contrainte_heure();
         $formations = (new Formation($this->getDB()))->all();
         $salles = (new Salle($this->getDB()))->all();
@@ -44,19 +43,14 @@ class EventController extends Controller
     public function loadEventCalendar()
     {
 
-
         $events = (new Event($this->getDB()))->index_session();
-
-
 
         echo json_encode($events);
     }
 
-    public function DeleteOccurence(){
+    public function DeleteOccurence()
+    {
 
         $events = (new Event($this->getDB()))->delete_occurence();
-
-
-
     }
 }

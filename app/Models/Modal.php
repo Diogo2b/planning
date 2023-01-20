@@ -88,10 +88,19 @@ class Modal extends Model
 
     public function create_post() {
 
-       $event_created = $this->query("INSERT INTO sessions (start, end, salle_id, formation_id, module_id, user_id) 
-VALUES ('".$_POST['start']."' , '".$_POST['end']."' , '".$_POST['salle']."' ,'".$_POST['classe']."' , '".$_POST['id_module']."' , '".$_POST['profs']."' )");
+        
 
-$last_event_supp = $this->query(" DELETE FROM sessions ORDER BY id DESC LIMIT 1");
+//        $event_created = $this->query("UPDATE  sessions (start, end, salle_id, formation_id, module_id, user_id) 
+// VALUES ('".$_POST['start']."' , '".$_POST['end']."' , '".$_POST['salle']."' ,'".$_POST['classe']."' , '".$_POST['id_module']."' , '".$_POST['profs']."' )");
+
+    
+// $soustraction_heure = $this->query("UPDATE modules
+// SET total_hours = total_hours - TIMESTAMPDIFF(HOUR, '".$_POST['start']."', '".$_POST['end']."')
+// WHERE id='".$_POST['id_module']."'");
+// // $last_event_supp = $this->query(" DELETE FROM sessions ORDER BY id DESC LIMIT 1");
+// $ajout_heure = $this->query("UPDATE modules SET total_hours = total_hours + 4 WHERE id = '".$_POST['id_module']."'");
+
+
 
         //validation des données
         // if(isset($_POST['start']) && !empty($_POST['start']) && 
@@ -128,6 +137,20 @@ $last_event_supp = $this->query(" DELETE FROM sessions ORDER BY id DESC LIMIT 1"
         // else{
         //     return false;
         // }
+    }
+
+    public function update_post()
+    {
+        $event_updated = $this->query("UPDATE sessions 
+SET start = '".$_POST['start']."', end = '".$_POST['end']."', salle_id = '".$_POST['salle']."', formation_id = '".$_POST['classe']."', module_id = '".$_POST['id_module']."', user_id = '".$_POST['profs']."' 
+WHERE id = '".$_POST['id']."'
+");
+    }
+
+    public function delete_post(){
+        $event_supp = $this->query(" DELETE FROM sessions WHERE id ='".$_POST['id']."'");
+        $restauration_heure = $this->query("UPDATE modules SET total_hours = total_hours + 4 WHERE id = '".$_POST['id_module']."'");
+
     }
 
 }

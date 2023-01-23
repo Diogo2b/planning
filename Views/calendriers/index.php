@@ -263,6 +263,8 @@
 
           }
         });
+
+        console.log('okok')
       }
 
     
@@ -270,7 +272,7 @@
 
     function create_session() {
 
-      console.log('oooo')
+      
       let selector_profs = $("#select_prof").val();
       let selector_salle = $("#select_salle").val();
       let selector_class = $("#select_form").val();
@@ -294,7 +296,7 @@
         success: function(response) {
           // 
 
-          // console.log(start_receive)
+          alert(response)
 
         },
         error: function() {

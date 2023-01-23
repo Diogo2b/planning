@@ -91,7 +91,6 @@ $router->post('/sessions/delete/:id', 'App\Controllers\SessionController@delete'
 $router->get('/calendriers', 'App\Controllers\CalendrierController@index');
 $router->post('/event', 'App\Controllers\EventController@index');
 $router->post('/calendriers', 'App\Controllers\EventController@loadEventCalendar');
-$router->get('/calendriers', 'App\Controllers\EventController@loadEventCalendar');
 $router->post('/modal', 'App\Controllers\ModalController@create');
 $router->post('modal_CreatePost', 'App\Controllers\ModalController@createPost');
 $router->post('event_update', 'App\Controllers\ModalController@update');

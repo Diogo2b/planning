@@ -69,6 +69,7 @@ abstract class Model
     {
         return $this->query("DELETE FROM {$this->table} WHERE id = ?", [$id]);
     }
+    
 
     public function query(string $sql, array $param = null, bool $single = null)
     {

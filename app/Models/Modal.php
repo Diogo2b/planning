@@ -113,7 +113,7 @@ if($tagg==1){
     error_log('2');
         $soustraction_heure = $this->query("UPDATE modules
         SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, '".$_POST['start']."', '".$_POST['end']."')/2)
-        WHERE id='".$_POST['id_module']."'"); 
+        WHERE id='".$_POST['id_module']."'");
 }
     
 
@@ -168,7 +168,7 @@ WHERE id = '".$_POST['id']."'
 
     public function delete_post(){
         $event_supp = $this->query(" DELETE FROM sessions WHERE id ='".$_POST['id']."'");
-        $restauration_heure = $this->query("UPDATE modules SET total_hours = total_hours + 4 WHERE id = '".$_POST['id_module']."'");
+        $restauration_heure = $this->query("UPDATE modules SET total_hours = total_hours + 2 WHERE id = '".$_POST['id_module']."'");
 
     }
 

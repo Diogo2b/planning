@@ -143,92 +143,90 @@
 
 
               },
-              eventDrop: function event_update(info){
+              eventDrop: function event_update(info) {
 
-                  let drop_profs=info.event.extendedProps.profs
-                  let drop_salle=info.event.extendedProps.salle
-                  let drop_class=info.event.extendedProps.formation
-                  let start_drop=info.event.startStr
-                  let end_drop=info.event.endStr
-                  let id_module_drop = info.event.extendedProps.module;
-                  let id_event = info.event.id
+                let drop_profs = info.event.extendedProps.profs
+                let drop_salle = info.event.extendedProps.salle
+                let drop_class = info.event.extendedProps.formation
+                let start_drop = info.event.startStr
+                let end_drop = info.event.endStr
+                let id_module_drop = info.event.extendedProps.module;
+                let id_event = info.event.id
 
 
-                  $.ajax({
-                      url: '/event_update',
-                      dataType: 'HTML',
-                      type: 'POST',
-                      data: {
-                        user:drop_profs,
-                        salle:drop_salle,
-                        formation:drop_class,
-                        module:id_module_drop,
-                        end:end_drop,
-                        start:start_drop,
-                        id:id_event
-                      },
-                      success: function (response) {
-                        $('.modal-content').html(response);
-                        $('#MaModal').modal('show');
-                        
+                $.ajax({
+                  url: '/event_update',
+                  dataType: 'HTML',
+                  type: 'POST',
+                  data: {
+                    user: drop_profs,
+                    salle: drop_salle,
+                    formation: drop_class,
+                    module: id_module_drop,
+                    end: end_drop,
+                    start: start_drop,
+                    id: id_event
+                  },
+                  success: function(response) {
+                    $('.modal-content').html(response);
+                    $('#MaModal').modal('show');
 
-                        // console.log(start_receive)
-                        
-                      },
-                      error: function() 
-                      {
-                          alert("Errore dans Update-Event !");
-                      }
-                  })
 
-},
+                    // console.log(start_receive)
+
+                  },
+                  error: function() {
+                    alert("Errore dans Update-Event !");
+                  }
+                })
+
+              },
               eventResize: function(info) {
 
-},
-              eventClick: function (info){
+              },
+              eventClick: function(info) {
 
-                let drop_profs=info.event.extendedProps.profs
-                let drop_salle=info.event.extendedProps.salle
-                let drop_class=info.event.extendedProps.formation
-                let start_drop=info.event.startStr
-                let end_drop=info.event.endStr
+                let drop_profs = info.event.extendedProps.profs
+                let drop_salle = info.event.extendedProps.salle
+                let drop_class = info.event.extendedProps.formation
+                let start_drop = info.event.startStr
+                let end_drop = info.event.endStr
                 let id_module_drop = info.event.extendedProps.module;
                 let id_event = info.event.id
 
                 $.ajax({
-                    url: '/event_delete',
-                    dataType: 'HTML',
-                    type: 'POST',
-                    data: {
-                      user:drop_profs,
-                      salle:drop_salle,
-                      formation:drop_class,
-                      module:id_module_drop,
-                      end:end_drop,
-                      start:start_drop,
-                      id:id_event
-                    },
-                    success: function (response) {
-                      $('.modal-content').html(response);
-                      $('#MaModal').modal('show');
-                      $('#MaModal').data('bs.modal',null);
-                      $('#MaModal').modal({
-                backdrop: 'static',
-                keyboard: true, 
-                show: true
-                });
-                },
-                    error: function() 
-                    {
-                        alert("Errore dans Update-Event !");
-                    }
+                  url: '/event_delete',
+                  dataType: 'HTML',
+                  type: 'POST',
+                  data: {
+                    user: drop_profs,
+                    salle: drop_salle,
+                    formation: drop_class,
+                    module: id_module_drop,
+                    end: end_drop,
+                    start: start_drop,
+                    id: id_event
+                  },
+                  success: function(response) {
+                    $('.modal-content').html(response);
+                    $('#MaModal').modal('show');
+                    $('#MaModal').data('bs.modal', null);
+                    $('#MaModal').modal({
+                      backdrop: 'static',
+                      keyboard: true,
+                      show: true
+                    });
+                  },
+                  error: function() {
+                    alert("Errore dans Update-Event !");
+                  }
 
-                      
+
 
                 })
 
 
-},
+              },
 
 
             });
@@ -240,13 +238,13 @@
                 start: response['start'],
                 end: response['end'],
                 id: response['id'],
-                extendedProps:{
-                salle: response['salle_id'],
-                profs: response['user_id'],
-                module: response['module_id'],
-                formation: response['formation_id']
-              }
-            })
+                extendedProps: {
+                  salle: response['salle_id'],
+                  profs: response['user_id'],
+                  module: response['module_id'],
+                  formation: response['formation_id']
+                }
+              })
 
             });
 
@@ -309,7 +307,6 @@
 
   <div class="input-group mb-3 col-4">
     <select class="form-select" onchange="load()" id="select_form">
-
       <?php if ($formations->id === $module->formation_id) { ?>
         <?php
         $i = 0;
@@ -317,7 +314,6 @@
           <option id="formation<?= $i ?>" value="<?= $formation->id ?>"><?= $formation->name ?></option>
         <?php endforeach ?>
       <?php } ?>
-
     </select>
   </div>
 

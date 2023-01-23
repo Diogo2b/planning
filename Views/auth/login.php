@@ -23,4 +23,5 @@
         <?php } ?>
     </div>
     <button type="submit" class="btn btn-primary">Se connecter</button>
+    <!-- <button type="submit" class="btn btn-secondary">Mot de passe perdu</button> -->
 </form>

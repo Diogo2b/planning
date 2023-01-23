@@ -9,10 +9,7 @@
 </head>
 
 <body>
-
-
     <div class="container">
-
         <?= $content_event ?>
     </div>
 </body>

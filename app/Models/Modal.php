@@ -140,5 +140,5 @@ class Modal extends Model
         $stmt2->execute();
 
     }
-
+//e
 }

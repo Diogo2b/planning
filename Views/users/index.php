@@ -16,7 +16,7 @@
             <th scope="col">Adresse Postale</th>
             <th scope="col">Ville</th>
             <th scope="col">Role</th>
-
+            
             <th scope="col">Actions</th>
 
         </tr>
@@ -38,6 +38,8 @@
                         <td><?= $role->name ?></td>
                     <?php  } ?>
                 <?php endforeach ?>
+                
+                
 
                 <td>
                     <a href="/users/update/<?= $user->id ?>" class="btn btn-warning">Modifier</a>

@@ -1,5 +1,5 @@
 <?php
-$fields = ['lastname', 'firstname', 'password', 'email', 'phone_number', 'adress', 'city', 'role_id', 'formation_id'];
+$fields = ['lastname', 'firstname', 'password', 'email', 'phone_number', 'adress', 'city', 'role_id','formation_id'];
 
 foreach ($fields as $field) {
     if (isset($previousData) && isset($previousData[$field])) {

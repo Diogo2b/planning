@@ -35,6 +35,7 @@ class User extends Model
             'adress'                  => 'required',
             'city'                    => 'required',
             'role_id'                 => "required|integer|exists:roles,id",
+            'formation_id'                 => "nullable|integer|exists:formations,id",
 
         ]);
 

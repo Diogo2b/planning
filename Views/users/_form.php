@@ -1,5 +1,5 @@
 <?php
-$fields = ['lastname', 'firstname', 'password', 'email', 'phone_number', 'adress', 'city', 'role_id'];
+$fields = ['lastname', 'firstname', 'password', 'email', 'phone_number', 'adress', 'city', 'role_id', 'formation_id'];
 
 foreach ($fields as $field) {
     if (isset($previousData) && isset($previousData[$field])) {
@@ -94,7 +94,7 @@ foreach ($fields as $field) {
 
     <div class="form-group">
         <label for="role_id">Role</label>
-        <select class="form-control" id="role_id" name="role_id">
+        <select class="form-control" id="role_id" name="role_id" onchange="formationSelect()">
             <option value="" selected hidden>-- Veuillez choisir un role --</option>
             <?php foreach ($roles as $role) : ?>
                 <?php
@@ -109,6 +109,7 @@ foreach ($fields as $field) {
             <?php endforeach ?>
         </select>
 
+       
         <?php
         if (isset($errors) && array_key_exists('role_id', $errors)) {
         ?>
@@ -117,7 +118,49 @@ foreach ($fields as $field) {
             </div>
         <?php } ?>
     </div>
+    <div class="form-group" style="display:none" id="formationSelector">
+        <label for="formation_id">Formation </label>
+        <select class="form-control" id="formation_id" name="formation_id">
+            <option value="" selected hidden>-- Veuillez choisir une formation --</option>
+            <?php foreach ($formations as $formation) : ?>
+                <?php
+                $isSelected = '';
+                if ((isset($formation) && $formation->formation_id === $formation->id) || (isset($formation_id) && (int)$formation_id === $formation->id)) {
+                    $isSelected = 'selected';
+                }
+                ?>
+                <option value="<?= $formation->id ?>" <?= $isSelected ?>>
+                    <?= $formation->name ?>
+                </option>
+            <?php endforeach ?>
+        </select>
+
+        <?php
+        if (isset($errors) && array_key_exists('formation_id', $errors)) {
+        ?>
+            <div class="alert alert-danger">
+                <li><?php echo $errors['formation_id'] ?></li>
+            </div>
+        <?php } ?>
+    </div>
+    
 
 
     <button type="submit" class="btn btn-primary"><?= isset($user) ? 'Enregistrer les modifications' : "Créer l'utilisateur" ?></button>
 </form>
+
+
+<script>
+
+
+function formationSelect(){
+let formation_select=document.querySelector('#role_id').value;
+if (formation_select==2){
+    document.querySelector('#formationSelector').style.display="block";
+
+}
+else{
+    document.querySelector('#formationSelector').style.display="none"; 
+}
+}
+</script>

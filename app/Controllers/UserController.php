@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Formation;
 use App\Controllers\Controller;
 
 
@@ -62,11 +63,12 @@ class UserController extends Controller
         $this->checkSessionTimeout();
         $users = (new User($this->getDB()))->all();
         $roles = (new Role($this->getDB()))->all();
-
+        $formations = (new Formation($this->getDB()))->all();
 
         return $this->view('users.index', [
             'users' => $users,
             'roles' => $roles,
+            'formations' => $formations,
         ]);
     }
 
@@ -74,10 +76,12 @@ class UserController extends Controller
     {
         $this->isAdmin();
         $this->checkSessionTimeout();
+        $formations = (new Formation($this->getDB()))->all();        
         return $this->view('users.create', [
 
             'roles' => (new Role($this->getDB()))->all(),
-
+            'formations' =>$formations,
+            
 
         ]);
     }
@@ -91,12 +95,14 @@ class UserController extends Controller
         $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $data['password'] = $hashed_password;
         $errors = $user->validate($data);
+        $formations = (new Formation($this->getDB()))->all();
 
         if ($errors) {
             return $this->view('users.create', [
                 'previousData' => $data,
                 'errors' => $errors,
                 'roles' => (new Role($this->getDB()))->all(),
+                'formations' => $formations 
 
             ]);
         }
@@ -129,6 +135,7 @@ class UserController extends Controller
         return $this->view('users.update', [
             'user' => $user,
             'roles' => (new Role($this->getDB()))->all(),
+            'formations' => (new Formation($this->getDB()))->all(),
 
         ]);
     }
@@ -148,6 +155,7 @@ class UserController extends Controller
                 'errors' => $errors,
                 'user' => $user->findById($id),
                 'roles' => (new Role($this->getDB()))->all(),
+                'formations' => (new Formations($this->getDB()))->all(),
 
             ]);
         }

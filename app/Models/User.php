@@ -16,6 +16,8 @@ class User extends Model
 
 
 
+
+
     public function validate(array $data): array
     {
         $validator =  ValidatorFactory::createValidator($this->db->getPDO());
@@ -44,5 +46,14 @@ class User extends Model
 
         $errors = $validation->errors();
         return $errors->firstOfAll();
+    }
+
+
+    public function createUserForm ($formation_id){
+
+        // $pdo = $this->db->getPDO();
+        // $stmt = $pdo->prepare("INSERT INTO users_formation (user_id, formation_id) VALUES ( (SELECT MAX(id) FROM users), :formation_id)");
+        // $stmt->bindParam(':formation_id',$formation_id );
+        // $stmt->execute();
     }
 }

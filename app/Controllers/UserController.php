@@ -20,7 +20,10 @@ class UserController extends Controller
     public function loginPost()
     {
         // $data = $_POST;
-        $user = (new User($this->getDB()))->getByEmail($_POST['email']);
+        // $user = (new User($this->getDB()))->getByEmail($_POST['email']);
+        $user = (new User($this->getDB()))->getByEmail($_POST['email'], true);
+
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         // dd($_POST);
         // $errors = $user->validate($data);
         if ($user === false) {
@@ -41,9 +44,27 @@ class UserController extends Controller
 
             $_SESSION['auth'] = (int) $user->id;
             $_SESSION['role_id'] = (int) $user->role_id;
+<<<<<<< HEAD
             echo '<div class="alert alert-success"> Vous êtes connecté! </div>';
             // return header('Location: /calendriers');
             return  header('Location: /calendriers');
+=======
+
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $csrf_token = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
+
+                if (!hash_equals($_SESSION['csrf_token'], $csrf_token)) {
+                    //traitement d'erreur, par exemple, redirection vers une page d'erreur
+                    echo '<div class="alert alert-success"> Vous êtes connecté! </div>';
+                    return header('Location: /calendriers');
+                }
+                echo '<div class="alert alert-alert"> UPS!!! </div>';
+                return header('Location: /calendriers');
+                // return $this->view('calendriers.index');
+                unset($_POST);
+            }
+>>>>>>> 00c01a9 (fix:auth with 'csrf_token' and unset($post))
         }
     }
 
@@ -51,6 +72,8 @@ class UserController extends Controller
 
     public function logout()
     {
+
+        unset($_POST);
         session_destroy();
 
         return header('Location: /');
@@ -76,12 +99,12 @@ class UserController extends Controller
     {
         $this->isAdmin();
         $this->checkSessionTimeout();
-        $formations = (new Formation($this->getDB()))->all();        
+        $formations = (new Formation($this->getDB()))->all();
         return $this->view('users.create', [
 
             'roles' => (new Role($this->getDB()))->all(),
-            'formations' =>$formations,
-            
+            'formations' => $formations,
+
 
         ]);
     }
@@ -103,7 +126,7 @@ class UserController extends Controller
                 'previousData' => $data,
                 'errors' => $errors,
                 'roles' => (new Role($this->getDB()))->all(),
-                'formations' => $formations 
+                'formations' => $formations
 
             ]);
         }

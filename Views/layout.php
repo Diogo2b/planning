@@ -22,6 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <?php if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) : ?>
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                     <li class="nav-item">
                         <a class="nav-link" href="/formations">Formations</a>
                     </li>
@@ -63,7 +64,7 @@
             <ul class="navbar-nav ml-auto">
                 <?php if (isset($_SESSION['auth'])) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Se déconnecter</a>
+                        <a class="nav-link" href="/logout" onclick="logout()">Se déconnecter</a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -71,6 +72,7 @@
     </nav>
     <div class="container">
         <?= $content ?>
+
 
 
     </div>

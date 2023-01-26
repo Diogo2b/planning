@@ -27,6 +27,7 @@ $router->post('/modules/create', 'App\Controllers\ModuleController@createPost');
 $router->get('/modules/update/:id', 'App\Controllers\ModuleController@update');
 $router->post('/modules/update/:id', 'App\Controllers\ModuleController@updatePost');
 $router->post('/modules/delete/:id', 'App\Controllers\ModuleController@delete');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 // formations
 $router->get('/formations', 'App\Controllers\FormationController@index');
@@ -35,6 +36,7 @@ $router->post('/formations/create', 'App\Controllers\FormationController@createP
 $router->get('/formations/update/:id', 'App\Controllers\FormationController@update');
 $router->post('/formations/update/:id', 'App\Controllers\FormationController@updatePost');
 $router->post('/formations/delete/:id', 'App\Controllers\FormationController@delete');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 // resources(ressources)
 $router->get('/resources', 'App\Controllers\ResourceController@index');
@@ -43,6 +45,7 @@ $router->post('/resources/create', 'App\Controllers\ResourceController@createPos
 $router->get('/resources/update/:id', 'App\Controllers\ResourceController@update');
 $router->post('/resources/update/:id', 'App\Controllers\ResourceController@updatePost');
 $router->post('/resources/delete/:id', 'App\Controllers\ResourceController@delete');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 // utilisateus(users)
 $router->get('/users', 'App\Controllers\UserController@index');
@@ -51,6 +54,7 @@ $router->post('/users/create', 'App\Controllers\UserController@createPost');
 $router->get('/users/update/:id', 'App\Controllers\UserController@update');
 $router->post('/users/update/:id', 'App\Controllers\UserController@updatePost');
 $router->post('/users/delete/:id', 'App\Controllers\UserController@delete');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 // rôle d'utilisateur(roles)
 $router->get('/roles', 'App\Controllers\RoleController@index');
@@ -59,6 +63,7 @@ $router->post('/roles/create', 'App\Controllers\RoleController@createPost');
 $router->get('/roles/update/:id', 'App\Controllers\RoleController@update');
 $router->post('/roles/update/:id', 'App\Controllers\RoleController@updatePost');
 $router->post('/roles/delete/:id', 'App\Controllers\RoleController@delete');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 
 // sites
@@ -78,6 +83,7 @@ $router->post('/salles/create', 'App\Controllers\SalleController@createPost');
 $router->get('/salles/update/:id', 'App\Controllers\SalleController@update');
 $router->post('/salles/update/:id', 'App\Controllers\SalleController@updatePost');
 $router->post('/salles/delete/:id', 'App\Controllers\SalleController@delete');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 // sessions
 $router->get('/sessions', 'App\Controllers\SessionController@index');
@@ -86,6 +92,7 @@ $router->post('/sessions/create', 'App\Controllers\SessionController@createPost'
 $router->get('/sessions/update/:id', 'App\Controllers\SessionController@update');
 $router->post('/sessions/update/:id', 'App\Controllers\SessionController@updatePost');
 $router->post('/sessions/delete/:id', 'App\Controllers\SessionController@delete');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 
 // planning
 $router->get('/calendriers', 'App\Controllers\CalendrierController@index');
@@ -98,6 +105,7 @@ $router->post('modal_UpdatePost', 'App\Controllers\ModalController@updatePost');
 $router->post('event_delete', 'App\Controllers\ModalController@delete');
 $router->post('modal_DeletePost', 'App\Controllers\ModalController@DeletePost');
 $router->post('event_occurence', 'App\Controllers\EventController@DeleteOccurence');
+$router->get('/logout', 'App\Controllers\SiteController@logout');
 try {
     $router->run();
 } catch (NotFoundException $e) {

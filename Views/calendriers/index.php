@@ -76,21 +76,26 @@
       }
 
       function loadEventCalendar() {
-        var loadEventCalendars = $('#select_form').val();
-
-
+        var loadEventCalendars = $('#select_form').val(); 
+        let id_user = $('#select_user').val();
+        console.log("//////////////////////");
+        console.log(id_user);
+        console.log("/////////////////////");
         $.ajax({
           url: '/calendriers',
           dataType: 'JSON',
           type: 'POST',
           data: {
-            events: loadEventCalendars
+            events: loadEventCalendars,
+            user_id:id_user
           },
           success: function(response) {
+            console.log("pitie");
             var Calendar = FullCalendar.Calendar;
             var calendarEl = document.getElementById('calendrier');
-
-            ;
+            var isEditable = response['role']
+         
+            
 
             var calendar = new Calendar(calendarEl, {
               headerToolbar: {
@@ -104,7 +109,7 @@
               slotMaxTime: '18:00',
               weekends: false,
               initialView: 'timeGridWeek',
-              editable: true,
+              editable: (isEditable==1) ? true : false,
               droppable: true,
               displayEventEnd: true,
               defaultTimedEventDuration: '04:00',
@@ -134,10 +139,6 @@
                   success: function(response) {
                     $('.modal-content').html(response);
                     $('#MaModal').modal('show');
-                    
-
-                    // console.log(start_receive)
-
                   },
                   error: function() {
                     alert("Error dans l'ajax d'eventReceiv !");
@@ -234,8 +235,8 @@
 
             });
 
-            Object.values(response).forEach(response => {
-
+            Object.values(response.events).forEach(response => {
+              console.log(response.events)
               calendar.addEvent({
                 title: ['title'],
                 start: response['start'],
@@ -257,12 +258,12 @@
 
 
           error: function(error) {
-            alert('error ajax loadeventcalendar');
+            console.log(error);
 
           }
         });
 
-        console.log('okok')
+       
       }
 
     
@@ -393,7 +394,7 @@ function update_session(){
       <?php } ?>
     </select>
   </div>
-
+      <input type="text"  id="select_user" style="display:none" value ="<?= $_SESSION['auth']?>">
   <div class="d-inline-flex col-12">
 
     <!-- //Zone d'evenement draggable -->

@@ -43,7 +43,7 @@ abstract class Controller
         $content = ob_get_clean();
         require VIEWS . 'layout.php';
     }
-    public function view2(string $path, array $params = [])
+    protected function view2(string $path, array $params = [])
     {
         extract($params);
         ob_start();
@@ -70,15 +70,28 @@ abstract class Controller
             return header('Location: /login');
         }
     }
+    protected function isEleve()
+    {
+        if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 2) {
+            error_log(1);
+            return true;
+        } else {
+            error_log(2);
 
-    // protected function isAdmin()
-    // {
-    //     if (isset($_SESSION['auth']) && is_int($_SESSION['auth'])) {
-    //         return true;
-    //     } else {
-    //         return header('Location: /login');
-    //     }
-    // }
+            return header('Location: /login');
+        }
+    }
+    protected function isIntervenant()
+    {
+        if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 4) {
+
+            return true;
+        } else {
+
+
+            return header('Location: /login');
+        }
+    }
 
     public static function hashPassword(string $password)
     {

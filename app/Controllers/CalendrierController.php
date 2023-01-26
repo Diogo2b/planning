@@ -14,7 +14,7 @@ class CalendrierController extends Controller
     public function index()
     {
 
-
+        
         $calendrier = (new Calendrier($this->getDB()))->all();
         $formations = (new Formation($this->getDB()))->all();
 

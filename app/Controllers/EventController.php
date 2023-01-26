@@ -34,6 +34,7 @@ class EventController extends Controller
         $salles = (new Salle($this->getDB()))->all();
         $users = (new User($this->getDB()))->all();
         $calendrier = (new Calendrier($this->getDB()))->all();
+      
 
         return json_encode($this->view2('events.index', [
 
@@ -42,15 +43,19 @@ class EventController extends Controller
     }
     public function loadEventCalendar()
     {
-
+        if($this->isAdmin()){
+        $role=1;
         $events = (new Event($this->getDB()))->index_session();
-
-        echo json_encode($events);
+       
     }
 
-    public function DeleteOccurence()
-    {
-
-        $events = (new Event($this->getDB()))->delete_occurence();
+        else if ($this->isEleve()){
+            $role=2;
+            $events = (new Event($this->getDB()))->index_session_eleve();
+            error_log(json_encode($events));
+            
+        }   
+        echo json_encode(array('role'=> $role,'events'=>$events));
     }
+
 }

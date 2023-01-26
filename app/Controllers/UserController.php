@@ -43,7 +43,7 @@ class UserController extends Controller
             $_SESSION['role_id'] = (int) $user->role_id;
             echo '<div class="alert alert-success"> Vous êtes connecté! </div>';
             // return header('Location: /calendriers');
-            return $this->view('calendriers.index');
+            return  header('Location: /calendriers');
         }
     }
 

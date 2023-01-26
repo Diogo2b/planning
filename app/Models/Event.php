@@ -22,6 +22,14 @@ class Event extends Model
         return $this->query("SELECT * FROM {$this->table}  WHERE formation_id = '".$_POST['events']."'");
 
    }
+    public function index_session_eleve():array  {
+        $toto = $this->query("SELECT * FROM `sessions`
+        WHERE `formation_id` = (SELECT `formation_id` FROM `users_formation` WHERE `user_id` = '".$_POST['user_id']."')");
+       return $toto;
+         
+        
+
+   }
 
 
    public function delete_event(): array{

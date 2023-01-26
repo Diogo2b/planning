@@ -104,14 +104,15 @@ class UserController extends Controller
     }
 
     public function createPost()
-    {
+    {  
         $this->isAdmin();
         $this->checkSessionTimeout();
         $data = $_POST;
+        unset($data['formation_id']);
         $user = new User($this->getDB());
         $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $data['password'] = $hashed_password;
-        $errors = $user->validate($data);
+        // $errors = $user->validate($data);
         $formations = (new Formation($this->getDB()))->all();
 
         if ($errors) {
@@ -133,6 +134,13 @@ class UserController extends Controller
 
 
         $result = $user->create($data);
+        $pdo = $this->db->getPDO();
+        $stmt = $pdo->prepare("INSERT INTO users_formation (user_id, formation_id) VALUES ( (SELECT MAX(id) FROM users), :formation_id)");
+        $stmt->bindParam(':formation_id',$_POST['formation_id'] );
+        $stmt->execute();
+
+        // $formationSelect = (new User($this->getDB()))->createUserForm($_POST['formation_id']);
+
 
 
         if ($result) {
@@ -162,11 +170,12 @@ class UserController extends Controller
         $this->isAdmin();
         $this->checkSessionTimeout();
         $data = $_POST;
-
+        
         $user = new User($this->getDB());
         $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $data['password'] = $hashed_password;
         $errors = $user->validate(['id' => $id, ...$data]);
+        
         if ($errors) {
             return $this->view('users.update', [
                 'errors' => $errors,
@@ -177,6 +186,7 @@ class UserController extends Controller
             ]);
         }
         $result = $user->update($id, $data);
+        
 
         if ($result) {
             return header('Location: /users');

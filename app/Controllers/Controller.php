@@ -16,6 +16,7 @@ abstract class Controller
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         $_SESSION['last_activity'] = time();
 
         $this->db = $db;
@@ -25,7 +26,7 @@ abstract class Controller
         if (isset($_SESSION['last_activity'])) {
             $inactivity = time() - $_SESSION['last_activity'];
             if ($inactivity > $this->expire_time) {
-                session_unset();
+
                 session_destroy();
                 header("Location: login.php");
             }

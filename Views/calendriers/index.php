@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src='../fullcalendar/dist/index.global.js'></script>
   <!-- <script src='[![](https://data.jsdelivr.com/v1/package/npm/@fullcalendar/interaction/badge)](https://www.jsdelivr.com/package/npm/@fullcalendar/interaction)'></script> -->
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -90,21 +90,22 @@
             user_id:id_user
           },
           success: function(response) {
-            console.log("pitie");
+            console.log(response['role']);
             var Calendar = FullCalendar.Calendar;
             var calendarEl = document.getElementById('calendrier');
             var isEditable = response['role']
-         
+            
             
 
             var calendar = new Calendar(calendarEl, {
               headerToolbar: {
+                height:"auto",
                 left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay',
 
               },
-
+              height:"auto",
               slotMinTime: '08:00',
               slotMaxTime: '18:00',
               weekends: false,
@@ -269,7 +270,7 @@
     
 
 
-    function create_session() {
+function create_session(){
 
       
       let selector_profs = $("#select_prof").val();
@@ -304,8 +305,8 @@
       })
 
 
-    }
-    function delete_session(){
+}
+function delete_session(){
               let start_receive_delete=$("#start_selector_delete").val();
               let end_receive_delete=$("#end_selector_delete").val();
               const module = $("#fc-event-main");

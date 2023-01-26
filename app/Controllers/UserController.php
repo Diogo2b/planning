@@ -53,7 +53,7 @@ class UserController extends Controller
     {
         session_destroy();
 
-        return header('Location: /');
+        return header('Location: /login');
     }
 
 
@@ -95,7 +95,7 @@ class UserController extends Controller
         $user = new User($this->getDB());
         $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $data['password'] = $hashed_password;
-        // $errors = $user->validate($data);
+        $errors = $user->validate($data);
         $formations = (new Formation($this->getDB()))->all();
 
         if ($errors) {

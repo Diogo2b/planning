@@ -24,6 +24,6 @@ class CalendrierController extends Controller
             'formations' => $formations
         ]);
 
-        return;
+       
     }
 }

@@ -49,7 +49,8 @@ class EventController extends Controller
        
     }
 
-        else if ($this->isEleve()){
+    
+    if ($this->isEleve()){
             $role=2;
             $events = (new Event($this->getDB()))->index_session_eleve();
             error_log(json_encode($events));

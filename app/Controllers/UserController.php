@@ -20,8 +20,8 @@ class UserController extends Controller
     public function loginPost()
     {
         // $data = $_POST;
-        // $user = (new User($this->getDB()))->getByEmail($_POST['email']);
-        $user = (new User($this->getDB()))->getByEmail($_POST['email'], true);
+        $user = (new User($this->getDB()))->getByEmail($_POST['email']);
+        // $user = (new User($this->getDB()))->getByEmail($_POST['email'], true);
 
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         // dd($_POST);

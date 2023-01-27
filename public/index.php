@@ -14,7 +14,7 @@ define('DB_PWD', '');
 
 
 $router = new Router($_GET['url']);
-$router->get('/', 'App\Controllers\ModuleController@welcome');
+$router->get('/', 'App\Controllers\UserController@login');
 //login et logout
 $router->get('/login', 'App\Controllers\UserController@login');
 $router->post('/login', 'App\Controllers\UserController@loginPost');

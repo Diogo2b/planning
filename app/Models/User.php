@@ -49,7 +49,8 @@ class User extends Model
     }
 
 
-    public function createUserForm ($formation_id){
+    public function createUserForm($formation_id)
+    {
 
         // $pdo = $this->db->getPDO();
         // $stmt = $pdo->prepare("INSERT INTO users_formation (user_id, formation_id) VALUES ( (SELECT MAX(id) FROM users), :formation_id)");

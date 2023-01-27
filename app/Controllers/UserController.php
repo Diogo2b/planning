@@ -44,11 +44,9 @@ class UserController extends Controller
 
             $_SESSION['auth'] = (int) $user->id;
             $_SESSION['role_id'] = (int) $user->role_id;
-<<<<<<< HEAD
             echo '<div class="alert alert-success"> Vous êtes connecté! </div>';
             // return header('Location: /calendriers');
             return  header('Location: /calendriers');
-=======
 
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -64,7 +62,6 @@ class UserController extends Controller
                 // return $this->view('calendriers.index');
                 unset($_POST);
             }
->>>>>>> 00c01a9 (fix:auth with 'csrf_token' and unset($post))
         }
     }
 

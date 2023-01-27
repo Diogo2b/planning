@@ -104,12 +104,9 @@ $router->post('event_update', 'App\Controllers\ModalController@update');
 $router->post('modal_UpdatePost', 'App\Controllers\ModalController@updatePost');
 $router->post('event_delete', 'App\Controllers\ModalController@delete');
 $router->post('modal_DeletePost', 'App\Controllers\ModalController@DeletePost');
-<<<<<<< HEAD
 
-=======
 $router->post('event_occurence', 'App\Controllers\EventController@DeleteOccurence');
 $router->get('/logout', 'App\Controllers\SiteController@logout');
->>>>>>> 00c01a9 (fix:auth with 'csrf_token' and unset($post))
 try {
     $router->run();
 } catch (NotFoundException $e) {

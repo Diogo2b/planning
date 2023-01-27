@@ -44,27 +44,9 @@ class UserController extends Controller
 
             $_SESSION['auth'] = (int) $user->id;
             $_SESSION['role_id'] = (int) $user->role_id;
-<<<<<<< HEAD
             echo '<div class="alert alert-success"> Vous êtes connecté! </div>';
             // return header('Location: /calendriers');
             return  header('Location: /calendriers');
-=======
-
-
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $csrf_token = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
-
-                if (!hash_equals($_SESSION['csrf_token'], $csrf_token)) {
-                    //traitement d'erreur, par exemple, redirection vers une page d'erreur
-                    echo '<div class="alert alert-success"> Vous êtes connecté! </div>';
-                    return header('Location: /calendriers');
-                }
-                echo '<div class="alert alert-alert"> UPS!!! </div>';
-                return header('Location: /calendriers');
-                // return $this->view('calendriers.index');
-                unset($_POST);
-            }
->>>>>>> 00c01a9 (fix:auth with 'csrf_token' and unset($post))
         }
     }
 
@@ -110,7 +92,7 @@ class UserController extends Controller
     }
 
     public function createPost()
-    {  
+    {
         $this->isAdmin();
         $this->checkSessionTimeout();
         $data = $_POST;
@@ -142,7 +124,7 @@ class UserController extends Controller
         $result = $user->create($data);
         $pdo = $this->db->getPDO();
         $stmt = $pdo->prepare("INSERT INTO users_formation (user_id, formation_id) VALUES ( (SELECT MAX(id) FROM users), :formation_id)");
-        $stmt->bindParam(':formation_id',$_POST['formation_id'] );
+        $stmt->bindParam(':formation_id', $_POST['formation_id']);
         $stmt->execute();
 
         // $formationSelect = (new User($this->getDB()))->createUserForm($_POST['formation_id']);
@@ -176,12 +158,12 @@ class UserController extends Controller
         $this->isAdmin();
         $this->checkSessionTimeout();
         $data = $_POST;
-        
+
         $user = new User($this->getDB());
         $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $data['password'] = $hashed_password;
         $errors = $user->validate(['id' => $id, ...$data]);
-        
+
         if ($errors) {
             return $this->view('users.update', [
                 'errors' => $errors,
@@ -192,7 +174,7 @@ class UserController extends Controller
             ]);
         }
         $result = $user->update($id, $data);
-        
+
 
         if ($result) {
             return header('Location: /users');

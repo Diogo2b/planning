@@ -87,11 +87,7 @@ abstract class Controller
         if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 4) {
 
             return true;
-        } else {
-
-
-            return header('Location: /login');
-        }
+        } 
     }
 
     public static function hashPassword(string $password)

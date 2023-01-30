@@ -133,11 +133,11 @@ class Modal extends Model
         $stmt = $db->prepare("DELETE FROM sessions WHERE id = :id");
         $stmt->bindParam(':id', $_POST['id']);
         $stmt->execute();
-        $stmt2 = $db->prepare("UPDATE modules SET total_hours = total_hours + (TIMESTAMPDIFF(HOUR, :start, :end)) WHERE id = :id_module");
-        $stmt2->bindParam(':start', $_POST['start']);
-        $stmt2->bindParam(':end', $_POST['end']);
-        $stmt2->bindParam(':id_module', $_POST['id_module']);
-        $stmt2->execute();
+        $stmt = $db->prepare("UPDATE modules SET total_hours = total_hours + (TIMESTAMPDIFF(HOUR, :start, :end)) WHERE id = :id_module");
+        $stmt->bindParam(':start', $_POST['start']);
+        $stmt->bindParam(':end', $_POST['end']);
+        $stmt->bindParam(':id_module', $_POST['id_module']);
+        $stmt->execute();
 
     }
 //e

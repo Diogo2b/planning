@@ -1,5 +1,5 @@
 
-    
+    <script src="../app/JS/function.js"></script>
       <div class="modal-header" >
         <h5 class="modal-title" id="exampleModalLabel">Gestion de cour</h5>
         <button type="button" class="close" data-bs-dismiss="modal" onclick="location.reload()"  aria-label="Close">

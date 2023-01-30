@@ -18,9 +18,9 @@ class ModalController extends Controller
 {
 
 
-   
-    public function create()
-    {
+//    Cette fonction permet l'ouverture d'un modale de création avec des données poussé en $_POST 
+//    (appelé lors du callback 'eventReceive' du calendrier)
+    public function create(){
         $profs = (new Modal($this->getDB()))->test_prof();
         $salles = (new Modal($this->getDB()))->test_salle();
         $sessions = (new Session($this->getDB()))->all();
@@ -39,17 +39,15 @@ class ModalController extends Controller
             
         ]));  
     }
-
-    public function createPost()
-    {
+// Cette fonction poste en base de donnée dans la table sessions les données de la modal de création
+    public function createPost(){
         $modals = (new Modal($this->getDB()))->create_post();
         $msg = "Votre cour a bien été ajouter";
         echo json_encode($msg);
 
     }
-
-    public function update()
-    {
+//Cette fonction ouvre la modal de modification (appelé lors du callback 'eventDrop')
+    public function update(){
         $profs = (new Modal($this->getDB()))->test_prof();
         $salles = (new Modal($this->getDB()))->test_salle();
         $sessions = (new Session($this->getDB()))->all();
@@ -69,18 +67,15 @@ class ModalController extends Controller
             
         ])); 
     } 
-    
-    public function updatePost()
-    {
+// Cette fonction met a jour les en base de donnée les données posté de la modal de modification
+    public function updatePost(){
         $modals = (new Modal($this->getDB()))->update_post();
         $msg = "Votre cour a bien été modifié";
         echo json_encode($msg);
 
 }
-
-
-public function delete()
-{
+// Cette fonction ouvre la modal de suppression (appelé lors du callback 'eventClick')
+public function delete(){
     $profs = (new Modal($this->getDB()))->test_prof();
     $salles = (new Modal($this->getDB()))->test_salle();
     $sessions = (new Session($this->getDB()))->all();
@@ -100,8 +95,9 @@ public function delete()
         
     ])); 
 } 
-public function DeletePost()
-{
+
+//Cette fonction supprime un event 
+public function DeletePost(){
     $modals = (new Modal($this->getDB()))->delete_post();
     $msg = "Votre cour a bien été supprimé";
     echo json_encode($msg);

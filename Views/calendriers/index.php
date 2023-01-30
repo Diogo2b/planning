@@ -112,6 +112,7 @@
               },
               locale:'fr',
               height:"auto",
+              height: 'auto', 
               themeSystem: 'bootstrap5',
               allDaySlot: false,
               slotMinTime: '08:00',

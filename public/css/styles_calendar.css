@@ -1,3 +1,7 @@
+.classe_selecteur {
+  width: 15%;
+}
+
 .container_event {
   width: 15%;
   margin-bottom: 20px;
@@ -14,6 +18,11 @@
 .event {
   width: 100%;
   text-align: center;
+}
+
+.modalContainer {
+  background-image: url(../asset/modalbg.jpg);
+  background-size: cover;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
@@ -34,5 +43,8 @@
   .event {
     width: 100%;
     margin: 10px;
+  }
+  .classe_selecteur {
+    width: 40%;
   }
 }/*# sourceMappingURL=styles_calendar.css.map */

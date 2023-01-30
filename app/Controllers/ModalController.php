@@ -73,7 +73,7 @@ class ModalController extends Controller
     public function updatePost()
     {
         $modals = (new Modal($this->getDB()))->update_post();
-        $msg = "Votre cour a bien été ajouté";
+        $msg = "Votre cour a bien été modifié";
         echo json_encode($msg);
 
 }

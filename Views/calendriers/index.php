@@ -212,6 +212,7 @@
                 let end_drop = info.event.endStr
                 let id_module_drop = info.event.extendedProps.module;
                 let id_event = info.event.id
+                console.log(end_drop)
 
                 $.ajax({
                   url: '/event_delete',
@@ -326,11 +327,11 @@ function create_session(){
 
 }
 function delete_session(){
-              let start_receive_delete=$("#start_selector_delete").val();
-              let end_receive_delete=$("#end_selector_delete").val();
+              let start_receive=$("#start_selector").val();
+              let end_receive=$("#end_selector").val();
               const module = $("#fc-event-main");
               let id_module_receive=module.data('id');
-              let event_id_delete=$("#id_selector_delete").val()
+              let event_id=$("#id_selector").val()
               $.ajax({
                             url: '/modal_DeletePost',
                             dataType: 'JSON',
@@ -338,9 +339,9 @@ function delete_session(){
                             data: {
                              
                               id_module:id_module_receive,
-                              end:end_receive_delete,
-                              start:start_receive_delete,
-                              id: event_id_delete
+                              end:end_receive,
+                              start:start_receive,
+                              id: event_id
                             },
                             success: function (response) {
                               alert(response)
@@ -360,14 +361,14 @@ function delete_session(){
 
 }
 function update_session(){
-                let selector_profs_update=$("#select_prof_update").val();
-                let selector_salle_update=$("#select_salle_update").val();
-                let selector_class_update=$("#select_form").val();
-                let start_receive_update=$("#start_selector_update").val();
-                let end_receive_update=$("#end_selector_update").val();
+                let selector_profs=$("#select_prof").val();
+                let selector_salle=$("#select_salle").val();
+                let selector_class=$("#select_form").val();
+                let start_receive=$("#start_selector").val();
+                let end_receive=$("#end_selector").val();
                 const module = $("#fc-event-main");
                 let id_module_receive=module.data('id');
-                let event_id_update=$("#id_selector_update").val()
+                let event_id=$("#id_selector").val()
                 
                 
                 $.ajax({
@@ -375,13 +376,13 @@ function update_session(){
                             dataType: 'JSON',
                             type: 'POST',
                             data: {
-                              profs:selector_profs_update,
-                              salle:selector_salle_update,
-                              classe:selector_class_update,
+                              profs:selector_profs,
+                              salle:selector_salle,
+                              classe:selector_class,
                               id_module:id_module_receive,
-                              end:end_receive_update,
-                              start:start_receive_update,
-                              id: event_id_update
+                              end:end_receive,
+                              start:start_receive,
+                              id: event_id
                             },
                             success: function (response) {
                               alert(response)
@@ -403,7 +404,7 @@ function update_session(){
 
 <body>
 
-  <div class="input-group mb-3 col-4">
+  <div class="classe_selecteur">
     <select class="form-select" onchange="load()" id="select_form">
       <?php if ($formations->id === $module->formation_id) { ?>
         <?php
@@ -424,9 +425,9 @@ function update_session(){
     <div id='calendrier'>
     </div>
     <!-- //Modal sur callBack EventReceiv -->
-    <div class="modal fade " data-bs-backdrop="static" data-bs-keyboard="false" id="MaModal" backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class=" modal fade " data-bs-backdrop="static" data-bs-keyboard="false" id="MaModal" backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modalContainer modal-content">
 
         </div>
       </div>

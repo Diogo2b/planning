@@ -1,10 +1,11 @@
-<div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+
+<div class="modal-header ">
+  <h5 class="modal-title" id="exampleModalLabel">Création de cour</h5>
+  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" onclick="location.reload()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
+<div class="modalCreate d-flex align-items-center justify-content-center p-3">
   <form action="javascript:create_session();" method="POST">
     <label for="select_prof">Intervenants</label>
     <select id="select_prof" class="form-select" aria-label="Default select example">
@@ -40,9 +41,9 @@
     <input type="submit" class="btn btn-primary" value="Créer le session " data-bs-dismiss="modal">
 
 
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
   </form>
 
-  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
 
 
 

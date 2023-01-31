@@ -65,22 +65,14 @@ abstract class Controller
         if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) {
 
             return true;}
-        // } else {
-
-
-        //     return header('Location: /login');
-        // }
+     
     }
     protected function isEleve()
     {
         if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 2) {
             error_log(1);
             return true;}
-        // } else {
-        //     error_log(2);
-
-        //     return header('Location: /login');
-        // }
+    
     }
     protected function isIntervenant()
     {

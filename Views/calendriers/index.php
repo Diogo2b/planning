@@ -8,8 +8,8 @@
   <script src='../fullcalendar/dist/index.global.js'></script>
   <link rel="stylesheet" href="../public/css/styles_calendar.scss">
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>  
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>  
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script src="iziToast.min.js" type="text/javascript"></script>
   <script src="../app/JS/function.js"></script>
@@ -52,8 +52,8 @@
 </head>
 
 <body>
-
-  <div class="classe_selecteur">
+<!-- //Selecteur de classe (affiché uniquement lorsque l'utilisateur connecté a le role id égal a 1(admin).) -->
+  <div class="classe_selecteur" style=<?php echo ($_SESSION['role_id'] === 1) ? 'display:block' : 'display:none';?>>
     <select class="form-select" onchange="load()" id="select_form">
       <?php if ($formations->id === $module->formation_id) { ?>
         <?php
@@ -64,9 +64,7 @@
       <?php } ?>
     </select>
   </div>
-      <input type="text"  id="select_user" style="display:none" value ="<?= $_SESSION['auth']?>">
-  <!-- <div class="d-inline-flex col-12"> -->
-
+  <input type="text"  id="select_user" style="display:none" value ="<?= $_SESSION['auth']?>">
     <!-- //Zone d'evenement draggable -->
     <div id='external-events' class="container_event" >
     </div>
@@ -77,14 +75,9 @@
     <div class=" modal fade " data-bs-backdrop="static" data-bs-keyboard="false" id="MaModal" backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modalContainer modal-content">
-
         </div>
       </div>
-    <!-- </div> -->
-
-
-
-
+    </div>
 </body>
 
 </html>

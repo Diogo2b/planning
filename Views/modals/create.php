@@ -33,7 +33,14 @@
       
     </select>
     <br>
+    <?php
+              $datetime = new DateTime($_POST['start']);
+              $new_date = $datetime->format('Y-m-d');
+                   $today = date("Y-m-d");
+                if($new_date >= $today){
 
+                 
+            ?>
     <input id="start_selector" name="start" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3 " value=<?= $_POST['start']  ?>>
 
     <input id="end_selector" name="end" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['end']  ?>>
@@ -42,8 +49,11 @@
 
 
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
+    
+  <?php
+                }
+            ?>
   </form>
-
 
 
 

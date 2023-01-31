@@ -38,7 +38,14 @@
      
             </select>
             <br>
-            
+            <?php
+              $datetime = new DateTime($_POST['start']);
+              $new_date = $datetime->format('Y-m-d');
+                   $today = date("Y-m-d");
+                if($new_date >= $today){
+
+                 
+            ?>
             <input id="start_selector"name="start"type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3 " value=<?= $_POST['start']  ?>>
 
             <input id="end_selector"name="end"type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['end']  ?>>
@@ -47,7 +54,9 @@
             <input  class="btn btn-primary" value="Modifier le cour " data-bs-dismiss="modal" onclick="update_session()"   >
             <input  class="btn btn-danger" value="Suprimer" data-bs-dismiss="modal" onclick="delete_session()" >
 
-            
+            <?php
+                }
+            ?>
             
         </form>
         

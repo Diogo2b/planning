@@ -25,7 +25,7 @@
             
             <?php foreach ($salles as $salle)  {
 
-              // error_log(json_encode($salle->name));
+              
 
               echo "<option value='".$salle->id."'>".$salle->name."</option>";
               
@@ -37,13 +37,23 @@
      
             </select>
             <br>
-            
+            <?php
+              $datetime = new DateTime($_POST['start']);
+              $new_date = $datetime->format('Y-m-d');
+                   $today = date("Y-m-d");
+                if($new_date >= $today){
+
+                 
+            ?>
             <input id="start_selector"name="start"type="text" class="form-control d-none"  aria-describedby="basic-addon3 " value=<?= $_POST['start']  ?>>
 
             <input id="end_selector"name="end"type="text" class="form-control d-none" aria-describedby="basic-addon3" value=<?= $_POST['end']  ?>>
             <input id="id_selector"name="id_event"type="text" class="form-control d-none"  aria-describedby="basic-addon3 " value=<?= $_POST['id']  ?>>
             
             <input type="submit" class="btn btn-primary" value="Modifier le cour " data-bs-dismiss="modal" >
+            <?php
+                }
+            ?>
             
             
         </form>

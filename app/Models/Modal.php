@@ -142,7 +142,7 @@ class Modal extends Model
 // Cette fonction permet de mettre a jour les données d'un event
     public function update_post(){
         $event_updated = $this->query("UPDATE sessions 
-        SET start = '".$_POST['start']."', end = '".$_POST['end']."', salle_id = '".$_POST['salle']."', formation_id = '".$_POST['classe']."', module_id = '".$_POST['id_module']."', user_id = '".$_POST['profs']."' 
+        SET start = '".$_POST['start']."', end = '".$_POST['end']."', salle_id = '".$_POST['salle']."', user_id = '".$_POST['profs']."' 
         WHERE id = '".$_POST['id']."'
         ");
     }

@@ -50,7 +50,10 @@
 
             <input id="end_selector"name="end"type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['end']  ?>>
             
-            <input id="id_selector"name="id_event"type="text" class="form-control d-none"  aria-describedby="basic-addon3 " value=<?= $_POST['id']  ?>>
+            <input id="id_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id']  ?>>
+            
+            <input id="module_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['module']  ?>>
+
             <input  class="btn btn-primary" value="Modifier le cour " data-bs-dismiss="modal" onclick="update_session()"   >
             <input  class="btn btn-danger" value="Suprimer" data-bs-dismiss="modal" onclick="delete_session()" >
 

@@ -95,11 +95,6 @@ class ModuleController extends Controller
             return header('Location: /modules');
         }
     }
-    public function contrainte_heure(): array
-    {
-
-        return $this->query("SELECT * FROM {$this->table}  WHERE total_hours>0 AND formation_id = '" . $_POST['event'] . "'  ");
-    }
 
 
     public function delete(int $id)

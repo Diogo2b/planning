@@ -9,7 +9,7 @@ foreach ($fields as $field) {
 
 ?>
 
-
+<script src="../app/JS/function.js"></script>
 <form action="<?= isset($user) ? "/users/update/{$user->id}" : "/users/create" ?>" method="POST">
     <div class="form-group">
         <label for="lastname">Nom d'utilisateur</label>
@@ -148,19 +148,3 @@ foreach ($fields as $field) {
 
     <button type="submit" class="btn btn-primary"><?= isset($user) ? 'Enregistrer les modifications' : "Créer l'utilisateur" ?></button>
 </form>
-
-
-<script>
-
-
-function formationSelect(){
-let formation_select=document.querySelector('#role_id').value;
-if (formation_select==2){
-    document.querySelector('#formationSelector').style.display="block";
-
-}
-else{
-    document.querySelector('#formationSelector').style.display="none"; 
-}
-}
-</script>

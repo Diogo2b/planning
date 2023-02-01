@@ -7,8 +7,9 @@ use App\Validation\ValidatorFactory;
 class Module extends Model
 {
     protected $table = 'modules';
-    public function contrainte_heure(): array
-    {
+
+    // Cette fonction permet de ne plus afficher les modules dont le total_hours est égal ou inférieur a 0.
+    public function contrainte_heure(): array{
 
         return $this->query("SELECT * FROM {$this->table}  WHERE total_hours>0 AND formation_id = '" . $_POST['event'] . "'  ");
     }

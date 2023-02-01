@@ -1,4 +1,8 @@
 
+    .classe_selecteur{
+       width: 15%; 
+    }
+
    .container_event{
     width: 15%;
     margin-bottom: 20px;
@@ -16,6 +20,11 @@
     width: 100%;
     
     text-align: center;
+   }
+
+   .modalContainer{
+    background-image: url(../asset/modalbg.jpg);
+     background-size: cover;
    }
 
    
@@ -40,6 +49,9 @@
         width: 100%;
         margin: 10px;
        
+    }
+    .classe_selecteur{
+        width: 40%;
     }
 
 

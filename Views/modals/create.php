@@ -1,10 +1,11 @@
-<div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+<script src="../app/JS/function.js"></script>
+<div class="modal-header ">
+  <h5 class="modal-title" id="exampleModalLabel">Création de cour</h5>
+  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" onclick="location.reload()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
+<div class="modalCreate d-flex align-items-center justify-content-center p-3">
   <form action="javascript:create_session();" method="POST">
     <label for="select_prof">Intervenants</label>
     <select id="select_prof" class="form-select" aria-label="Default select example">
@@ -32,7 +33,14 @@
       
     </select>
     <br>
+    <?php
+              $datetime = new DateTime($_POST['start']);
+              $new_date = $datetime->format('Y-m-d');
+                   $today = date("Y-m-d");
+                if($new_date >= $today){
 
+                 
+            ?>
     <input id="start_selector" name="start" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3 " value=<?= $_POST['start']  ?>>
 
     <input id="end_selector" name="end" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['end']  ?>>
@@ -40,9 +48,12 @@
     <input type="submit" class="btn btn-primary" value="Créer le session " data-bs-dismiss="modal">
 
 
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
+    
+  <?php
+                }
+            ?>
   </form>
-
-  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
 
 
 

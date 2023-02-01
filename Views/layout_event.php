@@ -1,4 +1,4 @@
-<?php if (isset($_SESSION['auth'])) : ?>
+<?php if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) : ?>
     <!DOCTYPE html>
     <html lang="fr">
 
@@ -16,4 +16,4 @@
     </body>
 
     </html>
-<?php endif ?>
+    <?php endif ?>

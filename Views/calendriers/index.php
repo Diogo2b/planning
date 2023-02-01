@@ -31,12 +31,14 @@
       new Draggable(draggableEl, {
         itemSelector: '.fc-event',
         eventData: function(eventEl) {
+         
 
           return {
             
-
+            
             title: eventEl.innerText,
-           
+            
+
 
 
 

@@ -45,6 +45,15 @@
 
     <input id="end_selector" name="end" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['end']  ?>>
 
+    
+    <input id="color_selector" name="color" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['color']  ?>>
+
+    <input id="name_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['name']  ?>>
+
+    <input id="id_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id']  ?>>
+
+
+
     <input type="submit" class="btn btn-primary" value="Créer le session " data-bs-dismiss="modal">
 
 

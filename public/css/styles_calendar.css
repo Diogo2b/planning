@@ -7,6 +7,10 @@
   margin-bottom: 20px;
 }
 
+.event {
+  border-radius: 15%;
+}
+
 .calendrier {
   margin: 2px;
   height: 10%;

@@ -118,7 +118,7 @@ class Modal extends Model
     public function create_post() {
     
         $db=$this->db->getPDO();   
-        $stmt = $db->prepare("INSERT INTO sessions (title,start, end, salle_id, formation_id, module_id, user_id) VALUES (:title,:start, :end, :salle, :classe, :id_module, :profs)");
+        $stmt = $db->prepare("INSERT INTO sessions (title,start, end, salle_id, formation_id, module_id, user_id, color) VALUES (:title,:start, :end, :salle, :classe, :id_module, :profs, :color)");
         $stmt->bindParam(':start', $_POST['start']);
         $stmt->bindParam(':end', $_POST['end']);
         $stmt->bindParam(':salle', $_POST['salle']);
@@ -126,6 +126,7 @@ class Modal extends Model
         $stmt->bindParam(':id_module', $_POST['id_module']);
         $stmt->bindParam(':profs', $_POST['profs']);
         $stmt->bindParam(':title', $_POST['title']);
+        $stmt->bindParam(':color', $_POST['color']);
         $stmt->execute();
 
         $stmt = $db->prepare("UPDATE modules SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, :start, :end)) WHERE id = :id_module");

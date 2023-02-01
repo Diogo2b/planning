@@ -9,10 +9,11 @@ function create_session(){
       let selector_class = $("#select_form").val();
       let start_receive = $("#start_selector").val();
       let end_receive = $("#end_selector").val();
-      const module = $("#fc-event-main");
-      let id_module_receive = module.data('id');
-      let title_module = $("#fc-event-main").text()
-
+      let hex_color= $('#color_selector').val()
+      let id_selector= $('#id_selector').val()
+     
+      let title_module = $("#name_selector").val()
+  console.log(title_module);
       $.ajax({
         url: '/modal_CreatePost',
         dataType: 'JSON',
@@ -22,9 +23,10 @@ function create_session(){
           profs: selector_profs,
           salle: selector_salle,
           classe: selector_class,
-          id_module: id_module_receive,
+          id_module: id_selector,
           end: end_receive,
-          start: start_receive
+          start: start_receive,
+          color: hex_color
         },
         success: function(response) {
            
@@ -179,8 +181,7 @@ function loadEventCalendar() {
       var Calendar = FullCalendar.Calendar;
       var calendarEl = document.getElementById('calendrier');
       var isEditable = response['role']
-      var windowWidth = window.innerWidth;
-      var windowHeight = window.innerHeight;
+      
       
 
       
@@ -208,16 +209,32 @@ function loadEventCalendar() {
         eventOverlap: false,
         eventReceive: function(info) {
           
-
+          
+          
           ende = info.event.start
           ende.setHours(info.event.start.getHours() + 4)
           info.event.setEnd(ende)
           
           let end_receive = info.event.endStr
           let start_receive = info.event.startStr
+         let hex_color= $("#color_selector").val()
+
+         console.log(info.event.title);
+
+         let nom_module = info.event.title;
+
          
 
+         $( ".module" ).each(function() {
+          
+          if($( this ).attr('data-name') == nom_module ){
+            id_module  = $( this ).attr('data-id');
+            hex_color  = $( this ).attr('data-color');
+          }
+        });
 
+        console.log(id_module);
+         
 
           $.ajax({
             url: '/modal',
@@ -226,7 +243,11 @@ function loadEventCalendar() {
             data: {
 
               end: end_receive,
-              start: start_receive
+              start: start_receive,
+              color: hex_color,
+              name: nom_module,
+              id: id_module
+              
             },
             success: function(response) {
               $('.modal-content').html(response);
@@ -335,6 +356,7 @@ function loadEventCalendar() {
           start: response['start'],
           end: response['end'],
           id: response['id'],
+          backgroundColor: response['color'],
           extendedProps: {
             salle: response['salle_id'],
             profs: response['user_id'],

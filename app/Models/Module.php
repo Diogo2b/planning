@@ -21,7 +21,8 @@ class Module extends Model
         $validation = $validator->validate($data, [
             'name'                   => 'required',
             'total_hours'           => 'required|integer|between:-1,9999',
-            'formation_id'                => 'exists:formations,id'
+            'formation_id'                => 'exists:formations,id',
+            'color'                 => 'required'
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

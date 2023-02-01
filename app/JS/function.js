@@ -94,8 +94,8 @@ function update_session(){
     let selector_class=$("#select_form").val();
     let start_receive=$("#start_selector").val();
     let end_receive=$("#end_selector").val();
-    const module = $("#fc-event-main");
-    let id_module_receive=module.data('id');
+    
+    let id_module_receive=$("#module_selector").val()
     let event_id=$("#id_selector").val()
     
     
@@ -187,7 +187,7 @@ function loadEventCalendar() {
       
 
       var calendar = new Calendar(calendarEl, {
-
+        
         buttonText:{
           today: 'Aujourd\'hui'
         
@@ -195,7 +195,7 @@ function loadEventCalendar() {
         locale:'fr',
         height:'auto',
         width:'auto',
-       
+        html: true,
         allDaySlot: false,
         slotMinTime: '08:00',
         slotMaxTime: '18:00',
@@ -207,6 +207,8 @@ function loadEventCalendar() {
         defaultTimedEventDuration: '04:00',
         timeZone: 'locale',
         eventOverlap: false,
+ 
+
         eventReceive: function(info) {
           
           
@@ -233,7 +235,6 @@ function loadEventCalendar() {
           }
         });
 
-        console.log(id_module);
          
 
           $.ajax({
@@ -270,6 +271,7 @@ function loadEventCalendar() {
           let id_module_drop = info.event.extendedProps.module;
           let id_event = info.event.id
 
+          console.log(id_module_drop)
 
           $.ajax({
             url: '/event_update',
@@ -345,25 +347,34 @@ function loadEventCalendar() {
 
 
         },
+        eventRender: function(info) {
+        element.find('.fc-event-title fc-sticky').html(info.title);
+        
+    }
+      
 
 
       });
+        
 
       Object.values(response.events).forEach(response => {
         
         calendar.addEvent({
-          title: response['title'],
+          title: "Nom du cour:"+response['title']+"\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+
+                 "Nom"+" de la salle: " + response['name'] + "\n" + 
+                 "Intervenant: " + response['lastname'] + "\n" + response['firstname'],   
           start: response['start'],
           end: response['end'],
-          id: response['id'],
+          id: response['session_id'],
           backgroundColor: response['color'],
           extendedProps: {
             salle: response['salle_id'],
             profs: response['user_id'],
             module: response['module_id'],
             formation: response['formation_id']
-          }
-        })
+          },
+        });
+        
 
       });
 

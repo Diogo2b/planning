@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src='../fullcalendar/dist/index.global.js'></script>
+  <link rel="stylesheet" href="../public/css/styles_calendar.scss">
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
 <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>  
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -95,29 +96,33 @@
             var Calendar = FullCalendar.Calendar;
             var calendarEl = document.getElementById('calendrier');
             var isEditable = response['role']
-            
+            var windowWidth = window.innerWidth;
+            var windowHeight = window.innerHeight;
+            (windowWidth < 765) ? console.log("ok") : console.log('pas ok')
+
             
 
             var calendar = new Calendar(calendarEl, {
-              headerToolbar: {
+              // headerToolbar: {
                
-                left:'title',
-                center: false ,
+              //   left:'title',
+              //   center: false ,
                 
 
-              },
+              // },
               buttonText:{
                 today: 'Aujourd\'hui'
               
               },
               locale:'fr',
-              height:"auto",
-              themeSystem: 'bootstrap5',
+              height:'auto',
+              width:'auto',
+              // themeSystem: 'bootstrap5',
               allDaySlot: false,
               slotMinTime: '08:00',
               slotMaxTime: '18:00',
               weekends: false,
-              initialView: ($(window).width() < 765) ? 'basicDay':'timeGridWeek',
+              initialView: ($(window).width() < 765) ? 'timeGridDay':'timeGridWeek',
               editable: (isEditable==1) ? true : false,
               droppable: true,
               displayEventEnd: true,
@@ -410,13 +415,13 @@ function update_session(){
     </select>
   </div>
       <input type="text"  id="select_user" style="display:none" value ="<?= $_SESSION['auth']?>">
-  <div class="d-inline-flex col-12">
+  <!-- <div class="d-inline-flex col-12"> -->
 
     <!-- //Zone d'evenement draggable -->
-    <div id='external-events' class='col-2'>
+    <div id='external-events' class="container_event" >
     </div>
     <!-- //Zone de calendrier -->
-    <div id='calendrier' class='col-8'>
+    <div id='calendrier'>
     </div>
     <!-- //Modal sur callBack EventReceiv -->
     <div class="modal fade " data-bs-backdrop="static" data-bs-keyboard="false" id="MaModal" backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -425,7 +430,7 @@ function update_session(){
 
         </div>
       </div>
-    </div>
+    <!-- </div> -->
 
 
 

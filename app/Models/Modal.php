@@ -80,10 +80,6 @@ class Modal extends Model
 
 
              // récupération de toutes les salles.
-            
-            error_log("###############");
-            error_log(json_encode($_POST));
-            error_log("###############");
 
             $db=$this->db->getPDO();  
             $stmt = $db->prepare("SELECT * FROM `modules`

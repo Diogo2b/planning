@@ -1,7 +1,7 @@
 <script src="../app/JS/function.js"></script>
 <div class="modal-header ">
   <h5 class="modal-title" id="exampleModalLabel">Création de cour</h5>
-  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" onclick="location.reload()">
+  <button type="button" class="close" data-bs-dismiss="modal" onclick ="location.reload()" aria-label="Close" >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -50,13 +50,13 @@
 
     <input id="name_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['name']  ?>>
 
-    <input id="id_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id']  ?>>
+    <input id="id_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id_module']  ?>>
 
 
 
 
 
-    <input type="submit" class="btn btn-primary" value="Créer le session " onclick = "location.reload()" data-bs-dismiss="modal">
+    <input type="submit" class="btn btn-primary" value="Créer le session "  data-bs-dismiss="modal">
 
 
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>

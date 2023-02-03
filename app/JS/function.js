@@ -1,6 +1,7 @@
 // fonction de création de session, cette fonction est appelé lorsque l'ont appuis
 //  sur le bouton de type submit de la modal de création 
 //  ( qui elle est appelé par la fonction modal_create sur le callback eventReceive).
+
 function create_session(){
 
       
@@ -32,6 +33,7 @@ function create_session(){
            
 
           alert(response)
+          location.reload()
 
         },
         error: function() {
@@ -351,10 +353,10 @@ function loadEventCalendar() {
 
 
         },
-        eventRender: function(info) {
-        element.find('.fc-event-title fc-sticky').html(info.title);
+    //     eventRender: function(info) {
+    //     element.find('.fc-event-title fc-sticky').html(info.title);
         
-    }
+    // }
       
 
 

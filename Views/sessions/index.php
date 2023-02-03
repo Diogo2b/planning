@@ -66,7 +66,7 @@
                     <td>
                         <a href="/sessions/update/<?= $session->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                         <form action="/sessions/delete/<?= $session->id ?>" method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
+                            <button type="submit" class="btn btn-primary custom-button" >Supprimer</button>
 
                         </form>
                     </td>

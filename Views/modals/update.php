@@ -51,10 +51,10 @@
 
             <input id="id_selector"name="id_event"type="text" class="form-control d-none"  aria-describedby="basic-addon3 " value=<?= $_POST['id']  ?>>
             
-            <input id="module_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['module']  ?>>
+            <input id="module_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id_module']  ?>>
 
             
-            <input type="submit" class="btn btn-primary" value="Modifier le cour " data-bs-dismiss="modal" >
+            <input type="submit" class="btn btn-primary" value="Modifier" data-bs-dismiss="modal" >
             <?php
                 }
             ?>

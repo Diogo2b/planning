@@ -117,7 +117,7 @@ function update_session(){
                 success: function (response) {
                   alert(response)
 
-                  
+                  location.reload()
                   
                 },
                 error: function() 

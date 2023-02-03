@@ -69,7 +69,7 @@ class Modal extends Model
     
     
     
-        public function test_salle(){
+    public function test_salle(){
 
             // tableaux d'utilisateur disponible.
             $salle_dispo = array();
@@ -121,9 +121,23 @@ class Modal extends Model
 
         }
 
-                return $salle_dispo;
+                        return $salle_dispo;
         
     }
+    public function test_salle_update(){
+        $db=$this->db->getPDO();
+        $stmt = $db->prepare("SELECT * 
+        FROM sessions
+        INNER JOIN salles ON sessions.salle_id = salles.id
+        INNER JOIN users ON sessions.user_id = users.id 
+        WHERE sessions.id = :id");
+        $stmt->bindParam(':id', $_POST['id']);
+        $stmt->execute();
+        $salle_actuelle = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $salle_actuelle;
+
+
+}
 
 // Cette fonction permet la création d'un event en prenant en compte la décrémentation d'heure dans la table module.
     public function create_post() {

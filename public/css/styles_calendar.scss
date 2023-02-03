@@ -16,6 +16,10 @@ body {
     
 
    }
+   .modal-body{
+    display: flex;
+    justify-content: center;
+   }
 
    .calendrier{
     margin: 2px;
@@ -35,7 +39,7 @@ body {
    .modalContainer{
     background: linear-gradient(to top right, #74777e, #ffffff, #9c0101);
     background-size: cover;
-    background-attachment: fixed;
+    
   }
 
    

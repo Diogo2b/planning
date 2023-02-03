@@ -40,15 +40,7 @@
                     <?php endforeach ?>
                     <td>
                         <span style="background-color: <?= $module->color ?>;color: <?= $module->color ?>!important;
-    border-radius: 50px;
-    color: white;
-    text-align: center;
-
-    font-weight: 400;
-
-    line-height: 45px;
-    display: block;
-    width: 45px;">' ' </span>
+                                    border-radius: 50px;color: white;text-align: center;font-weight: 400;line-height: 45px;display: block;width: 45px;">' ' </span>
                     </td>
 
 

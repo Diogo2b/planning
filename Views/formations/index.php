@@ -1,13 +1,5 @@
-<?php
-// session_start();
-// if (!isset($_SESSION['auth'])) {
-//     header("Location: login");
-//     exit;
-// }
-?>
-
 <h1>Administration des Formations</h1>
-<a href="formations/create" class="btn btn-primary custom-button">Créer une nouvelle Formation</a>
+<a href="formations/create" class="btn btn-primary custom-button2">Créer une nouvelle Formation</a>
 
 <table class="table">
     <thead>

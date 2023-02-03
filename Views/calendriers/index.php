@@ -59,7 +59,8 @@
         <?php
         $i = 0;
         foreach ($formations as $formation) : $i++; ?>
-          <option id="formation<?= $i ?>" value="<?= $formation->id ?>"><?= $formation->name ?></option>
+          <option id="formation<?= $i ?>" value="<?= $formation->id ?>"><?= $formation->name ?> </option>
+          <div classe ="selector_formation" data-site ="<?= $formation->site_id ?>" style="display:none"></div>
         <?php endforeach ?>
       <?php } ?>
     </select>

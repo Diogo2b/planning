@@ -51,16 +51,16 @@ function create_session(){
 function delete_session(){
     let start_receive=$("#start_selector").val();
     let end_receive=$("#end_selector").val();
-    const module = $("#fc-event-main");
-    let id_module_receive=module.data('id');
-    let event_id=$("#id_selector").val()
+    let id_module= $("#module_selector").val()
+    let event_id=$("#id_selector").val();
+    console.log(id_module);
     $.ajax({
                   url: '/modal_DeletePost',
                   dataType: 'JSON',
                   type: 'POST',
                   data: {
                    
-                    id_module:id_module_receive,
+                    id_module:id_module,
                     end:end_receive,
                     start:start_receive,
                     id: event_id
@@ -220,20 +220,22 @@ function loadEventCalendar() {
           let end_receive = info.event.endStr
           let start_receive = info.event.startStr
          let hex_color= $("#color_selector").val()
-
-         console.log(info.event.title);
+         
+         let formation_site = $(".selector_formation").attr('data-site')
+         console.log(formation_site)
+         
 
          let nom_module = info.event.title;
-
-         
 
          $( ".module" ).each(function() {
           
           if($( this ).attr('data-name') == nom_module ){
             id_module  = $( this ).attr('data-id');
             hex_color  = $( this ).attr('data-color');
+            
           }
         });
+        console.log(formation_site);
 
          
 
@@ -247,7 +249,8 @@ function loadEventCalendar() {
               start: start_receive,
               color: hex_color,
               name: nom_module,
-              id: id_module
+              id_module: id_module,
+              site:formation_site
               
             },
             success: function(response) {
@@ -281,7 +284,7 @@ function loadEventCalendar() {
               user: drop_profs,
               salle: drop_salle,
               formation: drop_class,
-              module: id_module_drop,
+              id_module: id_module_drop,
               end: end_drop,
               start: start_drop,
               id: id_event
@@ -313,6 +316,7 @@ function loadEventCalendar() {
           let id_module_drop = info.event.extendedProps.module;
           let id_event = info.event.id
           
+          console.log(id_module_drop)
 
           $.ajax({
             url: '/event_delete',
@@ -322,7 +326,7 @@ function loadEventCalendar() {
               user: drop_profs,
               salle: drop_salle,
               formation: drop_class,
-              module: id_module_drop,
+              id_module: id_module_drop,
               end: end_drop,
               start: start_drop,
               id: id_event
@@ -360,8 +364,8 @@ function loadEventCalendar() {
       Object.values(response.events).forEach(response => {
         
         calendar.addEvent({
-          title: "Nom du cour:"+response['title']+"\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+"\u00a0"+ "\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+"\u00a0"+
-                 "Nom"+" de la salle: " + response['name'] + "\n" + 
+          title: "Nom du cour: "+response['title']+ "\n" + 
+                 "Nom de la salle: " + response['name'] + "\n" + 
                  "Intervenant: " + response['lastname'] + "\n" + response['firstname'],   
           start: response['start'],
           end: response['end'],

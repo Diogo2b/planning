@@ -64,7 +64,7 @@ class Event extends Model
             INNER JOIN `modules` ON `sessions`.`module_id` = `modules`.`id` 
             INNER JOIN `salles` ON `sessions`.`salle_id`= `salles`.`id` 
             INNER JOIN `users` ON `sessions`.`user_id`= `users`.`id` 
-            WHERE `sessions`.`user_id` = 19; )");
+            WHERE `sessions`.`user_id` = '".$_POST['user_id']."'; )");
         }
 
 

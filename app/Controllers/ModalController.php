@@ -28,6 +28,9 @@ class ModalController extends Controller
         $formations = (new Formation($this->getDB()))->all();
         $users = (new User($this->getDB()))->all();
 
+        error_log('////////////////////');
+        error_log(json_encode($_POST));
+        error_log('////////////////////');
         
         return ($this->view2('modals.create', [
             'profs' => $profs,

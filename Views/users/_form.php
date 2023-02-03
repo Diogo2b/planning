@@ -1,5 +1,5 @@
 <?php
-$fields = ['lastname', 'firstname', 'password', 'email', 'phone_number', 'adress', 'city', 'role_id','formation_id'];
+$fields = ['lastname', 'firstname', 'password', 'email', 'phone_number', 'adress', 'city', 'role_id', 'formation_id'];
 
 foreach ($fields as $field) {
     if (isset($previousData) && isset($previousData[$field])) {
@@ -109,7 +109,7 @@ foreach ($fields as $field) {
             <?php endforeach ?>
         </select>
 
-       
+
         <?php
         if (isset($errors) && array_key_exists('role_id', $errors)) {
         ?>
@@ -143,7 +143,7 @@ foreach ($fields as $field) {
             </div>
         <?php } ?>
     </div>
-    
+
 
 
     <button type="submit" class="btn btn-primary"><?= isset($user) ? 'Enregistrer les modifications' : "Créer l'utilisateur" ?></button>

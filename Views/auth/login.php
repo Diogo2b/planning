@@ -1,8 +1,9 @@
 <h1>Se connecter</h1>
+
 <form action="/login" method="POST">
     <div class="form-group">
         <label for="email">Mail d'utilisateur</label>
-        <input type="text" class="form-control" name="email" id="email" value="<?= $user->email ?? $email ?? '' ?>">
+        <input type="text" class="form-control custom" name="email" id="email" value="<?= $user->email ?? $email ?? '' ?>">
         <?php
         if (isset($errors) && array_key_exists('email', $errors)) {
         ?>
@@ -22,6 +23,10 @@
             </div>
         <?php } ?>
     </div>
-    <button type="submit" class="btn btn-primary">Se connecter</button>
+
+
+    <button type="submit" class="btn btn-primary custom-button">Se connecter</button>
     <!-- <button type="submit" class="btn btn-secondary">Mot de passe perdu</button> -->
 </form>
+
+<img class=identityimage src="assets\identity.png" alt="identity"

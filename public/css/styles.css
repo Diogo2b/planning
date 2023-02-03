@@ -1,1 +1,105 @@
-/*# sourceMappingURL=styles.css.map */
+@charset "UTF-8";
+.navbar-brand img {
+  height: 50px; /* définit la hauteur de l'image en pixels */
+}
+
+.form-control custom {
+  width: 300px;
+}
+
+.form-group {
+  margin-bottom: 3rem;
+}
+
+body {
+  font-family: Microsquare, Sans-serif;
+}
+
+.navbar-brand img {
+  height: 50px;
+  /* définit la hauteur de l'image en pixels */
+} /*# sourceMappingURL=styles.css.map */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.aflo-text {
+  font-size: x-large;
+  font-weight: 900;
+}
+
+.school-text {
+  font-size: x-large;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+}
+
+.identityimage {
+  vertical-align: middle;
+  border-style: none;
+  margin-top: 15%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  margin-left: 5%;
+}
+
+.custom-button {
+  background-color: #9c0101;
+  border-color: black;
+  font-weight: bold;
+}
+
+.custom-button:hover {
+  background-color: whitesmoke;
+  border-color: #9c0101;
+  cursor: pointer;
+  color: #9c0101;
+}
+
+input.form-control {
+  width: 300px;
+  border: none;
+  border-bottom: 2px double #9c0101;
+  outline-color: #9c0101;
+}
+
+input.form-control:hover {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+input.form-control:focus {
+  outline-color: #9c0101;
+}
+
+body {
+  background: linear-gradient(to top right, #74777e, #ffffff, #ffffff, #9c0101);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container > h1:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
+
+.container > form:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+label {
+  text-align: center;
+  font-weight: bold;
+  display: block;
+}/*# sourceMappingURL=styles.css.map */

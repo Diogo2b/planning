@@ -23,6 +23,8 @@
                 <th scope="col">Formation</th>
                 <th scope="col">Module</th>
                 <th scope="col">Intervenant</th>
+
+
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -52,6 +54,8 @@
                             <td><?= $user->firstname ?> <?= $user->lastname ?></td>
                         <?php  } ?>
                     <?php endforeach ?>
+
+
                     <td>
                         <a href="/sessions/update/<?= $session->id ?>" class="btn btn-warning">Modifier</a>
                         <form action="/sessions/delete/<?= $session->id ?>" method="POST" class="d-inline">

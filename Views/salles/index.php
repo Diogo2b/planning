@@ -1,3 +1,6 @@
+<?php
+if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) {
+?>
     <h1>Administration des Salles</h1>
     <a href="salles/create" class="btn btn-success my-3">Créer une nouvelle Salle</a>
 
@@ -32,3 +35,10 @@
             <?php endforeach ?>
         </tbody>
     </table>
+<?php
+} else {
+
+    echo '<div class="alert alert-danger"> vous devez être connecté  </div>';
+    return $this->view('auth.login');
+}
+?>

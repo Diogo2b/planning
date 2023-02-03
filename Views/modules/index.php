@@ -23,6 +23,7 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Nombre d'heures</th>
                 <th scope="col">Formation</th>
+                <th scope="col">Couleur</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -37,6 +38,13 @@
                             <td><?= $formation->name ?></td>
                         <?php  } ?>
                     <?php endforeach ?>
+                    <td style="background-color: <?= $module->color ?>; border-radius: 10px; color: white; text-align: center; vertical-align: middle; font-weight: 400;">
+                        <?= $module->name ?>
+                    </td>
+
+
+
+
                     <td>
                         <a href="/modules/update/<?= $module->id ?>" class="btn btn-warning">Modifier</a>
                         <form action="/modules/delete/<?= $module->id ?>" method="POST" class="d-inline">

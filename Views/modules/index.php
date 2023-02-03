@@ -38,8 +38,17 @@
                             <td><?= $formation->name ?></td>
                         <?php  } ?>
                     <?php endforeach ?>
-                    <td style="background-color: <?= $module->color ?>; border-radius: 10px; color: white; text-align: center; vertical-align: middle; font-weight: 400;">
-                        <?= $module->name ?>
+                    <td>
+                        <span style="background-color: <?= $module->color ?>;color: <?= $module->color ?>!important;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+
+    font-weight: 400;
+
+    line-height: 45px;
+    display: block;
+    width: 45px;">' ' </span>
                     </td>
 
 

@@ -30,10 +30,17 @@
         </thead>
         <tbody>
             <?php foreach ($sessions as $session) : ?>
+                <?php
+
+                $date_start = new DateTime($session->start);
+                $date_start_french = $date_start->format('d-m-Y H:i');
+                $date_end = new DateTime($session->end);
+                $date_end_french = $date_end->format('d-m-Y H:i')
+                ?>
                 <tr>
                     <th scope="row"><?= $session->id ?></th>
-                    <td><?= $session->start ?></td>
-                    <td><?= $session->end ?></td>
+                    <td><?= $date_start_french ?></td>
+                    <td><?= $date_end_french ?></td>
                     <?php foreach ($salles as $salle) : ?>
                         <?php if ($session->salle_id === $salle->id) { ?>
                             <td><?= $salle->name ?></td>

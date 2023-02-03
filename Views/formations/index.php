@@ -1,5 +1,5 @@
     <h1>Administration des Formations</h1>
-    <a href="formations/create" class="btn btn-success my-3">Créer une nouvelle Formation</a>
+    <a href="formations/create" class="btn btn-primary custom-button">Créer une nouvelle Formation</a>
 
     <table class="table">
         <thead>
@@ -23,9 +23,9 @@
                         <?php  } ?>
                     <?php endforeach ?>
                     <td>
-                        <a href="/formations/update/<?= $formation->id ?>" class="btn btn-warning">Modifier</a>
+                        <a href="/formations/update/<?= $formation->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                         <form action="/formations/delete/<?= $formation->id ?>" method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
                         </form>
                     </td>
                 </tr>

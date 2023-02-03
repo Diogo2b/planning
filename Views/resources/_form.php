@@ -20,5 +20,5 @@ foreach ($fields as $field) {
         <?php } ?>
     </div>
 
-    <button type="submit" class="btn btn-primary"><?= isset($resource) ? 'Enregistrer les modifications' : 'Créer la ressource' ?></button>
+    <button type="submit" class="btn btn-primary custom-button2"><?= isset($resource) ? 'Enregistrer les modifications' : 'Créer la ressource' ?></button>
 </form>

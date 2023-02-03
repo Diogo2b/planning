@@ -131,5 +131,5 @@ foreach ($fields as $field) {
             </div>
         <?php } ?>
     </div>
-    <button type="submit" class="btn btn-primary"><?= isset($session) ? 'Enregistrer les modifications' : 'Créer le session' ?></button>
+    <button type="submit" class="btn btn-primary custom-button"><?= isset($session) ? 'Enregistrer les modifications' : 'Créer le session' ?></button>
 </form>

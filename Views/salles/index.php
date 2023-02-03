@@ -2,7 +2,7 @@
 if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) {
 ?>
     <h1>Administration des Salles</h1>
-    <a href="salles/create" class="btn btn-success my-3">Créer une nouvelle Salle</a>
+    <a href="salles/create" class="btn btn-primary custom-button2">Créer une nouvelle Salle</a>
 
     <table class="table">
         <thead>
@@ -25,9 +25,9 @@ if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'
                         <?php  } ?>
                     <?php endforeach ?>
                     <td>
-                        <a href="/salles/update/<?= $salle->id ?>" class="btn btn-warning">Modifier</a>
+                        <a href="/salles/update/<?= $salle->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                         <form action="/salles/delete/<?= $salle->id ?>" method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
                         </form>
                     </td>
                 </tr>

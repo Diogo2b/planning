@@ -44,5 +44,5 @@ foreach ($fields as $field) {
             </div>
         <?php } ?>
     </div>
-    <button type="submit" class="btn btn-primary"><?= isset($salle) ? 'Enregistrer les modifications' : 'Créer la salle' ?></button>
+    <button type="submit" class="btn btn-primary custom-button2"><?= isset($salle) ? 'Enregistrer les modifications' : 'Créer la salle' ?></button>
 </form>

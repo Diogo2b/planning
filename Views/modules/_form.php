@@ -49,13 +49,13 @@ foreach ($fields as $field) {
         </select>
         <?php
         if (isset($errors) && array_key_exists('formation_id', $errors)) {
-            ?>
+        ?>
             <div class="alert alert-danger">
                 <li><?php echo $errors['formation_id'] ?></li>
             </div>
-            <?php } ?>
-            <label for="color">Couleur du module</label>
-            <input type="color" class="Picker form-control" name="color" id="color" value="<?= $module->color ?? '#ffffff' ?? '' ?>">
+        <?php } ?>
+        <label for="color">Couleur du module</label>
+        <input type="color" class="Picker form-control" name="color" id="color" value="<?= $module->color ?? '#ffffff' ?? '' ?>">
     </div>
-    <button type="submit" class="btn btn-primary"><?= isset($module) ? 'Enregistrer les modifications' : 'Créer le module' ?></button>
+    <button type="submit" class="btn btn-primary custom-button2"><?= isset($module) ? 'Enregistrer les modifications' : 'Créer le module' ?></button>
 </form>

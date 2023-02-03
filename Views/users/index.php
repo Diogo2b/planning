@@ -1,5 +1,5 @@
 <h1>Administration des Utilisateurs</h1>
-<a href="users/create" class="btn btn-success my-3">Créer un nouveau utilisateur</a>
+<a href="users/create" class="btn btn-primary custom-button2">Créer un nouveau utilisateur</a>
 <?php if (isset($_GET['success'])) : ?>
     <div class="alert alert-success">Vous êtes connecté!</div>
 <?php endif ?>
@@ -16,7 +16,7 @@
             <th scope="col">Adresse Postale</th>
             <th scope="col">Ville</th>
             <th scope="col">Role</th>
-            
+
             <th scope="col">Actions</th>
 
         </tr>
@@ -38,13 +38,13 @@
                         <td><?= $role->name ?></td>
                     <?php  } ?>
                 <?php endforeach ?>
-                
-                
+
+
 
                 <td>
-                    <a href="/users/update/<?= $user->id ?>" class="btn btn-warning">Modifier</a>
+                    <a href="/users/update/<?= $user->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                     <form action="/users/delete/<?= $user->id ?>" method="POST" class="d-inline">
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
                     </form>
                 </td>
             </tr>

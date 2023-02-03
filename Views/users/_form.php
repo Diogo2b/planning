@@ -146,5 +146,5 @@ foreach ($fields as $field) {
 
 
 
-    <button type="submit" class="btn btn-primary"><?= isset($user) ? 'Enregistrer les modifications' : "Créer l'utilisateur" ?></button>
+    <button type="submit" class="btn btn-primary custom-button2"><?= isset($user) ? 'Enregistrer les modifications' : "Créer l'utilisateur" ?></button>
 </form>

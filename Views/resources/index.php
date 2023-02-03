@@ -1,6 +1,6 @@
 <body>
     <h1>Administration des resources</h1>
-    <a href="resources/create" class="btn btn-success my-3">Créer ressource</a>
+    <a href="resources/create" class="btn btn-primary custom-button2">Créer ressource</a>
 
     <table class="table">
         <thead>
@@ -19,9 +19,9 @@
 
                     <td>
                     <td>
-                        <a href="/resources/update/<?= $resource->id ?>" class="btn btn-warning">Modifier</a>
+                        <a href="/resources/update/<?= $resource->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                         <form action="/resources/delete/<?= $resource->id ?>" method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
                         </form>
                     </td>
                 </tr>

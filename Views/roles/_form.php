@@ -19,5 +19,5 @@ foreach ($fields as $field) {
             </div>
         <?php } ?>
     </div>
-    <button type="submit" class="btn btn-primary"><?= isset($role) ? 'Enregistrer les modifications' : 'Créer le rôle' ?></button>
+    <button type="submit" class="btn btn-primary custom-button2"><?= isset($role) ? 'Enregistrer les modifications' : 'Créer le rôle' ?></button>
 </form>

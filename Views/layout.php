@@ -17,8 +17,8 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light  ">
-        <a class="navbar-brand" href="login">
-            <img src="assets\logoAfloschool.png" alt="logo" style="height: 50px; float: left; margin-right: 10px;">
+        <a class="navbar-brand" href="">
+            <img src="/assets/logoAfloschool.png" alt="logo" style="height: 50px; float: left; margin-right: 10px;">
             <span class="aflo-text" style="color: #45544e;white-space: nowrap;">Aflo</span>
             <span class="school-text" style="color: #9c0101;white-space: nowrap;">School</span>
         </a>

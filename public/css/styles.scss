@@ -55,6 +55,19 @@ body {
     cursor: pointer;
     color:#9c0101 ;
 }
+.custom-button2 {
+  background-color: whitesmoke;
+  border-color: #9c0101;
+  font-weight: bold;
+  color:#9c0101 ;
+  
+}
+.custom-button2:hover {
+  background-color:#9c0101;
+  border-color: whitesmoke;
+  cursor: pointer;
+  color:whitesmoke; ;
+}
 input.form-control {
     width: 300px;
     border: none;

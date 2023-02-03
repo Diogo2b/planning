@@ -14,7 +14,7 @@
 
 
     <h1>Administration des Modules</h1>
-    <a href="modules/create" class="btn btn-success my-3">Créer un nouveau module</a>
+    <a href="modules/create" class="btn btn-primary custom-button2">Créer un nouveau module</a>
 
     <table class="table">
         <thead>
@@ -46,9 +46,9 @@
 
 
                     <td>
-                        <a href="/modules/update/<?= $module->id ?>" class="btn btn-warning">Modifier</a>
+                        <a href="/modules/update/<?= $module->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                         <form action="/modules/delete/<?= $module->id ?>" method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
                         </form>
                     </td>
                 </tr>

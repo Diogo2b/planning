@@ -1,5 +1,5 @@
 <h1>Administration des Rôles d'utilisateur</h1>
-<a href="roles/create" class="btn btn-success my-3">Créer un nouveau Rôle d'utilisateur</a>
+<a href="roles/create" class="btn btn-primary custom-button2">Créer un nouveau Rôle d'utilisateur</a>
 
 <table class="table">
     <thead>
@@ -16,9 +16,9 @@
 
 
                 <td>
-                    <a href="/roles/update/<?= $role->id ?>" class="btn btn-warning">Modifier</a>
+                    <a href="/roles/update/<?= $role->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                     <form action="/roles/delete/<?= $role->id ?>" method="POST" class="d-inline">
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
                     </form>
                 </td>
             </tr>

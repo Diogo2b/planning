@@ -14,7 +14,7 @@
 
 
     <h1>Administration des Sites</h1>
-    <a href="sites/create" class="btn btn-success my-3">Créer un nouveau site</a>
+    <a href="sites/create" class="btn btn-primary custom-button2">Créer un nouveau site</a>
 
     <table class="table">
         <thead>
@@ -32,9 +32,9 @@
                     <td><?= $site->name ?></td>
 
                     <td>
-                        <a href="/sites/update/<?= $site->id ?>" class="btn btn-warning">Modifier</a>
+                        <a href="/sites/update/<?= $site->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                         <form action="/sites/delete/<?= $site->id ?>" method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
                         </form>
                     </td>
                 </tr>

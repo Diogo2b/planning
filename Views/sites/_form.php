@@ -21,5 +21,5 @@ foreach ($fields as $field) {
     </div>
 
 
-    <button type="submit" class="btn btn-primary"><?= isset($site) ? 'Enregistrer les modifications' : 'Créer le site' ?></button>
+    <button type="submit" class="btn btn-primary custom-button2"><?= isset($site) ? 'Enregistrer les modifications' : 'Créer le site' ?></button>
 </form>

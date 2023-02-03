@@ -55,7 +55,8 @@
 
 
 
-    <input type="submit" class="btn btn-primary" value="Créer le session " data-bs-dismiss="modal">
+
+    <input type="submit" class="btn btn-primary" value="Créer le session " onclick = "location.reload()" data-bs-dismiss="modal">
 
 
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>

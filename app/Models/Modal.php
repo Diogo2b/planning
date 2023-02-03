@@ -80,13 +80,28 @@ class Modal extends Model
 
 
              // récupération de toutes les salles.
-            $salles = $this->query("SELECT * FROM `salles`");
+            
+            error_log("###############");
+            error_log(json_encode($_POST));
+            error_log("###############");
+
+            $db=$this->db->getPDO();  
+            $stmt = $db->prepare("SELECT * FROM `modules`
+            INNER JOIN `formations` ON `modules`.`formation_id`= `formations`.`id`   
+            WHERE   `modules`.`id`  = :id");
+            $stmt->bindParam(':id', $_POST['id_module']);
+            $stmt->execute();
+            $list_module = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $salles = $this->query("SELECT * FROM `salles` WHERE site_id = '".$list_module['site_id']."'");
 
 
             // récupération de toutes les salles qui ne sont pas dispo. en utilisant la date de début/fin d'une session
             //  (qui sont attribué a une salle)
-            $salle_noDisponible = $this->query("SELECT * FROM `sessions`  
-            WHERE   sessions.start  = '".$_POST['start']."' AND  sessions.end  = '".$_POST['end']."' 
+            $salle_noDisponible = $this->query("SELECT * FROM `sessions`
+            INNER JOIN `salles` ON `sessions`.`salle_id`= `salles`.`id`   
+            INNER JOIN `sites` ON `salles`.`site_id`= `sites`.`id`   
+            WHERE   sessions.start  = '".$_POST['start']."' AND  sessions.end  = '".$_POST['end']."' AND sites.id = '".$list_module['site_id']." '
             ");
 
 
@@ -141,23 +156,33 @@ class Modal extends Model
 
 // Cette fonction permet de mettre a jour les données d'un event
     public function update_post(){
-        $event_updated = $this->query("UPDATE sessions 
-        SET start = '".$_POST['start']."', end = '".$_POST['end']."', salle_id = '".$_POST['salle']."', user_id = '".$_POST['profs']."' 
-        WHERE id = '".$_POST['id']."'
-        ");
+
+        $db=$this->db->getPDO();
+        $stmt = $db->prepare("UPDATE sessions
+        SET start = :start, end = :end, salle_id = :salle, user_id = :profs
+        WHERE id = :id");
+        $stmt->bindParam(':start', $_POST['start']);
+        $stmt->bindParam(':end', $_POST['end']);
+        $stmt->bindParam(':salle', $_POST['salle']);
+        $stmt->bindParam(':profs', $_POST['profs']);
+        $stmt->bindParam(':id', $_POST['id']);
+        $event_updated = $stmt->execute();
     }
 
  // Cette fonction permet de la suppression d'un event en prenant en compte l'incrémentation d'heure dans la table module.
     public function delete_post(){
+        error_log("oui");
         $db=$this->db->getPDO();  
         $stmt = $db->prepare("DELETE FROM sessions WHERE id = :id");
         $stmt->bindParam(':id', $_POST['id']);
         $stmt->execute();
-        $stmt = $db->prepare("UPDATE modules SET total_hours = total_hours + (TIMESTAMPDIFF(HOUR, :start, :end)) WHERE id = :id_module");
-        $stmt->bindParam(':start', $_POST['start']);
-        $stmt->bindParam(':end', $_POST['end']);
-        $stmt->bindParam(':id_module', $_POST['id_module']);
-        $stmt->execute();
+        error_log(json_encode($_POST));
+        $stmt2 = $db->prepare("UPDATE modules SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, :end,:start)) WHERE id = :id_module");
+        $stmt2->bindParam(':start', $_POST['start']);
+        $stmt2->bindParam(':end', $_POST['end']);
+        $stmt2->bindParam(':id_module', $_POST['id_module']);
+        $stmt2->execute();
+        error_log('finish');
 
     }
 

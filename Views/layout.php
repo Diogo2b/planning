@@ -31,7 +31,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <?php if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) : ?>
+                <?php
+
+                if ($_SERVER['REDIRECT_URL'] != "/login") {
+                    if (!isset($_SESSION['auth'])) {
+                        header("Location: login");
+                        exit;
+                    }
+                }
+                if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) : ?>
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                     <li class="nav-item">
                         <a class="nav-link" href="/formations">Formations</a>

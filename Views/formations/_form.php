@@ -6,6 +6,14 @@ foreach ($fields as $field) {
     }
 }
 ?>
+<?php
+session_start();
+if (!isset($_SESSION['auth'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
 
 <form action="<?= isset($formation) ? "/formations/update/{$formation->id}" : "/formations/create" ?>" method="POST">
     <div class="form-group">

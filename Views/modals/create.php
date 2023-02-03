@@ -30,40 +30,41 @@
 
       ?>
       <!-- coucou -->
-      
+
     </select>
     <br>
     <?php
-              $datetime = new DateTime($_POST['start']);
-              $new_date = $datetime->format('Y-m-d');
-                   $today = date("Y-m-d");
-                if($new_date >= $today){
+    $datetime = new DateTime($_POST['start']);
+    $new_date = $datetime->format('Y-m-d');
+    $today = date("Y-m-d");
+    if ($new_date >= $today) {
 
-                 
-            ?>
-    <input id="start_selector" name="start" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3 " value=<?= $_POST['start']  ?>>
 
-    <input id="end_selector" name="end" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['end']  ?>>
+    ?>
+      <input id="start_selector" name="start" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3 " value=<?= $_POST['start']  ?>>
+
+      <input id="end_selector" name="end" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['end']  ?>>
+
+
+      <input id="color_selector" name="color" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['color']  ?>>
+
+      <input id="name_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['name']  ?>>
+
+      <input id="id_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id']  ?>>
+
+
+
+
+
+    <input type="submit" class="btn btn-primary" value="Créer le session " onclick = "location.reload()" data-bs-dismiss="modal">
 
     
-    <input id="color_selector" name="color" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['color']  ?>>
 
-    <input id="name_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['name']  ?>>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
 
-    <input id="id_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id_module']  ?>>
-
-
-
-
-
-    <input type="submit" class="btn btn-primary" value="Créer le session "  data-bs-dismiss="modal">
-
-
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
-    
-  <?php
-                }
-            ?>
+    <?php
+    }
+    ?>
   </form>
 
 

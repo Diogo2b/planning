@@ -33,9 +33,10 @@ body {
    }
 
    .modalContainer{
-    background-image: url(../asset/modalbg.jpg);
-     background-size: cover;
-   }
+    background: linear-gradient(to top right, #74777e, #ffffff, #9c0101);
+    background-size: cover;
+    background-attachment: fixed;
+  }
 
    
 

@@ -116,4 +116,8 @@ label {
     text-align: center;
     font-weight: bold;
     display: block;
-  }      
+}      
+select:focus {
+    box-shadow: 0 0 0 2px #74777e;
+}
+ 

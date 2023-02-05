@@ -55,7 +55,27 @@ foreach ($fields as $field) {
             </div>
         <?php } ?>
         <label for="color">Couleur du module</label>
-        <input type="color" class="Picker form-control" name="color" id="color" value="<?= $module->color ?? '#ffffff' ?? '' ?>">
+
+        <select class="form-control" name="color" id="color">
+            <option value="#f2d2c8" style="background-color: #f2d2c8; color: #000000;">Pastel Rose</option>
+            <option value="#b3e7e8" style="background-color: #b3e7e8; color: #000000;">Pastel Bleu</option>
+            <option value="#e8b3c8" style="background-color: #e8b3c8; color: #000000;">Pastel Violet</option>
+            <option value="#c8e8b3" style="background-color: #c8e8b3; color: #000000;">Pastel Vert</option>
+            <option value="#e8c8b3" style="background-color: #e8c8b3; color: #000000;">Pastel Jaune</option>
+            <option value="#b3c8e8" style="background-color: #b3c8e8; color: #000000;">Pastel Turquoise</option>
+            <option value="#c8b3e8" style="background-color: #c8b3e8; color: #000000;">Pastel Mauve</option>
+            <option value="#e8e8b3" style="background-color: #e8e8b3; color: #000000;">Pastel Pêche</option>
+            <option value="#c8e8e8" style="background-color: #c8e8e8; color: #000000;">Pastel Gris-Bleu</option>
+            <option value="#b3e8c8" style="background-color: #b3e8c8; color: #000000;">Pastel Vert-Bleu</option>
+            <option value="#e8c8e8" style="background-color: #e8c8e8; color: #000000;">Pastel Gris-Violet</option>
+            <option value="#c8b3b3" style="background-color: #c8b3b3; color: #000000;">Pastel Rose-Gris</option>
+            <option value="#b3c8c8" style="background-color: #b3c8c8; color: #000000;">Pastel Bleu-Gris</option>
+            <option value="#e8e8e8" style="background-color: #e8e8e8; color: #000000;">Pastel Gris-Clair</option>
+            <option value="#c8c8b3" style="background-color: #c8c8b3; color: #000000;">Pastel Jaune-Gris</option>
+            <option value="#b3b3c8" style="background-color: #b3b3c8; color: #000000;">Pastel Turquoise-Gris</option>
+            <option value="#e8c8c8" style="background-color: #e8c8c8; color: #000000;">Pastel Gris-Rose</option>
+            <option value="#c8e8b3" style="background-color: #c8e8b3; color: #000000;">Pastel Vert-Jaune</option>
+        </select>
     </div>
     <button type="submit" class="btn btn-primary custom-button2"><?= isset($module) ? 'Enregistrer les modifications' : 'Créer le module' ?></button>
 </form>

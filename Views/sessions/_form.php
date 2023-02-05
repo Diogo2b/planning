@@ -10,7 +10,7 @@ foreach ($fields as $field) {
 <form action="<?= isset($session) ? "/sessions/update/{$session->id}" : "/sessions/create" ?>" method="POST">
     <div class="form-group">
         <label for="start">Debut de session</label>
-        <input type="datetime-local" min="datetime-local" class="" format="YYYY-MM-DD HH:mm" name="start" id="start" value="<?= $session->start ?? $start ?? '' ?>">
+        <input type="datetime-local" min="datetime-local" class="form-control" format="YYYY-MM-DD HH:mm" name="start" id="start" value="<?= $session->start ?? $start ?? '' ?>">
         <?php
         if (isset($errors) && array_key_exists('start', $errors)) {
         ?>

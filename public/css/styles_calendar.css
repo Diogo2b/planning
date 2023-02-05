@@ -29,9 +29,7 @@ body {
 }
 
 .modalContainer {
-  background: linear-gradient(to top right, #74777e, #ffffff, #9c0101);
-  background-size: cover;
-  background-attachment: fixed;
+  background: linear-gradient(to top right, #ffffff, #ffffff, #9c0101);
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {

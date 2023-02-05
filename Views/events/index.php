@@ -6,8 +6,8 @@
   </p>
   <?php foreach ($modules as $module) : ?>
 
-    <div class='calendrier fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'style="background-color:<?= $module->color ?>">
-      <div  class='event fc-event-main module' data-name="<?= $module->name ?>" data-id="<?= $module->id ?>" data-color="<?= $module->color ?>"style="background-color:<?= $module->color ?>"><?= $module->name ?></div>
+    <div class='calendrier fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event' style="background-color:<?= $module->color ?>;border: none;height: 30px;">
+      <div class='event fc-event-main module' data-name="<?= $module->name ?>" data-id="<?= $module->id ?>" data-color="<?= $module->color ?>" style="background-color:<?= $module->color ?>;border: none;"><?= $module->name ?></div>
     </div>
 
   <?php endforeach ?>

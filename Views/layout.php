@@ -45,7 +45,7 @@
                         <a class="nav-link" href="/formations">Formations</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class=" ">
                         <a class="nav-link" href="/modules">Modules</a>
                     </li>
 

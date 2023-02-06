@@ -158,7 +158,7 @@ class UserController extends Controller
         $this->isAdmin();
         $this->checkSessionTimeout();
         $data = $_POST;
-
+        unset($data['formation_id']);
         $user = new User($this->getDB());
         $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $data['password'] = $hashed_password;

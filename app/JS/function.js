@@ -404,7 +404,7 @@ function loadEventCalendar() {
 // de formation dans la création d'utilisateur uniquement ci le role selectioné au préalable est le rôle élève
 function formationSelect(){
   let formation_select=document.querySelector('#role_id').value;
-  if (formation_select==2){
+  if (formation_select===2){
       document.querySelector('#formationSelector').style.display="block";
   
   }

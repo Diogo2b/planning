@@ -181,18 +181,18 @@ class Modal extends Model
 
  // Cette fonction permet de la suppression d'un event en prenant en compte l'incrémentation d'heure dans la table module.
     public function delete_post(){
-        error_log("oui");
+        
         $db=$this->db->getPDO();  
         $stmt = $db->prepare("DELETE FROM sessions WHERE id = :id");
         $stmt->bindParam(':id', $_POST['id']);
         $stmt->execute();
-        error_log(json_encode($_POST));
+       
         $stmt2 = $db->prepare("UPDATE modules SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, :end,:start)) WHERE id = :id_module");
         $stmt2->bindParam(':start', $_POST['start']);
         $stmt2->bindParam(':end', $_POST['end']);
         $stmt2->bindParam(':id_module', $_POST['id_module']);
         $stmt2->execute();
-        error_log('finish');
+        
 
     }
 

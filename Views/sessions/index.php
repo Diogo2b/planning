@@ -11,7 +11,7 @@
 <body>
 
     <h1>Administration des Sessions</h1>
-    <a href="sessions/create" class="btn btn-primary custom-button2">Créer une nouvelle session</a>
+    
 
     <table class="table">
         <thead>
@@ -64,7 +64,7 @@
 
 
                     <td>
-                        <a href="/sessions/update/<?= $session->id ?>" class="btn btn-primary custom-button2">Modifier</a>
+                        
                         <form action="/sessions/delete/<?= $session->id ?>" method="POST" class="d-inline">
                             <button type="submit" class="btn btn-primary custom-button" >Supprimer</button>
 

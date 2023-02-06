@@ -56,14 +56,14 @@
 <!-- //Selecteur de classe (affiché uniquement lorsque l'utilisateur connecté a le role id égal a 1(admin).) -->
   <div class="classe_selecteur" style=<?php echo ($_SESSION['role_id'] === 1) ? 'display:block' : 'display:none';?>>
     <select class="form-select" onchange="load()" id="select_form">
-      <?php if ($formations->id === $module->formation_id) { ?>
+      
         <?php
         $i = 0;
         foreach ($formations as $formation) : $i++; ?>
           <option id="formation<?= $i ?>" value="<?= $formation->id ?>"><?= $formation->name ?> </option>
-          <!-- <div classe ="selector_formation" data-site ="<?= $formation->site_id ?>" style="display:none"></div> -->
+          
         <?php endforeach ?>
-      <?php } ?>
+      
     </select>
   </div>
   <input type="text"  id="select_user" style="display:none" value ="<?= $_SESSION['auth']?>">

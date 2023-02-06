@@ -1,4 +1,43 @@
 @charset "UTF-8";
+.nav-item .nav-link {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+.nav-item .nav-link:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #9c0101;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-item .nav-link:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.fc-today-button {
+  background-color: #9c0101 !important;
+  border: none !important;
+}
+
+.fc-next-button {
+  background-color: #74777e !important;
+  border: none !important;
+}
+
+.fc-prev-button {
+  background-color: #74777e !important;
+  border: none !important;
+}
+
 .navbar-brand img {
   height: 50px; /* définit la hauteur de l'image en pixels */
 }

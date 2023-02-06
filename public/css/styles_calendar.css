@@ -2,6 +2,10 @@ body {
   font-family: Microsquare, Sans-serif;
 }
 
+.fc-event {
+  border: none;
+}
+
 .classe_selecteur {
   width: 15%;
 }
@@ -18,6 +22,11 @@ body {
 .modal-body {
   display: flex;
   justify-content: center;
+}
+
+.modal-body > form:nth-child(1) {
+  display: flex;
+  flex-direction: column;
 }
 
 .calendrier {

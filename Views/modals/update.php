@@ -1,6 +1,6 @@
 <script src="../app/JS/function.js"></script>
 <div class="modal-header" >
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modifier le cour</h5>
         <button type="button" class="close" data-bs-dismiss="modal"  aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -54,7 +54,8 @@
             <input id="module_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id_module']  ?>>
 
             
-            <input type="submit" class="btn btn-primary" value="Modifier" data-bs-dismiss="modal" >
+            <input class="btn btn-primary custom-button" type="submit" value="Modifier" data-bs-dismiss="modal"  >
+            
             <?php
                 }
             ?>
@@ -62,5 +63,5 @@
             
         </form>
         
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
+       
       

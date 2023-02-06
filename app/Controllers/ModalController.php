@@ -57,6 +57,7 @@ class ModalController extends Controller
         $modules = (new Module($this->getDB()))->all();
         $formations = (new Formation($this->getDB()))->all();
         $users = (new User($this->getDB()))->all();
+        $salles_actuel = (new Modal($this->getDB()))->test_salle_update();
 
         
         return ($this->view2('modals.update', [
@@ -65,6 +66,7 @@ class ModalController extends Controller
             'modules'=>$modules,
             'formations' => $formations,
             'sessions' => $sessions
+            
 
             
             
@@ -81,6 +83,7 @@ class ModalController extends Controller
 public function delete(){
     $profs = (new Modal($this->getDB()))->test_prof();
     $salles = (new Modal($this->getDB()))->test_salle();
+    $salles_actuel = (new Modal($this->getDB()))->test_salle_update();
     $sessions = (new Session($this->getDB()))->all();
     $modules = (new Module($this->getDB()))->all();
     $formations = (new Formation($this->getDB()))->all();
@@ -92,7 +95,8 @@ public function delete(){
         'salles' => $salles,
         'modules'=>$modules,
         'formations' => $formations,
-        'sessions' => $sessions
+        'sessions' => $sessions,
+        'salles_actuel' => $salles_actuel
 
         
         

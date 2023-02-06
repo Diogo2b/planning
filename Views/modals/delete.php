@@ -9,8 +9,8 @@
       <div class="modal-body">
       <form action="javascript:update_session();" method="POST">
             <label for="select_prof">Intervenants</label>
-            <select id="select_prof"class="form-select" aria-label="Default select example">
-            
+            <select id="select_prof"class="form-select" aria-label="Default select example" >
+            <?php echo "<option value='".$salles_actuel['user_id']."'>".$salles_actuel['firstname']."  ".$salles_actuel['lastname']."</option>"; ?>
             <?php foreach ($profs as $prof)  {
 
               echo "<option value='".$prof->id."'>".$prof->lastname." ".$prof->firstname."</option>";
@@ -22,8 +22,11 @@
             </select>
             <br>
             <label for="select_salle">Salles</label>
-            <select id="select_salle"class="form-select" aria-label="Default select example">
-            
+            <select id="select_salle"class="form-select" aria-label="Default select example" >
+            <?php
+              error_log(json_encode($salles_actuel));
+            ?>
+            <?php echo "<option value='".$salles_actuel['salle_id']."'>".$salles_actuel['name']."</option>"; ?>
             <?php foreach ($salles as $salle)  {
 
               // error_log(json_encode($salle->name));
@@ -54,16 +57,15 @@
             
             <input id="module_selector" name="name" type="text" class="form-control d-none" id="basic-url" aria-describedby="basic-addon3" value=<?= $_POST['id_module']  ?>>
 
-            <input  class="btn btn-primary" value="Modifier le cour " data-bs-dismiss="modal" onclick="update_session()"   >
-            <input  class="btn btn-danger" value="Suprimer" data-bs-dismiss="modal" onclick="delete_session()" >
+            <input  class="btn btn-primary custom-button2" value="Modifier" data-bs-dismiss="modal" onclick="update_session()"   >
+            <input  class="btn btn-danger custom-button" value="Suprimer" data-bs-dismiss="modal" onclick="delete_session()" >
 
             <?php
                 }
             ?>
             
         </form>
-        
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Fermer</button>
+    
       
 
         

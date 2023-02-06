@@ -366,10 +366,9 @@ function loadEventCalendar() {
       Object.values(response.events).forEach(response => {
         
         calendar.addEvent({
-          html:true,
-          title: "Nom du cour: "+response['title']+ <br /> + 
-                 "\n\n Nom de la salle: " + response['name'] + "\n\n\n\n\n\n\n" + 
-                 "\n\n Intervenant: " + response['lastname'] + "\n\n\n\n\n\n\n\n" + response['firstname'],   
+          title: "Nom du cour: "+response['title']+ "" + 
+                 "Nom de la salle: " + response['name'] + "" + 
+                 "Intervenant: " + response['lastname'] + " " + response['firstname'],   
           start: response['start'],
           end: response['end'],
           id: response['session_id'],
@@ -380,6 +379,7 @@ function loadEventCalendar() {
             module: response['module_id'],
             formation: response['formation_id']
           },
+
         });
         
 

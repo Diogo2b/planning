@@ -32,8 +32,15 @@ function create_session(){
         success: function(response) {
            
 
-          alert(response)
-          location.reload()
+          Swal.fire(
+            'Bravo!',
+            'Le cour a été créer',
+            'success',
+            
+          ).then(function(){
+            location.reload();
+          })
+          
 
         },
         error: function() {
@@ -68,15 +75,26 @@ function delete_session(){
                     id: event_id
                   },
                   success: function (response) {
-                    alert(response)
-                    location.reload()
+                    Swal.fire(
+                      'Bravo!',
+                      'Le cour a été supprimer',
+                      'success'
+                    ).then(function(){
+                      location.reload();
+                    })
 
                    
                     
                   },
                   error: function() 
                   {
-                      alert("Errore dans de modification !");
+                    Swal.fire(
+                      'Dommage :(',
+                      'Erreur lors de la suppression',
+                      'error'
+                    ).then(function(){
+                      location.reload();
+                    })
                   }
               })
 
@@ -115,9 +133,15 @@ function update_session(){
                   id: event_id
                 },
                 success: function (response) {
-                  alert(response)
+                  Swal.fire(
+                    'Bravo!',
+                    'Le cour a été modifier',
+                    'success'
+                  ).then(function(){
+                    location.reload();
+                  })
 
-                  location.reload()
+                  
                   
                 },
                 error: function() 

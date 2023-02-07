@@ -64,31 +64,35 @@ abstract class Controller
     {
         if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 1) {
 
-            return true;}
-     
+            return true;
+        }
     }
     protected function isEleve()
     {
         if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 2) {
             error_log(1);
-            return true;}
-    
+            return true;
+        }
     }
     protected function isIntervenant()
     {
         if (isset($_SESSION['auth']) && is_int($_SESSION['auth']) && $_SESSION['role_id'] === 4) {
 
             return true;
-        } 
+        }
     }
 
     public static function hashPassword(string $password)
     {
-
+        // Options de l'algorithme BCRYPT
         $options = [
             'cost' => 12,
         ];
+
+        // Hachage du mot de passe en utilisant l'algorithme BCRYPT et les options définies
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $options);
+
+        // Retourne le mot de passe haché
         return $hashed_password;
     }
 }

@@ -2,9 +2,10 @@
 //  sur le bouton de type submit de la modal de création 
 //  ( qui elle est appelé par la fonction modal_create sur le callback eventReceive).
 
+
+
 function create_session(){
 
-      
       let selector_profs = $("#select_prof").val();
       let selector_salle = $("#select_salle").val();
       let selector_class = $("#select_form").val();
@@ -14,7 +15,7 @@ function create_session(){
       let id_selector= $('#id_selector').val()
      
       let title_module = $("#name_selector").val()
-  console.log(title_module);
+  
       $.ajax({
         url: '/modal_CreatePost',
         dataType: 'JSON',
@@ -30,11 +31,12 @@ function create_session(){
           color: hex_color
         },
         success: function(response) {
-           
+          
+          
 
           Swal.fire(
             'Bravo!',
-            'Le cour a été créer',
+            'Le cour a été créé',
             'success',
             
           ).then(function(){
@@ -44,7 +46,7 @@ function create_session(){
 
         },
         error: function() {
-          alert("Errore dans de création !");
+          alert("Error dans de création !");
         }
       })
 
@@ -75,12 +77,17 @@ function delete_session(){
                     id: event_id
                   },
                   success: function (response) {
+
+                    var Calendar = FullCalendar.Calendar;
+                    var calendarEl = document.getElementById('calendrier');      
+                    var calendar = new Calendar(calendarEl);
+                    calendar.refetchEvents()
                     Swal.fire(
                       'Bravo!',
-                      'Le cour a été supprimer',
+                      'Le cour a été supprimé',
                       'success'
                     ).then(function(){
-                      location.reload();
+                      
                     })
 
                    
@@ -237,8 +244,7 @@ function loadEventCalendar() {
 
         eventReceive: function(info) {
           
-          
-          
+          calendar.refetchEvents()
           ende = info.event.start
           ende.setHours(info.event.start.getHours() + 4)
           info.event.setEnd(ende)
@@ -248,7 +254,7 @@ function loadEventCalendar() {
          let hex_color= $("#color_selector").val()
          
          let formation_site = $(".selector_formation").attr('data-site')
-         console.log(formation_site)
+         
          
 
          let nom_module = info.event.title;
@@ -261,7 +267,7 @@ function loadEventCalendar() {
             
           }
         });
-        console.log(formation_site);
+        
 
          
 
@@ -291,6 +297,7 @@ function loadEventCalendar() {
 
         },
         eventDrop: function event_update(info) {
+          
 
           let drop_profs = info.event.extendedProps.profs
           let drop_salle = info.event.extendedProps.salle
@@ -318,6 +325,7 @@ function loadEventCalendar() {
             success: function(response) {
               $('.modal-content').html(response);
               $('#MaModal').modal('show');
+              
 
 
              
@@ -327,12 +335,13 @@ function loadEventCalendar() {
               alert("Errore dans Update-Event !");
             }
           })
+        
 
         },
         eventResize: function(info) {
           info.revert()
         },
-        eventClick: function(info) {
+        eventClick: function eventClic(info) {
 
           let drop_profs = info.event.extendedProps.profs
           let drop_salle = info.event.extendedProps.salle
@@ -412,6 +421,7 @@ function loadEventCalendar() {
       });
 
       calendar.render();
+      
 
     },
 
@@ -426,15 +436,4 @@ function loadEventCalendar() {
 }
 
 
-// Cette fonction permet de rendre visible un selecteur 
-// de formation dans la création d'utilisateur uniquement ci le role selectioné au préalable est le rôle élève
-function formationSelect(){
-  let formation_select=document.querySelector('#role_id').value;
-  if (formation_select===2){
-      document.querySelector('#formationSelector').style.display="block";
-  
-  }
-  else{
-      document.querySelector('#formationSelector').style.display="none"; 
-  }
-  }
+

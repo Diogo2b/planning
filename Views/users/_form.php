@@ -9,7 +9,20 @@ foreach ($fields as $field) {
 
 ?>
 
-<script src="../app/JS/function.js"></script>
+<script>
+// Cette fonction permet de rendre visible un selecteur 
+// de formation dans la création d'utilisateur uniquement ci le role selectioné au préalable est le rôle élève
+function formationSelect(){
+  let formation_select=document.querySelector('#role_id').value;
+  if (formation_select==2){
+      document.querySelector('#formationSelector').style.display="block";
+  
+  }
+  else{
+      document.querySelector('#formationSelector').style.display="none"; 
+  }
+}</script>
+
 <form action="<?= isset($user) ? "/users/update/{$user->id}" : "/users/create" ?>" method="POST">
     <div class="form-group">
         <label for="lastname">Nom d'utilisateur</label>
@@ -95,7 +108,7 @@ foreach ($fields as $field) {
     <div class="form-group">
         <label for="role_id">Role</label>
         <select class="form-control" id="role_id" name="role_id" onchange="formationSelect()">
-            <option value="" selected hidden>-- Veuillez choisir un role --</option>
+            <option selected hidden>-- Veuillez choisir un role --</option>
             <?php foreach ($roles as $role) : ?>
                 <?php
                 $isSelected = '';
@@ -148,3 +161,4 @@ foreach ($fields as $field) {
 
     <button type="submit" class="btn btn-primary custom-button2"><?= isset($user) ? 'Enregistrer les modifications' : "Créer l'utilisateur" ?></button>
 </form>
+

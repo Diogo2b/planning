@@ -57,7 +57,7 @@ body {
 .navbar-brand img {
   height: 50px;
   /* définit la hauteur de l'image en pixels */
-} /*# sourceMappingURL=styles.css.map */
+} 
 .navbar-brand {
   display: flex;
   align-items: center;

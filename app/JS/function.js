@@ -377,10 +377,10 @@ function loadEventCalendar() {
 
 
         },
-    //     eventRender: function(info) {
-    //     element.find('.fc-event-title fc-sticky').html(info.title);
-        
-    // }
+        eventDidMount: function(info) {
+          console.log(info.el.querySelector(".fc-event-title"));
+          info.el.querySelector('.fc-event-title').insertAdjacentHTML("afterend","<br/>Nom intervenant : "+info.event.extendedProps.intervenant+"<br/>Nom Salle :"+info.event.extendedProps.nomSalle);
+        }
       
 
 
@@ -390,19 +390,21 @@ function loadEventCalendar() {
       Object.values(response.events).forEach(response => {
         
         calendar.addEvent({
-          title: "Nom du cour: "+response['title']+ "" + 
-                 "Nom de la salle: " + response['name'] + "" + 
-                 "Intervenant: " + response['lastname'] + " " + response['firstname'],   
+          title: response['title'],
+                 
           start: response['start'],
           end: response['end'],
           id: response['session_id'],
           backgroundColor: response['color'],
           extendedProps: {
             salle: response['salle_id'],
+            nomSalle: response['name'],
+            intervenant :  response['lastname'] + " " + response['firstname'],
             profs: response['user_id'],
             module: response['module_id'],
             formation: response['formation_id']
           },
+
 
         });
         

@@ -119,14 +119,14 @@ class UserController extends Controller
 
 
         $user = new User($this->getDB());
-
-
+        error_log(json_encode($POST));
         $result = $user->create($data);
         $pdo = $this->db->getPDO();
-        $stmt = $pdo->prepare("INSERT INTO users_formation (user_id, formation_id) VALUES ( (SELECT MAX(id) FROM users), :formation_id)");
-        $stmt->bindParam(':formation_id', $_POST['formation_id']);
-        $stmt->execute();
-
+        if (!empty($_POST['formation_id'])) {
+            $stmt = $pdo->prepare("INSERT INTO users_formation (user_id, formation_id) VALUES ( (SELECT MAX(id) FROM users), :formation_id)");
+            $stmt->bindParam(':formation_id', $_POST['formation_id']);
+            $stmt->execute();
+        }
         // $formationSelect = (new User($this->getDB()))->createUserForm($_POST['formation_id']);
 
 

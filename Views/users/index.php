@@ -38,13 +38,10 @@
                         <td><?= $role->name ?></td>
                     <?php  } ?>
                 <?php endforeach ?>
-
-
-
                 <td>
                     <a href="/users/update/<?= $user->id ?>" class="btn btn-primary custom-button2">Modifier</a>
                     <form action="/users/delete/<?= $user->id ?>" method="POST" class="d-inline">
-                        
+                        <button type="submit" class="btn btn-primary custom-button">Supprimer</button>
                     </form>
                 </td>
             </tr>

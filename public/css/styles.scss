@@ -35,10 +35,7 @@
   background-color: #74777e!important;
   border:none !important;
 }
-// .fc-prev-button:before {
-//   background-color: #9c0101!important;
-//   transition: all 0.3s ease-in-out 0s !important;
-// }
+
 .navbar-brand img {
     height: 50px; /* définit la hauteur de l'image en pixels */
     }
@@ -55,8 +52,8 @@ body {
 
 .navbar-brand img {
   height: 50px; 
-  /* définit la hauteur de l'image en pixels */
-}/*# sourceMappingURL=styles.css.map */
+
+}
 
 .navbar-brand {
   display: flex;
@@ -124,12 +121,7 @@ input.form-control:focus {
     outline-color: #9c0101;
 }
   
-// body {
-//     background: linear-gradient(to right,#74777e,#ffffff,#ffffff,#9c0101);
-// }
-// body {
-//     background: linear-gradient(to bottom left, #74777e, #ffffff, #ffffff, #9c0101);
-// }
+
 body {
     background: linear-gradient(to top right, #74777e, #ffffff, #ffffff, #9c0101);
     background-size: cover;

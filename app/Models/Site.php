@@ -6,7 +6,7 @@ use App\Validation\ValidatorFactory;
 
 class Site extends Model
 {
-    protected $table = 'sites';
+    protected $table = 'site';
 
     public function validate(array $data): array
     {

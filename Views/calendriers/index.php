@@ -33,15 +33,9 @@
         eventData: function(eventEl) {
          
 
-          return {
-            
+          return {           
             
             title: eventEl.innerText,
-            
-
-
-
-
           };
 
         }

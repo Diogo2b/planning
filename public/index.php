@@ -97,7 +97,7 @@ $router->get('/logout', 'App\Controllers\SiteController@logout');
 // planning
 $router->get('/calendriers', 'App\Controllers\CalendrierController@index');
 $router->post('/event', 'App\Controllers\EventController@index');
-$router->post('/calendriers', 'App\Controllers\EventController@loadEventCalendar');
+$router->post('/calendriers', 'App\Controllers\EventController@loadEventCalendarController');
 $router->post('/modal', 'App\Controllers\ModalController@create');
 $router->post('modal_CreatePost', 'App\Controllers\ModalController@createPost');
 $router->post('event_update', 'App\Controllers\ModalController@update');

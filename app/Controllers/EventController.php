@@ -15,7 +15,7 @@ use App\Models\Event;
 
 class EventController extends Controller
 {
-    protected $table = 'modules';
+   
 
     // Cette fonction permet l'affichage des evenements dans la zone draggable
     public function index(){
@@ -36,7 +36,7 @@ class EventController extends Controller
     }
 
     // Cette fonction permet l'affichage des evenements dans le calendrier en fonction du type (role) d'user connecté
-    public function loadEventCalendar(){
+    public function loadEventCalendarController(){
 
         // Ci l'utilisateur est un admin il aura donc accès aux plannings de toutes les classes
         if($this->isAdmin()){

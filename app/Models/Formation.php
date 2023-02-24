@@ -6,7 +6,7 @@ use App\Validation\ValidatorFactory;
 
 class Formation extends Model
 {
-    protected $table = 'formations';
+    protected $table = 'formation';
 
     public function validate(array $data): array
     {
@@ -15,7 +15,7 @@ class Formation extends Model
         $validation = $validator->validate($data, [
             'name'                   => 'required',
             'season'                => 'required|max:11',
-            'site'                => 'exists:sites,id'
+            'site'                => 'exists:site,id'
         ]);
         $errors = $validation->errors();
         return $errors->firstOfAll();

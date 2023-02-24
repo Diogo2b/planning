@@ -6,7 +6,7 @@ use App\Validation\ValidatorFactory;
 
 class Session extends Model
 {
-    protected $table = 'sessions';
+    protected $table = 'session';
 
     public function validate(array $data): array
     {
@@ -18,8 +18,8 @@ class Session extends Model
             'end'                    => 'required',
             'salle_id'                => 'exists:salles,id',
             'user_id'                => 'exists:users,id',
-            'formation_id'                => 'exists:formations,id',
-            'module_id'                => 'exists:modules,id',
+            'formation_id'                => 'exists:formation,id',
+            'module_id'                => 'exists:module,id',
 
         ]);
         $errors = $validation->errors();

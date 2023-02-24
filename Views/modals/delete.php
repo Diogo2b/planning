@@ -32,13 +32,8 @@
               // error_log(json_encode($salle->name));
 
               echo "<option value='".$salle->id."'>".$salle->name."</option>";
-              
-              
             }
-            
             ?>
-              
-     
             </select>
             <br>
             <?php

@@ -6,7 +6,7 @@ use App\Validation\ValidatorFactory;
 
 class Module extends Model
 {
-    protected $table = 'modules';
+    protected $table = 'module';
 
     // Cette fonction permet de ne plus afficher les modules dont le total_hours est égal ou inférieur a 0.
     public function contrainte_heure(): array{
@@ -21,7 +21,7 @@ class Module extends Model
         $validation = $validator->validate($data, [
             'name'                   => 'required',
             'total_hours'           => 'required|integer|between:-1,9999',
-            'formation_id'                => 'exists:formations,id',
+            'formation_id'                => 'exists:formation,id',
             'color'                 => 'required'
         ]);
         $errors = $validation->errors();

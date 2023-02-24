@@ -31,12 +31,10 @@ function create_session(){
           color: hex_color
         },
         success: function(response) {
-          
-          
-
+                    
           Swal.fire(
             'Bravo!',
-            'Le cour a été créé',
+            'Le cours a été créé',
             'success',
             
           ).then(function(){
@@ -49,7 +47,6 @@ function create_session(){
           alert("Error dans de création !");
         }
       })
-
 
 }
 
@@ -84,7 +81,7 @@ function delete_session(){
                     calendar.refetchEvents()
                     Swal.fire(
                       'Bravo!',
-                      'Le cour a été supprimé',
+                      'Le cours a été supprimé',
                       'success'
                     ).then(function(){
                       
@@ -142,7 +139,7 @@ function update_session(){
                 success: function (response) {
                   Swal.fire(
                     'Bravo!',
-                    'Le cour a été modifier',
+                    'Le cours a été modifié',
                     'success'
                   ).then(function(){
                     location.reload();
@@ -198,7 +195,7 @@ function loadModuleDraggable() {
 // Fonction d'initialisation d'un calendrier avec ces callback et de 
 // chargement d'evenement en rapport avec le rôle de l'utilisateur.
 function loadEventCalendar() {
-  var loadEventCalendars = $('#select_form').val(); 
+  let loadEventCalendars = $('#select_form').val(); 
   let id_user = $('#select_user').val();
  
   $.ajax({
@@ -210,15 +207,9 @@ function loadEventCalendar() {
       user_id:id_user
     },
     success: function(response) {
-      
       var Calendar = FullCalendar.Calendar;
-      var calendarEl = document.getElementById('calendrier');
       var isEditable = response['role']
-      
-      
-
-      
-
+      var calendarEl = document.getElementById('calendrier');      
       var calendar = new Calendar(calendarEl, {
         
         buttonText:{
@@ -243,8 +234,6 @@ function loadEventCalendar() {
  
 
         eventReceive: function(info) {
-          
-          calendar.refetchEvents()
           ende = info.event.start
           ende.setHours(info.event.start.getHours() + 4)
           info.event.setEnd(ende)
@@ -395,7 +384,6 @@ function loadEventCalendar() {
 
       });
         
-
       Object.values(response.events).forEach(response => {
         
         calendar.addEvent({
@@ -421,8 +409,6 @@ function loadEventCalendar() {
       });
 
       calendar.render();
-      
-
     },
 
 
@@ -431,8 +417,6 @@ function loadEventCalendar() {
 
     }
   });
-
- 
 }
 
 

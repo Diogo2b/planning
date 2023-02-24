@@ -17,7 +17,7 @@ use App\Validation\ValidatorFactory;
 class Modal extends Model
 {
 
-    protected $table = 'users';
+    protected $table = 'user';
 
 // Cette fonction permet d'afficher seulement les intervenants disponibles.
     public function test_prof(){
@@ -30,16 +30,14 @@ class Modal extends Model
 
 
         // récupération de tout les intervenants.
-        $users = $this->query("SELECT * FROM `users` WHERE `role_id`=4");
+        $users = $this->query("SELECT * FROM `user` WHERE `role_id`=4");
 
 
         // récupération de touts les intervenant qui ne sont pas dispo. en utilisant la date de début/fin d'une session
         //  (qui sont attribué a un intervenant)
-        $user_noDisponible = $this->query("SELECT * FROM `sessions`   
-        WHERE   sessions.start  = '".$_POST['start']."' AND  sessions.end  = '".$_POST['end']."' 
+        $user_noDisponible = $this->query("SELECT * FROM `session`   
+        WHERE   session.start  = '".$_POST['start']."' AND  session.end  = '".$_POST['end']."' 
         ");
-
-
 
         // Foreach pour push tout les intervenants non disponible dans le talbeau $user_index
         foreach($user_noDisponible as $noDispo){
@@ -82,22 +80,22 @@ class Modal extends Model
              // récupération de toutes les salles.
 
             $db=$this->db->getPDO();  
-            $stmt = $db->prepare("SELECT * FROM `modules`
-            INNER JOIN `formations` ON `modules`.`formation_id`= `formations`.`id`   
-            WHERE   `modules`.`id`  = :id");
+            $stmt = $db->prepare("SELECT * FROM `module`
+            INNER JOIN `formation` ON `module`.`formation_id`= `formation`.`id`   
+            WHERE   `module`.`id`  = :id");
             $stmt->bindParam(':id', $_POST['id_module']);
             $stmt->execute();
             $list_module = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $salles = $this->query("SELECT * FROM `salles` WHERE site_id = '".$list_module['site_id']."'");
+            $salles = $this->query("SELECT * FROM `salle` WHERE site_id = '".$list_module['site_id']."'");
 
 
             // récupération de toutes les salles qui ne sont pas dispo. en utilisant la date de début/fin d'une session
             //  (qui sont attribué a une salle)
-            $salle_noDisponible = $this->query("SELECT * FROM `sessions`
-            INNER JOIN `salles` ON `sessions`.`salle_id`= `salles`.`id`   
-            INNER JOIN `sites` ON `salles`.`site_id`= `sites`.`id`   
-            WHERE   sessions.start  = '".$_POST['start']."' AND  sessions.end  = '".$_POST['end']."' AND sites.id = '".$list_module['site_id']." '
+            $salle_noDisponible = $this->query("SELECT * FROM `session`
+            INNER JOIN `salle` ON `session`.`salle_id`= `salle`.`id`   
+            INNER JOIN `site` ON `salle`.`site_id`= `site`.`id`   
+            WHERE   session.start  = '".$_POST['start']."' AND  session.end  = '".$_POST['end']."' AND site.id = '".$list_module['site_id']." '
             ");
 
 
@@ -127,10 +125,10 @@ class Modal extends Model
     public function test_salle_update(){
         $db=$this->db->getPDO();
         $stmt = $db->prepare("SELECT * 
-        FROM sessions
-        INNER JOIN salles ON sessions.salle_id = salles.id
-        INNER JOIN users ON sessions.user_id = users.id 
-        WHERE sessions.id = :id");
+        FROM session
+        INNER JOIN salle ON session.salle_id = salle.id
+        INNER JOIN user ON session.user_id = user.id 
+        WHERE session.id = :id");
         $stmt->bindParam(':id', $_POST['id']);
         $stmt->execute();
         $salle_actuelle = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -143,7 +141,7 @@ class Modal extends Model
     public function create_post() {
     
         $db=$this->db->getPDO();   
-        $stmt = $db->prepare("INSERT INTO sessions (title,start, end, salle_id, formation_id, module_id, user_id, color) VALUES (:title,:start, :end, :salle, :classe, :id_module, :profs, :color)");
+        $stmt = $db->prepare("INSERT INTO session (title,start, end, salle_id, formation_id, module_id, user_id, color) VALUES (:title,:start, :end, :salle, :classe, :id_module, :profs, :color)");
         $stmt->bindParam(':start', $_POST['start']);
         $stmt->bindParam(':end', $_POST['end']);
         $stmt->bindParam(':salle', $_POST['salle']);
@@ -154,7 +152,7 @@ class Modal extends Model
         $stmt->bindParam(':color', $_POST['color']);
         $stmt->execute();
 
-        $stmt = $db->prepare("UPDATE modules SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, :start, :end)) WHERE id = :id_module");
+        $stmt = $db->prepare("UPDATE module SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, :start, :end)) WHERE id = :id_module");
         $stmt->bindParam(':start', $_POST['start']);
         $stmt->bindParam(':end', $_POST['end']);
         $stmt->bindParam(':id_module', $_POST['id_module']);
@@ -168,7 +166,7 @@ class Modal extends Model
     public function update_post(){
 
         $db=$this->db->getPDO();
-        $stmt = $db->prepare("UPDATE sessions
+        $stmt = $db->prepare("UPDATE session
         SET start = :start, end = :end, salle_id = :salle, user_id = :profs
         WHERE id = :id");
         $stmt->bindParam(':start', $_POST['start']);
@@ -183,11 +181,11 @@ class Modal extends Model
     public function delete_post(){
         
         $db=$this->db->getPDO();  
-        $stmt = $db->prepare("DELETE FROM sessions WHERE id = :id");
+        $stmt = $db->prepare("DELETE FROM session WHERE id = :id");
         $stmt->bindParam(':id', $_POST['id']);
         $stmt->execute();
        
-        $stmt2 = $db->prepare("UPDATE modules SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, :end,:start)) WHERE id = :id_module");
+        $stmt2 = $db->prepare("UPDATE module SET total_hours = total_hours - (TIMESTAMPDIFF(HOUR, :end,:start)) WHERE id = :id_module");
         $stmt2->bindParam(':start', $_POST['start']);
         $stmt2->bindParam(':end', $_POST['end']);
         $stmt2->bindParam(':id_module', $_POST['id_module']);

@@ -6,14 +6,14 @@ use App\Validation\ValidatorFactory;
 
 class Resource extends Model
 {
-    protected $table = 'resources';
+    protected $table = 'resource';
 
     public function validate(array $data): array
     {
         $validator =  ValidatorFactory::createValidator($this->db->getPDO());
 
         $validation = $validator->validate($data, [
-            'name'                   => 'required|unique:resources,name',
+            'name'                   => 'required|unique:resource,name',
 
         ]);
         $errors = $validation->errors();

@@ -7,5 +7,5 @@ use App\Validation\ValidatorFactory;
 class Calendrier extends Model
 
 {
-    protected $table = 'sessions';
+    protected $table = 'session';
 }

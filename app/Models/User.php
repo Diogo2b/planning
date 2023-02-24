@@ -6,7 +6,7 @@ use App\Validation\ValidatorFactory;
 
 class User extends Model
 {
-    protected $table = 'users';
+    protected $table = 'user';
 
     public function getByEmail(string $email): User|bool
     {
@@ -32,12 +32,12 @@ class User extends Model
             'lastname'                => 'required',
             'firstname'               => 'required',
             'password'                => 'required|min:3',
-            'email'                   => "required|email|unique:users,email$except",
+            'email'                   => "required|email|unique:user,email$except",
             'phone_number'            => 'required|numeric',
             'adress'                  => 'required',
             'city'                    => 'required',
-            'role_id'                 => "required|integer|exists:roles,id",
-            'formation_id'                 => "nullable|integer|exists:formations,id",
+            'role_id'                 => "required|integer|exists:role,id",
+            'formation_id'                 => "nullable|integer|exists:formation,id",
 
         ]);
 

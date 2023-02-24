@@ -15,12 +15,12 @@ class CalendrierController extends Controller
     {
 
         
-        $calendrier = (new Calendrier($this->getDB()))->all();
+        // $calendrier = (new Calendrier($this->getDB()))->all();
         $formations = (new Formation($this->getDB()))->all();
 
 
         return $this->view('calendriers.index', [
-            'calendrier' => $calendrier,
+            // 'calendrier' => $calendrier,
             'formations' => $formations
         ]);
 

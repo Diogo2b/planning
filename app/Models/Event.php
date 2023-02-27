@@ -54,7 +54,7 @@ class Event extends Model
   // Fonction qui permet d'afficher toutes les session de la table session correspondant a l'utilisateur avec le rôle intervenant connecté
 
     public function index_session_intervenant():array  {
-        return $this->query("SELECT *,`session`.`id` AS `session_id`,
+        return $sessions =  $this->query("SELECT *,`session`.`id` AS `session_id`,
          `module`.`id` AS `module_id`,
           `salle`.`id` AS `salle_id`,
            `salle`.`name` AS `salle_name`,
@@ -64,6 +64,7 @@ class Event extends Model
             INNER JOIN `salle` ON `session`.`salle_id`= `salle`.`id` 
             INNER JOIN `user` ON `session`.`user_id`= `user`.`id` 
             WHERE `session`.`user_id` = '".$_POST['user_id']."'; )");
+            return $session;
         }
         
 

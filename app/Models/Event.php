@@ -59,12 +59,13 @@ class Event extends Model
           `salle`.`id` AS `salle_id`,
            `salle`.`name` AS `salle_name`,
             `module`.`name` AS `module_name` 
-            FROM $this->table
+            FROM `session`
             INNER JOIN `module` ON `session`.`module_id` = `module`.`id` 
             INNER JOIN `salle` ON `session`.`salle_id`= `salle`.`id` 
-            INNER JOIN `users` ON `session`.`user_id`= `users`.`id` 
+            INNER JOIN `user` ON `session`.`user_id`= `user`.`id` 
             WHERE `session`.`user_id` = '".$_POST['user_id']."'; )");
         }
+        
 
 
 
